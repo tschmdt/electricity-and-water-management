@@ -1,5 +1,6 @@
 set i /1*3/
 set j /1*7/
+;
 
 parameter
 Transportkosten(i,j)
@@ -35,6 +36,7 @@ Produktion(i)
 3        15
 /
 
+
 Verbrauch(j)
 /
 1        4
@@ -45,6 +47,7 @@ Verbrauch(j)
 6        7
 7        5
 /
+
 
 positive variable Menge(i,j);
 variable zz;
