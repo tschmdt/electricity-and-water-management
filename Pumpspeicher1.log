@@ -1,0 +1,64 @@
+--- Job Pumpspeicher.gms Start 11/22/24 10:34:08 48.3.0 71b5641f WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\48\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    PageSize 0
+    ScrDir C:\Users\E370_\Documents\Uni\electricity-and-water-management\225a\
+    SysDir C:\GAMS\48\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S241011|0002CO-GEN
+          Verbund Hydro Power GmbH                                  DCE3801
+          C:\GAMS\48\gamslice.txt
+          License Admin: Ulrike Stoecker, Ulrike.Stoecker@verbund.com      
+          Course license for use within the course and related course work
+          The expiration date of time-limited license is Apr 09, 2025
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 48.3.0   Copyright (C) 1987-2024 GAMS Development. All rights reserved
+--- Starting compilation
+--- Pumpspeicher.gms(6) 3 Mb 1 Error
+*** Error 282 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Unable to open include file
+       Hint: Does the filename need to be quoted?
+--- Pumpspeicher.gms(9) 3 Mb 2 Errors
+*** Error   2 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Identifier expected
+--- Pumpspeicher.gms(25) 3 Mb 3 Errors
+*** Error 140 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Unknown symbol
+--- Pumpspeicher.gms(38) 3 Mb 4 Errors
+*** Error 257 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Solve statement not checked because of previous errors
+--- Pumpspeicher.gms(43) 3 Mb 5 Errors
+*** Error 141 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement. Suppress with $onImplicitAssign.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Pumpspeicher.gms(46) 3 Mb 8 Errors
+*** Error 141 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement. Suppress with $onImplicitAssign.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 141 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement. Suppress with $onImplicitAssign.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 141 in C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement. Suppress with $onImplicitAssign.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Pumpspeicher.gms(47) 3 Mb 8 Errors
+*** Status: Compilation error(s)
+--- Job Pumpspeicher.gms Stop 11/22/24 10:34:08 elapsed 0:00:00.028

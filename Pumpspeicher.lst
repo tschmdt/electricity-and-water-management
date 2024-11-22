@@ -1,0 +1,90 @@
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 10:34:08 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  set t /1* 769/
+   3  ;
+   4   
+   5  Parameters
+   6  $include StundenStromPreise.txt
+****                                $282
+**** 282  Unable to open include file
+****         Hint: Does the filename need to be quoted?
+   7   
+   8   
+   9  variable Z;
+****         $2
+****   2  Identifier expected
+  10  positive variable turbine(t)
+  11  positive variable pumpe(t)
+  12  positive variable speicher(t)
+  13  ;
+  14   
+  15  equations
+  16  e_cost
+  17  e_speicheranfang
+  18  e_speicherende
+  19  e_speicher(t)
+  20  e_speichermax(t)
+  21  e_leistung_turbine(t)
+  22  e_leistung_pumpe(t)
+  23  ;
+  24   
+  25  e_cost .. Z =e=  sum(t$(ord(t)>1),turbine(t)*Spot(t)-pumpe(t)*Spot(t));
+****                                                  $140
+**** 140  Unknown symbol
+  26  e_speicheranfang .. speicher('1') =e= 1500;
+  27  e_speicherende .. speicher('769') =e= 1000;
+  28  e_speicher(t)$(ord(t)>1) .. speicher(t) =e= speicher(t-1) + 10 - turbine(t) + 0.75*pumpe(t);
+  29  e_speichermax(t) .. speicher(t) =l= 2000;
+  30  e_leistung_turbine(t) .. turbine(t) =l= 300;
+  31  e_leistung_pumpe(t) .. pumpe(t) =l= 300;
+  32   
+  33   
+  34   
+  35   
+  36  model Pumpspeicher /all/;
+  37   
+  38  solve Pumpspeicher using lp maximizing Z;
+****                                          $257
+**** 257  Solve statement not checked because of previous errors
+  39   
+  40  file results1  /speichereinsatz.txt/;
+  41   
+  42  put results1;
+  43  put 'Gesamt Gewinn (Mio):':20:20 (Z.l/1000000) :20:6  /
+****                                      $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+  44  put't':12:3,'Spot':12:3,'SpeicherStand':12:3,'Gen Speicher':12:3,'Pumpe':12:3/
+  45  loop(t,put , ord(t):12:3, Spot(t):12:3,
+  46           speicher.l(t):12:3,turbine.l(t):12:3, pumpe.l(t):12:3 /);
+****                    $141              $141             $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+  47   
+
+**** 8 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.016 SECONDS      3 MB  48.3.0 71b5641f WEX-WEI
+
+
+USER: Course License                                 S241011|0002CO-GEN
+      Verbund Hydro Power GmbH                                  DCE3801
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.gms
+Output     C:\Users\E370_\Documents\Uni\electricity-and-water-management\Pumpspeicher.lst
+
+**** USER ERROR(S) ENCOUNTERED
