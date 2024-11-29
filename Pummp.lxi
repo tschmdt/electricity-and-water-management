@@ -1,0 +1,29 @@
+B 3 C o m p i l a t i o n
+B 819 Include File Summary
+B 831 Equation Listing    SOLVE Pump Using LP From line 804
+D 834 Gewinn
+D 839 speicheranfang
+D 844 speicherende
+D 849 e_speicher
+D 860 speichermax
+D 871 leistung_turbine
+D 882 leistung_pumpe
+B 894 Column Listing      SOLVE Pump Using LP From line 804
+E 897 zz
+E 904 turbine
+E 924 pumpe
+E 944 speicher
+B 967 Range Statistics    SOLVE Pump Using LP From line 804
+B 978 Model Statistics    SOLVE Pump Using LP From line 804
+B 991 Solution Report     SOLVE Pump Using LP From line 804
+F 1026 Gewinn
+F 1027 speicheranfang
+F 1028 speicherende
+F 1030 e_speicher
+F 1803 speichermax
+F 2577 leistung_turbine
+F 3351 leistung_pumpe
+G 4127 zz
+G 4129 turbine
+G 4903 pumpe
+G 5677 speicher

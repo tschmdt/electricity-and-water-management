@@ -1,0 +1,34 @@
+B 3 C o m p i l a t i o n
+B 932 Include File Summary
+B 946 Equation Listing    SOLVE GuD_Fundamentalmodell Using LP From line 919
+D 949 e_gewinn
+D 956 e_MaxSpeicher
+D 967 e_Speicherinhalt
+D 978 e_MaxSpeicherinhalt
+D 989 e_EndSpeicherinhalt
+D 994 e_MaxPumpe
+D 1005 e_MaxPGuD
+B 1017 Column Listing      SOLVE GuD_Fundamentalmodell Using LP From line 919
+E 1020 v_gewinn
+E 1027 GenSpeicher
+E 1047 GenPumpe
+E 1067 Volume_Speicher
+E 1088 ON
+E 1104 GenGuD
+B 1124 Range Statistics    SOLVE GuD_Fundamentalmodell Using LP From line 919
+B 1135 Model Statistics    SOLVE GuD_Fundamentalmodell Using LP From line 919
+B 1148 Solution Report     SOLVE GuD_Fundamentalmodell Using LP From line 919
+F 1183 e_gewinn
+F 1185 e_MaxSpeicher
+F 1959 e_Speicherinhalt
+F 2732 e_MaxSpeicherinhalt
+F 3506 e_EndSpeicherinhalt
+F 3512 e_MaxPumpe
+F 4286 e_MaxPGuD
+G 5062 v_gewinn
+G 5064 GenSpeicher
+G 5838 GenPumpe
+G 6612 Volume_Speicher
+G 7386 ON
+G 8160 GenGuD
+B 8940 E x e c u t i o n

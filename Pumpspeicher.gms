@@ -4,12 +4,13 @@ set t /1* 769/
 
 Parameters
 $include StundenStromPreise.txt
+;
 
 
 variable Z;
-positive variable turbine(t)
-positive variable pumpe(t)
-positive variable speicher(t)
+positive variable turbine(t);
+positive variable pumpe(t);
+positive variable speicher(t);
 ;
 
 equations

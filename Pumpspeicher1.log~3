@@ -1,5 +1,5 @@
 
---- Job Pumpspeicher.gms Start 11/22/24 11:33:11 48.3.0 71b5641f WEX-WEI x86 64bit/MS Windows
+--- Job Pumpspeicher.gms Start 11/22/24 10:43:04 48.3.0 71b5641f WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\48\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -24,7 +24,7 @@ GAMS 48.3.0   Copyright (C) 1987-2024 GAMS Development. All rights reserved
 --- Pumpspeicher.gms(6) 3 Mb
 --- . StundenStromPreise.txt(771) 3 Mb
 --- Pumpspeicher.gms(48) 3 Mb
---- Starting execution: elapsed 0:00:00.027
+--- Starting execution: elapsed 0:00:00.023
 --- Generating LP model Pumpspeicher
 --- Pumpspeicher.gms(810) 5 Mb
 ---   3,078 rows  2,308 columns  6,918 non-zeroes
@@ -32,7 +32,7 @@ GAMS 48.3.0   Copyright (C) 1987-2024 GAMS Development. All rights reserved
 --- RHS       [min, max] : [ 1.000E+01, 2.000E+03] - Zero values observed as well
 --- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
 --- Matrix    [min, max] : [ 7.500E-01, 8.712E+01]
---- Executing CPLEX (Solvelink=2): elapsed 0:00:00.088
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:00.084
 
 IBM ILOG CPLEX   48.3.0 71b5641f Nov 12, 2024          WEI x86 64bit/MS Window
 
@@ -78,8 +78,8 @@ Optimal solution found
 Objective:       971552.883333
 
 --- Reading solution for model Pumpspeicher
---- Executing after solve: elapsed 0:00:00.301
+--- Executing after solve: elapsed 0:00:00.294
 --- Pumpspeicher.gms(817) 6 Mb
 --- Putfile results1 C:\Users\E370_\Documents\Uni\electricity-and-water-management\speichereinsatz.txt
 *** Status: Normal completion
---- Job Pumpspeicher.gms Stop 11/22/24 11:33:11 elapsed 0:00:00.309
+--- Job Pumpspeicher.gms Stop 11/22/24 10:43:04 elapsed 0:00:00.295

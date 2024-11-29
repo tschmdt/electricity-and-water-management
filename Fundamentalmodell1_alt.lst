@@ -1,0 +1,276 @@
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/29/24 09:02:30 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   2   
+   3  Set t Stunden
+   4  /1*768/;
+   5  Parameters Preis(t)
+   6  $include Spot.txt
+****                  $282
+**** 282  Unable to open include file
+****         Hint: Does the filename need to be quoted?
+   7  ;
+   8  Parameters GasPreis(t)
+INCLUDE    C:\Users\E370_\Documents\Uni\electricity-and-water-management\GasPreis.txt
+  10  GasPreis(t) /
+  11  1*24=   18.17288055
+  12  25*48=  18.13911783
+  13  49*72=  18.99433483
+  14  73*96=  18.54044426
+  15  97*120= 19.160903
+  16  121*144=        18.55508709
+  17  145*168=        18.72456555
+  18  169*192=        18.97243234
+  19  193*216=        19.36093449
+  20  217*240=        19.26978071
+  21  241*264=        19.73462517
+  22  265*288=        19.09901441
+  23  289*312=        19.87501828
+  24  313*336=        19.55876488
+  25  337*360=        20.0323638
+  26  361*384=        19.62394699
+  27  385*408=        20.25804379
+  28  409*432=        20.05465858
+  29  433*456=        20.5417401
+  30  457*480=        20.49073486
+  31  481*504=        20.8581507
+  32  505*528=        20.34179118
+  33  529*552=        20.96725663
+  34  553*576=        20.33936203
+  35  577*600=        20.66975117
+  36  601*624=        21.1467238
+  37  625*648=        20.48437945
+  38  649*672=        20.94760138
+  39  673*696=        21.61181449
+  40  697*720=        21.09069892
+  41  721*744=        21.12839381
+  42  745*769=        21.01590913
+****        $170
+**** LINE     33 INCLUDE     C:\Users\E370_\Documents\Uni\electricity-and-water-management\GasPreis.txt
+**** LINE      9 INPUT       C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+**** 170  Domain violation for element
+  43  /
+  44  ;
+  45  Parameters Co2Preis(t)
+INCLUDE    C:\Users\E370_\Documents\Uni\electricity-and-water-management\Co2Preis.txt
+  47  Co2Preis(t) /
+  48  1       *       24      =       7.811927423
+  49  25      *       48      =       7.918055948
+  50  49      *       72      =       7.602146136
+  51  73      *       96      =       8.005835275
+  52  97      *       120     =       7.954178272
+  53  121     *       144     =       7.839450547
+  54  145     *       168     =       7.759248596
+  55  169     *       192     =       7.951414658
+  56  193     *       216     =       7.980590537
+  57  217     *       240     =       7.704933398
+  58  241     *       264     =       8.098549321
+  59  265     *       288     =       8.045934663
+  60  289     *       312     =       8.127477168
+  61  313     *       336     =       7.756996495
+  62  337     *       360     =       7.843122123
+  63  361     *       384     =       7.767790546
+  64  385     *       408     =       8.001450101
+  65  409     *       432     =       8.24615064
+  66  433     *       456     =       8.102032575
+  67  457     *       480     =       7.826628806
+  68  481     *       504     =       8.269998515
+  69  505     *       528     =       8.057404118
+  70  529     *       552     =       8.211834515
+  71  553     *       576     =       8.057644798
+  72  577     *       600     =       8.034626796
+  73  601     *       624     =       7.901826985
+  74  625     *       648     =       8.270074203
+  75  649     *       672     =       7.972382178
+  76  673     *       696     =       8.300123053
+  77  697     *       720     =       8.255820504
+  78  721     *       744     =       8.424498302
+  79  745     *       769     =       8.419340222
+****                    $170
+**** LINE     33 INCLUDE     C:\Users\E370_\Documents\Uni\electricity-and-water-management\Co2Preis.txt
+**** LINE     12 INPUT       C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+**** 170  Domain violation for element
+  80  /
+  81  ;
+  82  Parameters Demand(t)
+  83  $include Demand.txt
+****                    $282
+**** LINE     15 INPUT       C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+**** 282  Unable to open include file
+****         Hint: Does the filename need to be quoted?
+  84  ;
+  85   
+  86  *Parameter können abhängig von anderen Größen z.B. Zeit sein, werden aber nicht variiert vom Solver
+  87  Parameters
+  88  *Pumpspeicherkraftwerk:
+  89  p_Max_Turbinenleistung Max Turbninenleistung in MW /300/
+  90  p_Max_Pumpleistung Max Pumpleistung in MW /300/
+  91  p_Zufluss Natuerlicher p_Zufluss in MW pro h /10/
+  92  p_eta_P Wirkungsgrad Pumpe /0.75/
+  93  p_eta_T Wirkungsgrad Turbine /1/
+  94  p_Start_Fuellstand Fuellstand Oberbecken zu Beginn in MWh /1500/
+  95  p_Ende_Fuellstand Fuellstand Oberbecken am Ende in MWh /1000/
+  96  p_Max_Speicherinhalt Maximaler Speicherinhalt Oberbecken in MWh /2000/
+  97  *GuD:
+  98  p_P_Max_GuD Maximale Leistung elektrisce in MW /500/
+  99  p_eta_GuD Wirkungsgrad Gaskraftwerk /0.6/
+ 100  p_erzeugungskosten_GuD(t) Erzeugungskosten Gaskraftwerk
+ 101  p_startkosten_GuD Startkosten Gud in EUR pro Start /10000/
+ 102  *Gasturbine:
+ 103  p_P_Gt Maximale Leistung Gasturbine in MW /300/
+ 104  p_c_Gt Erzeugungskosten Gasturbine in EUR pro MWh /70/
+ 105  *Laufwasserkraftwerk:
+ 106  p_P_LK Erzeugung Laufwasserkraftwerk in MW /250/
+ 107  p_c_LK Erzeugungskosten Laufwasserkraftwerk in EUR pro MWh /0/
+ 108  ;
+ 109   
+ 110  *Variablen werden von Solver variiert um optimalen Gewinn zu modellieren
+ 111  Variables
+ 112  v_gewinn Gewinn
+ 113  ;
+ 114  Positive Variables
+ 115  *Pumpspeicherkraftwerk:
+ 116  pv_pumpen(t) Pumpleistung
+ 117  pv_turbinieren(t) Turbinenleistung
+ 118  pv_fuellstand(t) Füllstand Oberbecken
+ 119  *GuD:
+ 120  pv_gud_erzeugung(t) Gaskraftwerkserzeugung
+ 121  pv_start_gud(t) Gibt wechsel zwischen Aus und An an => Startkosten
+ 122  bv_zustand_gud(t) Zustand GuD (Ein oder Aus)
+ 123  *Gasturbine:
+ 124  pv_gasturbinieren(t) Turbinenleistung Gaskraftwerk
+ 125  *Laufwasserkraftwerk
+ 126  pv_wasserturbinieren(t) Erzeugung Laufwasserkraftwerk
+ 127  ;
+ 128   
+ 129   
+ 130   
+ 131  Equations
+ 132  e_Gewinn
+ 133  *Pumpspeicherkraftwerk:
+ 134  e_p_Max_Speicherinhalt(t)
+ 135  e_pv_fuellstand(t)
+ 136  e_p_Max_Turbinenleistung(t)
+ 137  e_p_Max_Pumpleistung(t)
+ 138  e_fuellstand_start
+ 139  e_fuellstand_ende
+ 140  *GuD:
+ 141  e_max_erzeugung_GuD(t)
+ 142  e_mindestlast_GuD(t)
+ 143  e_anfahren_GuD(t)
+ 144  e_linearisierung(t)
+ 145  *Gasturbine:
+ 146  e_erzeugung_Gt(t)
+ 147  *Laufwasserkraftwerk
+ 148  e_erzeugung_Lk(t)
+ 149  ;
+ 150   
+ 151  e_Gewinn .. v_gewinn =e= Sum(t,pv_turbinieren(t) * Preis(t) - pv_pumpen(t) * Preis(t) + pv_gud_erzeugung(t) * Preis(t) - pv_gud_erzeugung(t) * p_erzeugungskosten_GuD(t) - pv_start_gud(t)
+ 152  + pv_gasturbinieren(t) * Preis(t) - pv_gasturbinieren(t) * p_c_Gt + pv_wasserturbinieren(t) * Preis(t) - pv_wasserturbinieren(t) * p_c_LK);
+ 153   
+ 154  *Pumpspeicherkraftwerk:
+ 155   
+ 156  e_p_Max_Speicherinhalt(t) .. pv_fuellstand(t) =l= p_Max_Speicherinhalt;
+ 157   
+ 158  e_p_Max_Turbinenleistung(t) .. pv_turbinieren(t) =l= p_Max_Turbinenleistung;
+ 159   
+ 160  e_p_Max_Pumpleistung(t) .. pv_pumpen(t) =l= p_Max_Pumpleistung;
+ 161   
+ 162  e_pv_fuellstand(t)$(ord(t)>1) .. pv_fuellstand(t) =e= pv_fuellstand(t-1) - pv_turbinieren(t) / p_eta_T + pv_pumpen(t) * p_eta_P + p_Zufluss;
+ 163   
+ 164  e_fuellstand_start .. pv_fuellstand('1') =e= p_Start_Fuellstand;
+ 165   
+ 166  e_fuellstand_ende .. pv_fuellstand('768') =e= p_Ende_Fuellstand;
+ 167   
+ 168  *GuD:
+ 169   
+ 170  p_erzeugungskosten_GuD(t) = GasPreis(t) / p_eta_GuD + 0.2 *(Co2Preis(t) / p_eta_GuD);
+ 171   
+ 172  e_max_erzeugung_GuD(t) .. pv_gud_erzeugung(t) =l= bv_zustand_gud(t) * p_P_Max_GuD;
+ 173   
+ 174  e_mindestlast_GuD(t) .. pv_gud_erzeugung(t) =g= bv_zustand_gud(t) * p_P_Max_GuD * 0.4;
+ 175   
+ 176  e_anfahren_GuD(t) .. pv_start_gud(t) =g= p_startkosten_GuD * (bv_zustand_gud(t-1) - bv_zustand_gud(t)); #Hier unerwarteterweiße größer gleich statt ist gleich - Mail an Frau Stöcker #Außerdem Reihenfolge bv-zustand_gud(t) anders als erwartet
+ 177   
+ 178  e_linearisierung(t) .. bv_zustand_gud(t) =l= 1;
+ 179   
+ 180  *Gasturbine:
+ 181   
+ 182  e_erzeugung_Gt(t) .. pv_gasturbinieren(t) =l= p_P_Gt;
+ 183   
+ 184  *Laufwasserkraftwerk:
+ 185   
+ 186  e_erzeugung_Lk(t) .. pv_wasserturbinieren(t) =l= p_P_LK;
+ 187   
+ 188  model Pumpspeicherkraftwerk /all/;
+ 189  solve Pumpspeicherkraftwerk using mip maximizing v_gewinn;
+****                                                           $257
+**** LINE    121 INPUT       C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+**** 257  Solve statement not checked because of previous errors
+ 190   
+ 191  *Anlegen des .txt Files Output
+ 192  File Results
+ 193  /Output.txt/
+ 194  ;
+ 195  *Alle weitere 'put' geht in Result
+ 196  put Results;
+ 197   
+ 198  *'Gesamt Gewinn (Mio):':20:20 reserviert 20 Zeichen mit 20 Dezimalstellen für den Ausgabetext, Slash macht neue Zeile
+ 199  put 'Gesamt Gewinn (Mio):':20:20, (v_gewinn.l/1000000) :20:6  /
+****                                              $141
+**** LINE    131 INPUT       C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 200  put't':12:3,'Spot':12:3,'SpeicherStand':12:3,'Turbiene':12:3,'Pumpe':12:3,'GuD_Erzeugung':12:3,'Startkosten':12:3, 'Gasturbine':12:3,'Laufwasserkw':12:3/
+ 201  loop(t,put , ord(t):12:3, Preis(t):12:3,
+****                                $141
+**** LINE    133 INPUT       C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 202           pv_fuellstand.l(t):12:3,pv_turbinieren.l(t):12:3, pv_pumpen.l(t):12:3, pv_gud_erzeugung.l(t):12:3,e_anfahren_GuD.l(t):12:3, e_erzeugung_Gt.l(t), e_erzeugung_Lk.l(t) /);
+****                         $141                     $141                 $141                        $141                     $141                      $141                 $141
+**** LINE    134 INPUT       C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 203   
+ 204   
+ 205   
+ 206   
+
+**** 14 ERROR(S)   0 WARNING(S)
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/29/24 09:02:30 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+     2        9 INCLUDE        1       9  .C:\Users\E370_\Documents\Uni\electricity-and-water-management\GasPreis.txt
+     3       46 INCLUDE        1      12  .C:\Users\E370_\Documents\Uni\electricity-and-water-management\Co2Preis.txt
+
+
+COMPILATION TIME     =        0.016 SECONDS      3 MB  48.3.0 71b5641f WEX-WEI
+
+
+USER: Course License                                 S241011|0002CO-GEN
+      Verbund Hydro Power GmbH                                  DCE3801
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.gms
+Output     C:\Users\E370_\Documents\Uni\electricity-and-water-management\Fundamentalmodell1_alt.lst
+
+**** USER ERROR(S) ENCOUNTERED

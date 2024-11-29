@@ -5,7 +5,6 @@ Set t Stunden
 Parameters Preis(t)
 $include Spot.txt
 ;
-Parameters GasPreis(t)
 $include GasPreis.txt
 ;
 Parameters Co2Preis(t)

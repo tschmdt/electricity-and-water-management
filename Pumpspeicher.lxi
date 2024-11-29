@@ -1,1 +1,30 @@
 B 3 C o m p i l a t i o n
+B 827 Include File Summary
+B 839 Equation Listing    SOLVE Pumpspeicher Using LP From line 810
+D 842 e_cost
+D 847 e_speicheranfang
+D 852 e_speicherende
+D 857 e_speicher
+D 868 e_speichermax
+D 879 e_leistung_turbine
+D 890 e_leistung_pumpe
+B 902 Column Listing      SOLVE Pumpspeicher Using LP From line 810
+E 905 Z
+E 912 turbine
+E 932 pumpe
+E 952 speicher
+B 975 Range Statistics    SOLVE Pumpspeicher Using LP From line 810
+B 986 Model Statistics    SOLVE Pumpspeicher Using LP From line 810
+B 999 Solution Report     SOLVE Pumpspeicher Using LP From line 810
+F 1034 e_cost
+F 1035 e_speicheranfang
+F 1036 e_speicherende
+F 1038 e_speicher
+F 1811 e_speichermax
+F 2585 e_leistung_turbine
+F 3359 e_leistung_pumpe
+G 4135 Z
+G 4137 turbine
+G 4911 pumpe
+G 5685 speicher
+B 6465 E x e c u t i o n
