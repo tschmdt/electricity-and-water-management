@@ -1,0 +1,176 @@
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/28/24 19:59:02 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  Sets
+   2  t /1*768/
+   3  ;
+   4   
+   5  Parameters
+   6  $include Demand.txt
+****                    $282
+**** 282  Unable to open include file
+****         Hint: Does the filename need to be quoted?
+   7  $include GasPreis.txt
+****                      $282
+**** 282  Unable to open include file
+****         Hint: Does the filename need to be quoted?
+   8  $include Co2Preis.txt
+****                      $282
+**** 282  Unable to open include file
+****         Hint: Does the filename need to be quoted?
+   9   
+  10  *Speicher
+  11  GMax_Speicher Installierte Leistung d SpeicherKW  /300/
+  12  PMax_Speicher Installierte Pumpleistung d SpeicherKW/300/
+  13  MaxVolume_Speicher Max Speichervolumen  / 2000/
+  14  Vol_Start Speichervolumen zur Zeit 0 / 1500/
+  15  Vol_Ende Speichervolumen am Ende d Optimierungshorizontes / 1000/
+  16  Inflow Zufluss in den Speicher je Stunde / 10/
+  17  P_eta Wirkungsgrad Pumpe/ 0.75/
+  18   
+  19  *Gas und Dampf Kraftwerk
+  20  MaxLeistungGuD  Installierte Leistung des GasKW   /500/
+  21  eff_GuD  Wirkungsgrad GasKW /0.6/
+  22  Erzeugungskosten_GuD(t) Erzeugngskosten des GuDs je Stunde
+  23  *Aufgabe 1b
+  24  Startkosten_GuD Startkosten GasKW/10000/
+  25  MinLast_GuD  MinLlast_GuD GasKW/0.4/
+  26   
+  27  *Aufgabe 2
+  28  *Gasturbine
+  29  MaxLeistungGasTurbine Installierte Leistung einer Gasturbine /300/
+  30  Erzeugungskosten_GasTurbine Erzeugungskosten Gasturbine /70/
+  31   
+  32  MaxLeistungLW Installierte Leistung einer Gasturbine /250/
+  33   
+  34  ;
+  35   
+  36  Erzeugungskosten_GuD(t)= GasPreis(t)/eff_GuD+0.2*Co2Preis(t)/eff_GuD
+****                                  $140                    $140
+**** 140  Unknown symbol
+  37   
+  38  Variables
+  39  Kosten
+  40  ;
+  41   
+  42  Positive Variables
+  43  *Speicherkraftwerk
+  44  GenSpeicher(t)   Erzeugung Speicher
+  45  GenPumpe(t) Erzeugung Pumpe
+  46  Volume_Speicher(t)  Speichervolumen im Zeitpunkt t
+  47   
+  48  *GuD
+  49  Erzeugung_GuD(t) Erzeugung des GuD im Zeipunkt t
+  50  *Aufgabe 1b
+  51  Startkosten_GasKW(t)   Startkosten GasKW
+  52  ON(t)   Betriebszustand GasKW
+  53   
+  54  *Aufgabe 2
+  55  Erzeugung_GT(t) Erzeugung der Gasturbine im Zeipunkt t
+  56  Erzeugung_LW(t) Erzeugung Laufwasserkraftwerk im Zeitpunkt t
+  57  ;
+  58   
+  59   
+  60  Equations
+  61  *Zielfunktion
+  62  g_Kosten   Erloesgleichung
+  63  *Speicher
+  64  g_MaxSpeicher    max Erzeugung des Speichers
+  65  g_Speicherinhalt   Speicherinhaltsgleichung
+  66  g_StartSpeicherinhalt    Startbedingung Speicher
+  67  g_MaxSpeicherinhalt     Begrenzung d Speichers
+  68  g_EndSpeicherinhalt Enbedingung Speicher
+  69  g_MaxPumpe  Maximale Pumpleistung
+  70   
+  71  *GuD
+  72  g_MaxLeistungGuD  Gas KW kann max installierte Leistung erzeugen
+  73  *Aufgabe 1b
+  74  g_Startkosten   Startkosten GasKW
+  75  g_MinGeneration  Mindestlast GasKW
+  76  g_Online      Betriebszustand GasKW
+  77   
+  78  *Aufgabe 2
+  79  g_MaxLeistungGT die Gasturbine kann maximal die installierte Leistung erzeugen
+  80  g_MaxLeistungLW das Laufwasserkraftwerk kann maximal die installierte Leistung erzeugen
+  81   
+  82  *Aufgabe 2
+  83  g_Lastdeckung Erfuellung der Stromnachfrage durch den KW Park
+  84   
+  85   
+  86  ;
+  87   
+  88  *Aufgabe 3
+  89  g_Kosten .. Kosten =e= sum(t,Erzeugungskosten_GuD(t)*Erzeugung_GuD(t)+ Startkosten_GasKW(t) + Erzeugungskosten_GasTurbine*Erzeugung_GT(t) ) ;
+  90   
+  91  *Speicher
+  92  g_MaxSpeicher(t) .. GenSpeicher(t) =l=  GMax_Speicher;
+  93  g_MaxSpeicherinhalt(t) ..       Volume_Speicher(t)=l= MaxVolume_Speicher;
+  94  g_Speicherinhalt(t)$(ord(t)>1) ..     Volume_Speicher(t)=e=Volume_Speicher(t-1)+Inflow-GenSpeicher(t)+  GenPumpe(t)*P_eta   ;
+  95  g_StartSpeicherinhalt(t)$(Ord(t)=1)  ..    Volume_Speicher(t) =e=     Vol_Start;
+  96  g_EndSpeicherinhalt(t)$(Ord(t)=768) ..        Volume_Speicher(t) =e=     Vol_Ende;
+  97  g_MaxPumpe(t) ..           GenPumpe(t) =l=  PMax_Speicher;
+  98   
+  99  *GuD Aufgabe 1 b
+ 100  g_MaxLeistungGuD(t) .. Erzeugung_GuD(t) =l=  MaxLeistungGuD*ON(t);
+ 101  g_Startkosten(t) .. Startkosten_GasKW(t) =g= Startkosten_GuD*(ON(t)-ON(t-1));
+ 102  g_MinGeneration(t) .. Erzeugung_GuD(t) =g=  MinLast_GuD*MaxLeistungGuD*ON(t);
+ 103  g_Online(t) .. ON(t)=l=1;
+ 104   
+ 105  *Aufgabe 2
+ 106  g_MaxLeistungGT(t) ..    Erzeugung_GT(t) =l=   MaxLeistungGasTurbine;
+ 107  g_MaxLeistungLW(t)  ..    Erzeugung_LW(t) =l=   MaxLeistungLW;
+ 108   
+ 109  *Aufgabe 3 Lastdeckung
+ 110  g_Lastdeckung(t)   ..    GenSpeicher(t)-GenPumpe(t)+ Erzeugung_GuD(t) + Erzeugung_GT(t) + Erzeugung_LW(t) =e= Demand(t);
+****                                                                                                                     $140
+**** 140  Unknown symbol
+ 111   
+ 112  Model Fundamentalmodell /all/
+ 113  gams Fundamentalmodell gdx=default
+ 114  ;
+ 115   
+ 116  Solve Fundamentalmodell using LP minimizing Kosten ;
+****                                                     $257
+**** 257  Solve statement not checked because of previous errors
+ 117  execute_unload  'Ergebnis_Aufgabe3'
+ 118   
+ 119  file results3  /Aufgabe_3.txt/;
+ 120  *results3.pw = 1000;
+ 121  put results3;
+ 122  put 'Gesamt Kosten (Mio):':20:20 (Kosten.l/1000000) :20:6  /
+****                                           $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 123  put't':20:0,'Spot':20:2,'Nachfrage':20:0,'SpeicherStand':20:0,'Turbine':20:0,'Pumpe':20:0,'ErzKosten':20:0,'StartKosten':20:0,'Erzeugung GuD':20:0, 'Erzeugung GT':20:0, 'Erzeugung LW'20:0/
+ 124  loop(t,put , ord(t):20:0, g_Lastdeckung.m(t):20:2,Demand(t):20:0, Volume_Speicher.l(t):20:0,GenSpeicher.l(t):20:0, GenPumpe.l(t):20:0, Erzeugungskosten_GuD(t):20:0, Startkosten_GasKW.l(t):20:3, Erzeugung_GuD.l(t):20:0,Erzeugung_GT.l(t):20:0,Erzeugung_LW.l(t):20:0 /);
+****                                          $141                                      $141                  $141                $141                                                       $141                     $141                   $141                   $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+ 125   
+ 126   
+ 127   
+
+**** 16 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.094 SECONDS      3 MB  48.3.0 71b5641f WEX-WEI
+
+
+USER: GAMS Demo, for EULA and demo limitations see   G241001/0001CB-GEN
+      https://www.gams.com/latest/docs/UG%5FLicense.html         DC0000
+
+
+**** FILE SUMMARY
+
+Input      D:\Main\UNI\Master\Elekktrizitäts- und Wasserwirtschaft\electricity-and-water-management\Aufgabe3.gms
+Output     D:\Main\UNI\Master\Elekktrizitäts- und Wasserwirtschaft\electricity-and-water-management\Aufgabe3.lst
+
+**** USER ERROR(S) ENCOUNTERED
