@@ -20,5 +20,6 @@
     ],
     "path": ".",
     "pf": "",
+    "projectType": 1,
     "workDir": "."
 }

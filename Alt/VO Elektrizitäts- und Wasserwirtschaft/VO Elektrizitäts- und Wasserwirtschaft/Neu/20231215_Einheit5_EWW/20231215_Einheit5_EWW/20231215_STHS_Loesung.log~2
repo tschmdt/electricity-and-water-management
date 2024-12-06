@@ -1,5 +1,5 @@
 
---- Job 20231215_STHS_Loesung.gms Start 01/15/24 16:57:09 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
+--- Job 20231215_STHS_Loesung.gms Start 01/15/24 16:58:30 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
 --- Applying:
     C:\GAMS\45\gmsprmNT.txt
 --- GAMS Parameters defined
@@ -33,12 +33,12 @@ Loading sheet Input
 Reading data from Excel; Rng = A1:B170
 Reading Slice: A1:B170
 Par  Preis          1      Input                B3:B170       A3:A170       --:--         
-Total time = 625 Ms
+Total time = 688 Ms
 --- 20231215_STHS_Loesung.gms(28) 3 Mb
 --- GDXin=C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
 --- GDX File ($gdxIn) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
---- 20231215_STHS_Loesung.gms(103) 3 Mb
---- Starting execution: elapsed 0:00:00.675
+--- 20231215_STHS_Loesung.gms(102) 3 Mb
+--- Starting execution: elapsed 0:00:00.769
 --- 20231215_STHS_Loesung.gms(95) 4 Mb
 --- Generating MIP model Aufgabenstellung
 --- 20231215_STHS_Loesung.gms(96) 5 Mb
@@ -48,7 +48,7 @@ Total time = 625 Ms
 --- RHS       [min, max] : [ 7.200E+03, 4.001E+07] - Zero values observed as well
 --- Bound     [min, max] : [ 2.000E+00, 6.000E+01] - Zero values observed as well
 --- Matrix    [min, max] : [ 4.392E-01, 1.000E+06]
---- Executing CPLEX (Solvelink=2): elapsed 0:00:00.684
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:00.779
 
 IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
 
@@ -82,9 +82,9 @@ Tried aggregator 1 time.
 Detecting symmetries...
 Reduced MIP has 2354 rows, 4874 columns, and 27512 nonzeros.
 Reduced MIP has 840 binaries, 336 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.00 sec. (12.92 ticks)
+Presolve time = 0.02 sec. (12.92 ticks)
 Probing fixed 0 vars, tightened 82 bounds.
-Probing time = 0.02 sec. (2.52 ticks)
+Probing time = 0.00 sec. (2.52 ticks)
 MIP emphasis: balance optimality and feasibility.
 MIP search method: dynamic search.
 Parallel mode: none, using 1 thread.
@@ -107,7 +107,7 @@ Initializing dual steep norms . . .
 
 Iteration log . . .
 Iteration:     1   Dual objective     =        566001.521379
-Root relaxation solution time = 0.02 sec. (60.73 ticks)
+Root relaxation solution time = 0.03 sec. (60.73 ticks)
 
         Nodes                                         Cuts/
    Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
@@ -118,7 +118,7 @@ Root relaxation solution time = 0.02 sec. (60.73 ticks)
       0     0   566001.5214   224                    Cuts: 13      531         
 Detecting symmetries...
       0     2   566001.5214   223                 566001.5214      531         
-Elapsed time = 1.11 sec. (2363.35 ticks, tree = 0.01 MB)
+Elapsed time = 1.17 sec. (2363.35 ticks, tree = 0.01 MB)
     107   107   470731.4205   226                 485563.1328     1446         
     245   245   454060.4717   226                 485563.1328     1584         
     380   362   471153.7410   226                 485516.5653     1737         
@@ -131,7 +131,7 @@ Tried aggregator 1 time.
 MIP Presolve modified 7392 coefficients.
 Reduced MIP has 2354 rows, 4874 columns, and 25496 nonzeros.
 Reduced MIP has 840 binaries, 336 generals, 0 SOSs, and 0 indicators.
-Presolve time = 0.02 sec. (13.87 ticks)
+Presolve time = 0.00 sec. (13.87 ticks)
 Tried aggregator 1 time.
 Reduced MIP has 2354 rows, 4874 columns, and 25496 nonzeros.
 Reduced MIP has 840 binaries, 336 generals, 0 SOSs, and 0 indicators.
@@ -173,92 +173,26 @@ Iteration:     1   Dual objective     =        488901.545429
     517     0   377198.2029   693                   Cuts: 688     8855         
     517     0   375390.3737   693                   Cuts: 688     9192         
     517     0   374674.4873   700                   Cuts: 688     9489         
-    517     0   374613.5230   706                   Cuts: 688     9583         
-    517     0   374347.3489   708                   Cuts: 688     9750         
-    517     0   374136.7991   712                   Cuts: 688     9855         
-    517     0   373664.7757   716                   Cuts: 688    10161         
-    517     0   372598.3497   709                   Cuts: 688    10534         
-    517     0   372439.9292   703                   Cuts: 688    10596         
-    517     0   372146.8859   719                   Cuts: 688    10811         
-    517     0   369080.0004   711                   Cuts: 688    11078         
-    517     0   368296.5430   716                   Cuts: 688    11196         
-    517     0   367394.2009   717                   Cuts: 688    11399         
-    517     0   366849.7249   727                   Cuts: 688    11624         
-    517     0   365810.6093   726                   Cuts: 688    11873         
-    517     0   365422.4010   723                   Cuts: 688    12021         
-    517     0   364978.1016   725                   Cuts: 688    12179         
-    517     0   362890.6094   728                   Cuts: 688    12352         
-    517     0   360794.4276   733                   Cuts: 688    12507         
-    517     0   360608.0353   727                   Cuts: 688    12586         
-    517     0   360039.3548   729                   Cuts: 688    12635         
-    517     0   359546.3515   737                   Cuts: 688    12740         
-    517     0   356015.5649   728                   Cuts: 688    12967         
-    517     0   355824.1395   731                   Cuts: 688    13086         
-    517     0   355400.4173   733                   Cuts: 688    13194         
-    517     0   354816.0902   730                   Cuts: 688    13317         
-    517     0   354321.4595   730                   Cuts: 688    13478         
-    517     0   353525.3938   732                   Cuts: 674    13670         
-    517     0   352978.0330   730                   Cuts: 688    13847         
-    517     0   351349.9463   713                   Cuts: 593    14135         
-    517     0   350183.0357   716                   Cuts: 688    14299         
-    517     0   348776.4024   717                   Cuts: 688    14494         
-    517     0   347289.0106   711                   Cuts: 688    14778         
-    517     0   347149.6261   721                   Cuts: 688    14841         
-    517     0   346253.0914   707                   Cuts: 688    15167         
-    517     0   344827.9868   714                   Cuts: 688    15402         
-    517     0   344804.4901   713                   Cuts: 688    15443         
-    517     0   344388.0150   713                   Cuts: 688    15648         
-    517     0   341279.8139   715                   Cuts: 688    15928         
-    517     0   340545.8155   716                   Cuts: 688    16083         
-    517     0   339724.8841   718                   Cuts: 688    16237         
-    517     0   339472.9314   721                   Cuts: 688    16322         
-    517     0   339204.6491   730                   Cuts: 688    16491         
-    517     0   339061.5842   719                   Cuts: 688    16556         
-    517     0   338758.0757   712                   Cuts: 688    16715         
-    517     0   337873.9670   716                   Cuts: 688    16929         
-    517     0   337225.6316   713                   Cuts: 688    17044         
-    517     0   337163.5923   714                   Cuts: 688    17084         
-    517     2   337163.5923   706                 336561.5498    17084         
-    519     4   333636.1314   701                 336561.5498    17227         
-    521     6   331320.8580   702                 336561.5498    17438         
-    523     6   329089.0724   695                 336561.5498    17621         
-    525     8   325693.9180   696                 336561.5498    17746         
-    527     8   325389.3375   694                 336561.5498    17749         
-    532    10   321372.7905   687                 336561.5498    17845         
-Elapsed time = 24.41 sec. (35283.63 ticks, tree = 0.08 MB)
-    587    48   260666.5304   585                 336561.5498    19731         
-    760   122   210973.1839   424                 287326.9928    24592         
-    974   281   267805.1099   579                 280900.6658    29225         
-   1076   338   261212.5354   639                 271584.6524    32867         
-                                                    Cuts: 130                  
-   1203   427   168836.4573   450                 270168.9747    37162         
-   1302   503  -532539.1029   230                 269211.7276    40701         
-   1448   592   251397.8656   640                 267419.9734    42464         
-                                                    Cuts: 137                  
-   1469   586   259264.0772   646                 263317.5498    48816         
-   1543   646  -411082.5004   284                 262419.0084    53960         
 
-GUB cover cuts applied:  1
-Cover cuts applied:  1
-Implied bound cuts applied:  192
-Flow cuts applied:  47
-Mixed integer rounding cuts applied:  961
-Gomory fractional cuts applied:  143
+Implied bound cuts applied:  167
+Flow cuts applied:  13
+Mixed integer rounding cuts applied:  663
+Gomory fractional cuts applied:  140
 
 Root node processing (before b&c):
-  Real time             =    1.12 sec. (2363.61 ticks)
+  Real time             =    1.17 sec. (2363.36 ticks)
 Sequential b&c:
-  Real time             =   29.61 sec. (45028.01 ticks)
+  Real time             =    6.36 sec. (9849.07 ticks)
                           ------------
-Total (root+branch&cut) =   30.73 sec. (47391.62 ticks)
+Total (root+branch&cut) =    7.53 sec. (12212.43 ticks)
 
 --- MIP status (114): aborted, no integer solution.
---- Cplex Time: 30.73sec (det. 47391.64 ticks)
+--- Cplex Time: 7.53sec (det. 12212.44 ticks)
 
 CPLEX Error  1217: No solution exists.
 --- Problem aborted, no integer solution found
 --- Reading solution for model Aufgabenstellung
---- Executing after solve: elapsed 0:00:31.459
+--- Executing after solve: elapsed 0:00:08.352
 --- 20231215_STHS_Loesung.gms(98) 5 Mb
 --- GDX File (execute_unload) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx
 --- 20231215_STHS_Loesung.gms(99) 5 Mb
@@ -266,26 +200,20 @@ CPLEX Error  1217: No solution exists.
 GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
 Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx
 Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
-Total time = 953 Ms
+Total time = 922 Ms
 --- 20231215_STHS_Loesung.gms(100) 5 Mb
 
 GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
 Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx
 Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
-Total time = 796 Ms
+Total time = 813 Ms
 --- 20231215_STHS_Loesung.gms(101) 5 Mb
 
 GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
 Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx
 Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
-Total time = 797 Ms
+Total time = 813 Ms
 --- 20231215_STHS_Loesung.gms(102) 5 Mb
-
-GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
-Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx
-Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
-Total time = 719 Ms
---- 20231215_STHS_Loesung.gms(103) 5 Mb
 
 GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
 Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx
@@ -293,6 +221,6 @@ Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und
 **** Symbol v_Preis_m not found
 
 Any changes made to the spreadsheet were not saved
-Total time = 657 Ms
+Total time = 671 Ms
 *** Status: Normal completion
---- Job 20231215_STHS_Loesung.gms Stop 01/15/24 16:57:44 elapsed 0:00:35.578
+--- Job 20231215_STHS_Loesung.gms Stop 01/15/24 16:58:42 elapsed 0:00:11.725

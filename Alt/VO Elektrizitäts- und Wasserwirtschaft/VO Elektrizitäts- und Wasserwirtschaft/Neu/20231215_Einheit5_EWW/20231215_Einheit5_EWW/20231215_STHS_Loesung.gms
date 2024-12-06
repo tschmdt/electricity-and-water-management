@@ -72,13 +72,13 @@ Equations
  g_Preis_marg              (t)    Marginal Preis
 ;
 
-* Zielfunktion
+* Zielfunktion--> am besten immer damit starten
  g_Erloes                     .. v_Erloes =e= sum(t,(Preis(t)-12)*v_P_Turb(t)-(Preis(t)+20)*v_P_Pump(t));
 
 * Speicherinhalt
  g_BetriebsinhaltSpeicher(t)  .. (v_Inh(t)-v_Inh(t-1)-I_Start$t_start(t))*1000000 =e= 3600*(Dargebot-v_Q_Turb(t)+v_Q_Pump(t));
 
-* Leistungen und VDurchflüsse im Turbinenbetrieb
+* Leistungen und VDurchflüsse im Turbinenbetrieb--> hier wird die Verknüpfung von Zielf und Speicherin definiert
  g_Turbinen_Leistung(t)       .. v_P_Turb(t)  =e= sum(n,v_lambda_Turbine(t,n)*P_Stuetz(n));
  g_Turbinen_Durchfluss(t)     .. v_Q_Turb(t)  =e= sum(n,v_lambda_Turbine(t,n)*Q_Stuetz(n));
  g_Turbinen_SummeLambda(t)    .. v_on_Turb(t) =e= sum(n,v_lambda_Turbine(t,n));
