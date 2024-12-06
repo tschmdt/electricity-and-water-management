@@ -1,0 +1,23 @@
+B 3 C o m p i l a t i o n
+B 73 Equation Listing    SOLVE Muesli Using NLP From line 55
+D 76 Zielfunktion
+D 81 Nebenbdg1
+D 90 Nebenbdg2
+D 95 Nebenbdg3
+D 100 Nebenbdg31
+D 105 Nebenbdg4
+B 117 Column Listing      SOLVE Muesli Using NLP From line 55
+E 120 y
+E 152 z
+B 160 Range Statistics    SOLVE Muesli Using NLP From line 55
+B 171 Model Statistics    SOLVE Muesli Using NLP From line 55
+B 185 Solution Report     SOLVE Muesli Using NLP From line 55
+F 231 Zielfunktion
+F 233 Nebenbdg1
+F 243 Nebenbdg2
+F 244 Nebenbdg3
+F 245 Nebenbdg31
+F 251 Nebenbdg4
+G 260 y
+G 271 z
+B 282 E x e c u t i o n

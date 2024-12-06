@@ -1,0 +1,15 @@
+B 3 C o m p i l a t i o n
+B 63 Equation Listing    SOLVE Muesli Using LP From line 45
+D 66 Zielfunktion
+D 71 Nebenbdg
+B 81 Column Listing      SOLVE Muesli Using LP From line 45
+E 84 y
+E 109 z
+B 117 Range Statistics    SOLVE Muesli Using LP From line 45
+B 128 Model Statistics    SOLVE Muesli Using LP From line 45
+B 141 Solution Report     SOLVE Muesli Using LP From line 45
+F 174 Zielfunktion
+F 178 Nebenbdg
+G 186 y
+G 197 z
+B 207 E x e c u t i o n

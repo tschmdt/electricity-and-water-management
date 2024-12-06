@@ -1,0 +1,300 @@
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/24/23 19:07:11 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   2   
+   3  Sets
+   4    i Inhaltsstoffe   /Energie, Protein, Calzium/,
+   5    j Produkte      /Hafer, Eier, Milch, Rosinen /;
+   6   
+   7  Parameters
+   8          b(i) Anforderungen an den Inhalt des Mueslis
+   9              /
+  10              Energie     10467
+  11              Protein     70
+  12              Calzium     1000
+  13              /
+  14          p(j) Preis
+  15              /
+  16              Hafer      0.004
+  17              Eier       0.0042
+  18              Milch      0.001
+  19              Rosinen    0.0098
+  20              /;
+  21   
+  22  Table a(i,j) Koeffizientenmatrix
+  23                          Hafer       Eier        Milch       Rosinen
+  24              Energie     15.49116    6.447672    2.805156    12.5281
+  25              Protein     0.1253      0.13        0.033       0.031
+  26              Calzium     0.54        0.5         1.2         0.5
+  27              ;
+  28   
+  29  Variables
+  30              y(j) Menge an verwendeten Produkten
+  31              z    Kosten;
+  32   
+  33  Positive Variables
+  34              y;
+  35   
+  36   
+  37  Equations
+  38              Zielfunktion
+  39              Nebenbdg1(i)      Nebenbedingung Inhalt
+  40              Nebenbdg2         Nebenbedingung 3xMilch wie Haferflocken Aufgabe 1_2
+  41              Nebenbdg3         Ei nur im St√ºck von 60g Aufgabe 1_3
+  42              Nebenbdg31        Ei min. 60g da Nebenbdg 4 min. 50g vorsieht
+  43              Nebenbdg4(j)      Alle Zutaten min 50g Aufgabe 1_4
+  44              ;
+  45              Zielfunktion ..   z =e= sum(j, p(j) * y(j))      ;
+  46              Nebenbdg1(i) ..   sum(j, a(i,j) * y(j)) =g= b(i) ;
+  47              Nebenbdg2 ..      y('Milch') =g= 3*y('Hafer');  #Aufgabe 1_2
+  48              Nebenbdg3 ..      y('Eier') =e= 60*div(y('Eier'),60); #Aufgabe 1_3 div = Ganzzahldivision
+  49              Nebenbdg31 ..     y('Eier') =g= 60; #Aufgabe 1_3
+  50              Nebenbdg4(j) ..  y(j) =g= 50; #Aufgabe 1_4
+  51   
+  52   
+  53  Model Muesli /all/  ;
+  54   
+  55  Solve Muesli using NLP minimizing z  ;  #NLP benutzt da div in Nebenbdg3 keine konstanten Werte hat bei Berechnung
+  56   
+  57  file results /Output.txt/;
+  58      put results/;
+  59      put z.l:>8:2//;
+  60      loop(j, put y.l(j):>8:2 /;);
+  61   
+  62   
+  63   
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  45.3.0 c4c31d8a WEX-WEI
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/24/23 19:07:11 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE Muesli Using NLP From line 55
+
+
+---- Zielfunktion  =E=  
+
+Zielfunktion..  - 0.004*y(Hafer) - 0.0042*y(Eier) - 0.001*y(Milch) - 0.0098*y(Rosinen) + z =E= 0 ; (LHS = 0)
+     
+
+---- Nebenbdg1  =G=  Nebenbedingung Inhalt
+
+Nebenbdg1(Energie)..  15.49116*y(Hafer) + 6.447672*y(Eier) + 2.805156*y(Milch) + 12.5281*y(Rosinen) =G= 10467 ; (LHS = 0, INFES = 10467 ****)
+     
+Nebenbdg1(Protein)..  0.1253*y(Hafer) + 0.13*y(Eier) + 0.033*y(Milch) + 0.031*y(Rosinen) =G= 70 ; (LHS = 0, INFES = 70 ****)
+     
+Nebenbdg1(Calzium)..  0.54*y(Hafer) + 0.5*y(Eier) + 1.2*y(Milch) + 0.5*y(Rosinen) =G= 1000 ; (LHS = 0, INFES = 1000 ****)
+     
+
+---- Nebenbdg2  =G=  Nebenbedingung 3xMilch wie Haferflocken Aufgabe 1_2
+
+Nebenbdg2..  - 3*y(Hafer) + y(Milch) =G= 0 ; (LHS = 0)
+     
+
+---- Nebenbdg3  =E=  Ei nur im St√ºck von 60g Aufgabe 1_3
+
+Nebenbdg3..  (0)*y(Eier) =E= 0 ; (LHS = 0)
+     
+
+---- Nebenbdg31  =G=  Ei min. 60g da Nebenbdg 4 min. 50g vorsieht
+
+Nebenbdg31..  y(Eier) =G= 60 ; (LHS = 0, INFES = 60 ****)
+     
+
+---- Nebenbdg4  =G=  Alle Zutaten min 50g Aufgabe 1_4
+
+Nebenbdg4(Hafer)..  y(Hafer) =G= 50 ; (LHS = 0, INFES = 50 ****)
+     
+Nebenbdg4(Eier)..  y(Eier) =G= 50 ; (LHS = 0, INFES = 50 ****)
+     
+Nebenbdg4(Milch)..  y(Milch) =G= 50 ; (LHS = 0, INFES = 50 ****)
+     
+REMAINING ENTRY SKIPPED
+
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/24/23 19:07:11 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE Muesli Using NLP From line 55
+
+
+---- y  Menge an verwendeten Produkten
+
+y(Hafer)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.004   Zielfunktion
+       15.4912  Nebenbdg1(Energie)
+        0.1253  Nebenbdg1(Protein)
+        0.54    Nebenbdg1(Calzium)
+       -3       Nebenbdg2
+        1       Nebenbdg4(Hafer)
+
+y(Eier)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.0042  Zielfunktion
+        6.4477  Nebenbdg1(Energie)
+        0.13    Nebenbdg1(Protein)
+        0.5     Nebenbdg1(Calzium)
+       (0)      Nebenbdg3
+        1       Nebenbdg31
+        1       Nebenbdg4(Eier)
+
+y(Milch)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.001   Zielfunktion
+        2.8052  Nebenbdg1(Energie)
+        0.033   Nebenbdg1(Protein)
+        1.2     Nebenbdg1(Calzium)
+        1       Nebenbdg2
+        1       Nebenbdg4(Milch)
+
+REMAINING ENTRY SKIPPED
+
+---- z  Kosten
+
+z
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       Zielfunktion
+
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/24/23 19:07:11 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Range Statistics    SOLVE Muesli Using NLP From line 55
+
+
+RANGE STATISTICS (ABSOLUTE NON-ZERO FINITE VALUES)
+
+RHS       [min, max] : [ 5.000E+01, 1.047E+04] - Zero values observed as well
+Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+Matrix    [min, max] : [ 1.000E-03, 1.549E+01] - Zero values observed as well
+
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/24/23 19:07:11 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE Muesli Using NLP From line 55
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           6     SINGLE EQUATIONS           11
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES            5
+NON ZERO ELEMENTS            25     NON LINEAR N-Z              1
+CODE LENGTH                   8     CONSTANT POOL              17
+
+
+GENERATION TIME      =        0.000 SECONDS      4 MB  45.3.0 c4c31d8a WEX-WEI
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/24/23 19:07:11 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE Muesli Using NLP From line 55
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   Muesli              OBJECTIVE  z
+     TYPE    NLP                 DIRECTION  MINIMIZE
+     SOLVER  CONOPT              FROM LINE  55
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      2 Locally Optimal
+**** OBJECTIVE VALUE                3.5101
+
+ RESOURCE USAGE, LIMIT          0.015 10000000000.000
+ ITERATION COUNT, LIMIT         4    2147483647
+ EVALUATION ERRORS              0             0
+ 
+ 
+    C O N O P T 3   version 3.17O
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+    The model has 5 variables and 11 constraints
+    with 25 Jacobian elements, 1 of which are nonlinear.
+    The Hessian of the Lagrangian has 1 elements on the diagonal,
+    0 elements below the diagonal, and 1 nonlinear variables.
+ 
+ ** Warning **  The value of LFITER is out of range.
+                LFITER is decreased from 2147483647 to 1000000000.
+ 
+                   Pre-triangular equations:   0
+                   Post-triangular equations:  1
+ 
+ 
+ ** Optimal solution. There are no superbasic variables.
+ 
+ 
+ CONOPT time Total                            0.000 seconds
+   of which: Function evaluations             0.000 =  0.0%
+             1st Derivative evaluations       0.000 =  0.0%
+ 
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU Zielfunkt~          .              .              .             1.0000      
+
+---- EQU Nebenbdg1  Nebenbedingung Inhalt
+
+               LOWER          LEVEL          UPPER         MARGINAL
+
+Energie     10467.0000     10467.0000        +INF            0.0003      
+Protein        70.0000        98.0481        +INF             .          
+Calzium      1000.0000      1692.1385        +INF             .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU Nebenbdg2           .              .            +INF            0.0002      
+---- EQU Nebenbdg3           .              .              .              .          
+---- EQU Nebenbdg31        60.0000        60.0000        +INF            0.0023      
+
+  Nebenbdg2  Nebenbedingung 3xMilch wie Haferflocken Aufgabe 1_2
+  Nebenbdg3  Ei nur im St√ºck von 60g Aufgabe 1_3
+  Nebenbdg31  Ei min. 60g da Nebenbdg 4 min. 50g vorsieht
+
+---- EQU Nebenbdg4  Alle Zutaten min 50g Aufgabe 1_4
+
+               LOWER          LEVEL          UPPER         MARGINAL
+
+Hafer          50.0000       395.4441        +INF             .          
+Eier           50.0000        60.0000        +INF             .          
+Milch          50.0000      1186.3323        +INF             .          
+Rosinen        50.0000        50.0000        +INF            0.0061      
+
+---- VAR y  Menge an verwendeten Produkten
+
+               LOWER          LEVEL          UPPER         MARGINAL
+
+Hafer            .           395.4441        +INF             .          
+Eier             .            60.0000        +INF             .          
+Milch            .          1186.3323        +INF             .          
+Rosinen          .            50.0000        +INF             .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR z                 -INF            3.5101        +INF             .          
+
+  z  Kosten
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+                             0     ERRORS
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/24/23 19:07:11 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+**** REPORT FILE SUMMARY
+
+results C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit‰ts- und Wasserwirtschaft\Aufgabe1\Ausgabe1_2_gams\Output.txt
+
+
+EXECUTION TIME       =        0.047 SECONDS      4 MB  45.3.0 c4c31d8a WEX-WEI
+
+
+USER: Course License                                 S231018|0002CN-GEN
+      Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit‰ts- und Wasserwirtschaft\Aufgabe1\Ausgabe1_2_gams\aufgabe1_2.gms
+Output     C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit‰ts- und Wasserwirtschaft\Aufgabe1\Ausgabe1_2_gams\aufgabe1_2.lst

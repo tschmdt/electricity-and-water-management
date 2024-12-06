@@ -1,0 +1,154 @@
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Out
+--- Job 20231215_STHS_Loesung.gms Start 01/15/24 16:01:54 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\20231215_STHS_Loesung.gms"
+    PageSize 0
+    ScrDir "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\225c\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.3.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- 20231215_STHS_Loesung.gms(27) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Kurzfristig.xlsx Par=Preis rng=Input!A3:B170 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:B170
+Reading Slice: A1:B170
+Par  Preis          1      Input                B3:B170       A3:A170       --:--         
+Total time = 625 Ms
+--- 20231215_STHS_Loesung.gms(28) 3 Mb
+--- GDXin=C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+--- GDX File ($gdxIn) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+--- 20231215_STHS_Loesung.gms(106) 3 Mb
+--- Starting execution: elapsed 0:00:00.668
+--- 20231215_STHS_Loesung.gms(99) 4 Mb
+--- Generating MIP model Aufgabenstellung
+--- 20231215_STHS_Loesung.gms(100) 5 Mb
+---   1,177 rows  4,705 columns  12,600 non-zeroes
+---   336 discrete-columns
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 7.200E+03, 4.001E+07] - Zero values observed as well
+--- Bound     [min, max] : [ 2.000E+00, 6.000E+01] - Zero values observed as well
+--- Matrix    [min, max] : [ 4.392E-01, 1.000E+06]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:00.675
+
+IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 0.18 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 1.69 Mb (peak 1.72 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 0.10 Mb (peak 0.52 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Generic callback                                 0x50
+Tried aggregator 2 times.
+MIP Presolve eliminated 2016 rows and 338 columns.
+MIP Presolve added 3360 rows and 840 columns.
+MIP Presolve modified 1680 coefficients.
+Aggregator did 334 substitutions.
+Reduced MIP has 2186 rows, 4873 columns, and 24152 nonzeros.
+Reduced MIP has 840 binaries, 336 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (17.69 ticks)
+Probing fixed 0 vars, tightened 123 bounds.
+Probing time = 0.00 sec. (2.38 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 2186 rows, 4873 columns, and 24152 nonzeros.
+Reduced MIP has 840 binaries, 336 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (10.96 ticks)
+Probing fixed 0 vars, tightened 38 bounds.
+Probing time = 0.00 sec. (2.22 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Tried aggregator 1 time.
+Aggregator did 840 substitutions.
+Reduced LP has 1346 rows, 4033 columns, and 22472 nonzeros.
+Presolve time = 0.00 sec. (4.44 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =     166788904.702124
+Iteration:   170   Dual objective     =      16897206.883885
+Iteration:   367   Dual objective     =       2108592.368149
+Initializing dual steep norms . . .
+Root relaxation solution time = 0.02 sec. (14.14 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0  1881151.9099     1                1881151.9099      497         
+*     0+    0                      1881086.1970  1881151.9099             0.00%
+Found incumbent of value 1881086.197009 after 0.06 sec. (80.66 ticks)
+
+Root node processing (before b&c):
+  Real time             =    0.06 sec. (80.87 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.06 sec. (80.87 ticks)
+
+--- MIP status (102): integer optimal, tolerance.
+--- Cplex Time: 0.06sec (det. 80.88 ticks)
+
+--- Returning a primal only solution to GAMS (marginals all set to NA).
+--- Fixing integer variables and solving final LP...
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 1176 rows and 4705 columns.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (1.69 ticks)
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.00sec (det. 2.53 ticks)
+
+
+Solution satisfies tolerances
+MIP Solution:      1881086.197009    (497 iterations, 0 nodes)
+Final Solve:       1881086.197009    (0 iterations)
+
+Best possible:     1881151.909909
+Absolute gap:           65.712900
+Relative gap:            0.000035
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:00.787
+--- 20231215_STHS_Loesung.gms(102) 5 Mb
+--- GDX File (execute_unload) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx
+--- 20231215_STHS_Loesung.gms(103) 5 Mb
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\20231215_Einheit5_EWW\20231215_Einheit5_EWW\results.gdx

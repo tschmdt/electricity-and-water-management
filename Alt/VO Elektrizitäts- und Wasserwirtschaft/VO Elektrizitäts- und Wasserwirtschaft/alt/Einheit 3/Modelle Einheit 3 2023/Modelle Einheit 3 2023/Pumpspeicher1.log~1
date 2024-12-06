@@ -1,0 +1,79 @@
+
+--- Job Pumpspeicher.gms Start 12/01/23 11:28:00 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Einheit 3\Modelle Einheit 3 2023\Modelle Einheit 3 2023\Pumpspeicher.gms"
+    PageSize 0
+    ScrDir "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Einheit 3\Modelle Einheit 3 2023\Modelle Einheit 3 2023\225a\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.3.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- Pumpspeicher.gms(6) 3 Mb
+--- . StundenStromPreise.txt(771) 3 Mb
+--- Pumpspeicher.gms(47) 3 Mb
+--- Starting execution: elapsed 0:00:00.007
+--- Generating LP model Pumpspeicher
+--- Pumpspeicher.gms(809) 5 Mb
+---   3,078 rows  2,308 columns  6,918 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 1.000E+01, 2.000E+03] - Zero values observed as well
+--- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+--- Matrix    [min, max] : [ 7.500E-01, 8.712E+01]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:00.026
+
+IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 0.13 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 1.11 Mb (peak 1.13 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 0.08 Mb (peak 0.32 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 2309 rows and 5 columns.
+Aggregator did 5 substitutions.
+Reduced LP has 763 rows, 2298 columns, and 3060 nonzeros.
+Presolve time = 0.00 sec. (2.23 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =       9812094.500000
+Iteration:   127   Dual objective     =       5388359.933333
+Iteration:   257   Dual objective     =       1654032.700000
+Iteration:   354   Dual objective     =        972277.600000
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.01sec (det. 6.69 ticks)
+
+
+Optimal solution found
+Objective:       971552.883333
+
+--- Reading solution for model Pumpspeicher
+--- Executing after solve: elapsed 0:00:00.110
+--- Pumpspeicher.gms(816) 6 Mb
+--- Putfile results1 C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Einheit 3\Modelle Einheit 3 2023\Modelle Einheit 3 2023\speichereinsatz.txt
+*** Status: Normal completion
+--- Job Pumpspeicher.gms Stop 12/01/23 11:28:00 elapsed 0:00:00.115

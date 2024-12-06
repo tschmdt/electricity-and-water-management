@@ -1,0 +1,17 @@
+B 3 C o m p i l a t i o n
+B 840 Include File Summary
+B 852 Equation Listing    SOLVE Pumpspeicherkraftwerk Using LP From line 823
+D 855 Gewinnfunktion
+D 860 Pumpleistung
+D 871 Turbinierleistung
+D 882 Fuellstand_max
+D 893 Fuellstand_ende
+D 898 Fuellstand_start
+D 903 Fuellstand2
+B 915 Column Listing      SOLVE Pumpspeicherkraftwerk Using LP From line 823
+E 918 g
+E 925 f
+E 947 pl
+E 967 tl
+B 988 Range Statistics    SOLVE Pumpspeicherkraftwerk Using LP From line 823
+B 999 Model Statistics    SOLVE Pumpspeicherkraftwerk Using LP From line 823

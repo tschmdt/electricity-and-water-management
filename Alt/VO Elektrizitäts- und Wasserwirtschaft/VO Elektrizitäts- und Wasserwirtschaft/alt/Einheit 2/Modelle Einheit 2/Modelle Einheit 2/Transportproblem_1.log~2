@@ -1,0 +1,49 @@
+
+--- Job Transportproblem_1.gms Start 11/21/24 18:27:54 48.3.0 71b5641f WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    D:\Main\48\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms"
+    PageSize 0
+    ScrDir "D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\Alt\VO Elektrizit�ts- und Wasserwirtschaft\VO Elektrizit�ts- und Wasserwirtschaft\alt\Einheit 2\Modelle Einheit 2\Modelle Einheit 2\225a\"
+    SysDir D:\Main\48\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: GAMS Demo, for EULA and demo limitations see   G241001/0001CB-GEN
+          https://www.gams.com/latest/docs/UG%5FLicense.html         DC0000
+          D:\Main\48\gamslice.txt
+          Demo license for demonstration and instructional purposes only
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 48.3.0   Copyright (C) 1987-2024 GAMS Development. All rights reserved
+--- Starting compilation
+--- Transportproblem_1.gms(8) 3 Mb 2 Errors
+*** Error 148 in D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 334 in D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms
+    Illegal data following a data element - rest ignored
+--- Transportproblem_1.gms(79) 3 Mb 3 Errors
+*** Error 257 in D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms
+    Solve statement not checked because of previous errors
+--- Transportproblem_1.gms(87) 3 Mb 4 Errors
+*** Error 141 in D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement. Suppress with $onImplicitAssign.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Transportproblem_1.gms(90) 3 Mb 5 Errors
+*** Error 141 in D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement. Suppress with $onImplicitAssign.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Transportproblem_1.gms(97) 3 Mb
+--- GDX File ($gdxOut) D:\Main\UNI\Master\Elekktrizit�ts- und Wasserwirtschaft\Alt\VO Elektrizit�ts- und Wasserwirtschaft\VO Elektrizit�ts- und Wasserwirtschaft\alt\Einheit 2\Modelle Einheit 2\Modelle Einheit 2\results_gdx;.gdx
+--- Transportproblem_1.gms(98) 3 Mb 5 Errors
+*** Status: Compilation error(s)
+--- Job Transportproblem_1.gms Stop 11/21/24 18:27:54 elapsed 0:00:00.024

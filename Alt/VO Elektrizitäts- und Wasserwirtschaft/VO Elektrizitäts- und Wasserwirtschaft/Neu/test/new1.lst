@@ -1,0 +1,206 @@
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 01/15/24 15:58:22 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1   
+   2  Sets
+   3  i   Stunden in einer Woche  /1*168/;
+   4   
+   5  Parameters
+   6  h_const    konstante Fallhoehe /410/
+   7  qp_min      minimaler Turbinendurchfluss /16/
+   8  qp_max     maximaler Turbinendurchfluss /40/
+   9  qp_pump    Pumpenförderstrom  /35/
+  10  ;
+  11  Scalar
+  12  eff_pump /0.92/;
+  13  *Wirkungsgrad im Pumpbetrieb
+  14   
+  15  *! Tabelle für stückweise lineare Approximation des Turbinenwirkungsgrades
+  16  Table eta_turbine(i,qp_min*100..qp_max*100)
+****                           $121,10,110,10,185,121,10,10,185
+****  10  ',' expected
+**** 110  Too many decimal points in a number
+**** 121  Set expected
+**** 185  Set identifier or '*' expected
+  17         16    17    18    19    ...    39    40
+****                                   $338  $228
+**** 228  Column dimension has changed
+**** 338  Unique element expected - symbol was not an element
+****         and the following text will be skipped until a proper
+****         symbol is found to recover. Remember that an UNQUOTED
+****         element has to start with a letter or digit
+****         followed by letters, digits, '+', '-' or '_'. The length
+****         is limited to 63 characters. The following words are
+****         reserved (starting symbols of a GAMS statement) and cannot
+****         be used for UNQUOTED set elements:
+****     
+****            ABORT, ACRONYM(S), ALIAS, BINARY, DISPLAY, ELSE
+****            EQUATION(S), EXECUTE, FILE(S), FOR, FREE, IF, INTEGER, LOOP
+****            MODEL(S), NEGATIVE, OPTION(S), PARAMETER(S)
+****            POSITIVE, PROCEDURE(S), PUT, PUTCLEAR, PUTCLOSE, PUTHD
+****            PUTPAGE, PUTTL, SCALAR(S), SEMICONT, SET(S), SOS1, SOS2
+****            TABLE, VARIABLE(S), WHILE
+****     
+****         QUOTED elements can contain any character. Single and
+****         double quotes can be used (starting and ending quote have
+****         to match).
+  18  1      .     .     .     .     ...     .     .
+****               $338
+**** 338  Unique element expected - symbol was not an element
+****         and the following text will be skipped until a proper
+****         symbol is found to recover. Remember that an UNQUOTED
+****         element has to start with a letter or digit
+****         followed by letters, digits, '+', '-' or '_'. The length
+****         is limited to 63 characters. The following words are
+****         reserved (starting symbols of a GAMS statement) and cannot
+****         be used for UNQUOTED set elements:
+****     
+****            ABORT, ACRONYM(S), ALIAS, BINARY, DISPLAY, ELSE
+****            EQUATION(S), EXECUTE, FILE(S), FOR, FREE, IF, INTEGER, LOOP
+****            MODEL(S), NEGATIVE, OPTION(S), PARAMETER(S)
+****            POSITIVE, PROCEDURE(S), PUT, PUTCLEAR, PUTCLOSE, PUTHD
+****            PUTPAGE, PUTTL, SCALAR(S), SEMICONT, SET(S), SOS1, SOS2
+****            TABLE, VARIABLE(S), WHILE
+****     
+****         QUOTED elements can contain any character. Single and
+****         double quotes can be used (starting and ending quote have
+****         to match).
+  19  2      .     .     .     .     ...     .     .
+****               $338
+**** 338  Unique element expected - symbol was not an element
+****         and the following text will be skipped until a proper
+****         symbol is found to recover. Remember that an UNQUOTED
+****         element has to start with a letter or digit
+****         followed by letters, digits, '+', '-' or '_'. The length
+****         is limited to 63 characters. The following words are
+****         reserved (starting symbols of a GAMS statement) and cannot
+****         be used for UNQUOTED set elements:
+****     
+****            ABORT, ACRONYM(S), ALIAS, BINARY, DISPLAY, ELSE
+****            EQUATION(S), EXECUTE, FILE(S), FOR, FREE, IF, INTEGER, LOOP
+****            MODEL(S), NEGATIVE, OPTION(S), PARAMETER(S)
+****            POSITIVE, PROCEDURE(S), PUT, PUTCLEAR, PUTCLOSE, PUTHD
+****            PUTPAGE, PUTTL, SCALAR(S), SEMICONT, SET(S), SOS1, SOS2
+****            TABLE, VARIABLE(S), WHILE
+****     
+****         QUOTED elements can contain any character. Single and
+****         double quotes can be used (starting and ending quote have
+****         to match).
+  20  ...    .     .     .     .     ...     .     .
+  21  168    .     .     .     .     ...     .     .;
+****               $338                             $223
+**** 223  Overlapping row name
+**** 338  Unique element expected - symbol was not an element
+****         and the following text will be skipped until a proper
+****         symbol is found to recover. Remember that an UNQUOTED
+****         element has to start with a letter or digit
+****         followed by letters, digits, '+', '-' or '_'. The length
+****         is limited to 63 characters. The following words are
+****         reserved (starting symbols of a GAMS statement) and cannot
+****         be used for UNQUOTED set elements:
+****     
+****            ABORT, ACRONYM(S), ALIAS, BINARY, DISPLAY, ELSE
+****            EQUATION(S), EXECUTE, FILE(S), FOR, FREE, IF, INTEGER, LOOP
+****            MODEL(S), NEGATIVE, OPTION(S), PARAMETER(S)
+****            POSITIVE, PROCEDURE(S), PUT, PUTCLEAR, PUTCLOSE, PUTHD
+****            PUTPAGE, PUTTL, SCALAR(S), SEMICONT, SET(S), SOS1, SOS2
+****            TABLE, VARIABLE(S), WHILE
+****     
+****         QUOTED elements can contain any character. Single and
+****         double quotes can be used (starting and ending quote have
+****         to match).
+  22   
+  23  Parameters
+  24  storage_start /40/
+  25  *! Anfangsinhalt des Oberliegers
+  26  storage_end /40/
+  27  *! Endinhalt des Oberliegers
+  28  storage_max /60/
+  29  *! maximaler Inhalt des Oberliegers
+  30  inflow /2/
+  31  *! natürlicher Zufluss in den Oberlieger
+  32   
+  33  Scalar
+  34  fee_injection /12/
+  35  *! Systemnutzungsentgelt für Einspeisung
+  36  fee_withdrawal /20/
+  37  *! Systemnutzungsentgelt für Entnahme
+  38   
+  39  Variables
+  40  qp(i)    ! Turbinendurchfluss
+  41  qpp(i)   ! Pumpenförderstrom
+  42  h(i)     ! Höhendifferenz
+  43  storage(i)  ! Speicherinhalt
+  44   
+  45  Positive Variables qp, qpp, h, storage;
+  46   
+  47  Equations
+  48  objective   ! Ziel: Gewinnmaximierung
+  49  constraint1  ! Nebenbedingung: Energiebilanz
+  50  constraint2  ! Nebenbedingung: Speicherinhalt
+  51   
+  52  objective .. sum(i, (eta_turbine(i, qp(i)) * (fee_injection - fee_withdrawal) - fee_injection) * (qp(i) - qpp(i) / eff_pump)) =e= z;
+****            $97       $2         $195,318,121,10,185,318,184,300
+****   2  Identifier expected
+****  10  ',' expected
+****  96  Blank needed between identifier and text
+****        (-or- illegal character in identifier)
+****        (-or- check for missing ';' on previous line)
+****  97  Explanatory text can not start with '$', '=', or '..'
+****        (-or- check for missing ';' on previous line)
+**** 121  Set expected
+**** 184  Domain list redefined
+**** 185  Set identifier or '*' expected
+**** 195  Symbol redefined with a different type
+**** 300  Remaining errors not printed for this line
+**** 318  Domain list redefined - no previous domain list - * assumed
+****         when data was associated with this symbol
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  53   
+  54  constraint1(i) .. qp(i) + qpp(i) =l= inflow;  ! Energiebilanz
+****                                                $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  55   
+  56  constraint2(i)$i.. storage(i-1) + inflow - h(i)/h_const * qp(i) =e= storage(i);  ! Speicherbilanz
+****                                                                                   $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  57  constraint2(i=1).. storage_start + inflow - h(i)/h_const * qp(i) =e= storage(i);  ! Anfangsbedingung
+****                                                                                    $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  58   
+  59  Model bidding_curve /all/;
+  60  solve bidding_curve using mip maximizing objective;
+****                                                   $243,257
+**** 243  Objective is not a variable
+**** 257  Solve statement not checked because of previous errors
+  61   
+  62  Display qp.l, qpp.l, h.l, storage.l;
+****             $141   $141 $141       $141
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement. Suppress with $onImplicitAssign.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+
+**** 36 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  45.3.0 c4c31d8a WEX-WEI
+
+
+USER: Course License                                 S231018|0002CN-GEN
+      Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\test\new1.gms
+Output     C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\test\new1.lst
+
+**** USER ERROR(S) ENCOUNTERED

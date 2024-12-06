@@ -1,0 +1,24 @@
+B 3 C o m p i l a t i o n
+B 105 Include File Summary
+B 117 Equation Listing    SOLVE Transport Using MIP From line 79
+D 120 cost
+D 125 e_SumProduktion
+D 134 e_SumVerbrauch
+D 145 e_Container
+D 156 e_Mindesttransport
+B 162 Column Listing      SOLVE Transport Using MIP From line 79
+E 165 Menge
+E 187 zz
+E 194 int_container_5
+B 211 Range Statistics    SOLVE Transport Using MIP From line 79
+B 222 Model Statistics    SOLVE Transport Using MIP From line 79
+B 235 Solution Report     SOLVE Transport Using MIP From line 79
+F 280 cost
+F 282 e_SumProduktion
+F 290 e_SumVerbrauch
+F 302 e_Container
+F 316 e_Mindesttransport
+G 318 Menge
+G 346 zz
+G 348 int_container_5
+B 366 E x e c u t i o n

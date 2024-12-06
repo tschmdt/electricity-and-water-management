@@ -1,0 +1,384 @@
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  set i /1*3/
+   2  set j /1*7/
+   3  ;
+   4   
+   5  parameter
+   6  Transportkosten(i,j)
+   7  /
+   8  1        .        1        =        9.5
+   9  2        .        1        =        2.1
+  10  3        .        1        =        4.2
+  11  1        .        2        =        7.5
+  12  2        .        2        =        5.8
+  13  3        .        2        =        0.2
+  14  1        .        3        =        3.7
+  15  2        .        3        =        8.8
+  16  3        .        3        =        4.6
+  17  1        .        4        =        0.1
+  18  2        .        4        =        5.2
+  19  3        .        4        =        6.5
+  20  1        .        5        =        3.8
+  21  2        .        5        =        4.2
+  22  3        .        5        =        5.4
+  23  1        .        6        =        3.4
+  24  2        .        6        =        9.6
+  25  3        .        6        =        0.7
+  26  1        .        7        =        0.3
+  27  2        .        7        =        9.1
+  28  3        .        7        =        1.3
+  29   
+  30  /
+  31   
+  32  Produktion(i)
+  33  /
+  34  1        10
+  35  2        10
+  36  3        15
+  37  /
+  38   
+  39   
+  40  Verbrauch(j)
+  41  /
+  42  1        4
+  43  2        6
+  44  3        2
+  45  4        8
+  46  5        3
+  47  6        7
+  48  7        5
+  49  /
+  50   
+  51   
+  52  positive variable Menge(i,j);
+  53  variable zz;
+  54  integer variable int_container_5(j);
+  55   
+  56   
+  57  equations
+  58  cost
+  59  e_SumProduktion (i)
+  60  e_SumVerbrauch (j)
+  61  e_Mindesttransport
+  62  e_Container(j)
+  63  ;
+  64   
+  65   
+  66  cost .. zz =e= sum((i,j), Menge(i,j)*Transportkosten(i,j));
+  67  e_SumProduktion(i) .. sum(j, Menge(i,j)) =e=  Produktion(i);
+  68  e_SumVerbrauch(j) .. sum(i, Menge(i,j)) =e=  Verbrauch(j);
+  69  e_Mindesttransport .. Menge('1','4') =g= 2;
+  70  e_Container(j) .. Menge('3',j) =e= int_container_5(j)*5;
+  71   
+  72   
+  73  *model Transport /cost,e_SumProduktion,e_SumVerbrauch/;
+  74  *model Transport /cost,e_SumProduktion,e_SumVerbrauch,e_Mindesttransport/;
+  75  model Transport /cost,e_SumProduktion,e_SumVerbrauch,e_Container,e_Mindesttransport/;
+  76   
+  77   
+  78  *solve Transport using lp minimizing zz;
+  79  solve Transport using mip minimizing zz;
+  80   
+  81   
+  82  file results1 Ergebnis /Output1.txt/;
+  83   
+  84   
+  85  put results1/;
+  86   
+  87           put zz.l :>8:2; put /;
+  88           loop(i,
+  89                  loop(j,
+  90                        put Menge.l(i,j) :>8:2;
+  91                  )
+  92                  put /;
+  93           )
+  94  ;
+  95   
+  96   
+  98  execute_unload  'results_gdx' , zz, Menge, int_container_5, cost, e_SumProduktion, e_SumVerbrauch, e_Mindesttransport, e_Container ;
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  D:\Main\UNI\Master\Elekktrizitäts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms
+     2       97 GDXOUT         1      97  D:\Main\UNI\Master\Elekktrizitäts- und Wasserwirtschaft\Alt\VO Elektrizitäts- und Wasserwirtschaft\VO Elektrizitäts- und Wasserwirtschaft\alt\Einheit 2\Modelle Einheit 2\Modelle Einheit 2\results_gdx;.gdx
+
+
+COMPILATION TIME     =        0.015 SECONDS      3 MB  48.3.0 71b5641f WEX-WEI
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE Transport Using MIP From line 79
+
+
+---- cost  =E=  
+
+cost..  - 9.5*Menge(1,1) - 7.5*Menge(1,2) - 3.7*Menge(1,3) - 0.1*Menge(1,4) - 3.8*Menge(1,5) - 3.4*Menge(1,6) - 0.3*Menge(1,7) - 2.1*Menge(2,1) - 5.8*Menge(2,2) - 8.8*Menge(2,3) - 5.2*Menge(2,4) - 4.2*Menge(2,5) - 9.6*Menge(2,6) - 9.1*Menge(2,7) - 4.2*Menge(3,1) - 0.2*Menge(3,2) - 4.6*Menge(3,3) - 6.5*Menge(3,4) - 5.4*Menge(3,5) - 0.7*Menge(3,6) - 1.3*Menge(3,7) + zz =E= 0 ; (LHS = 0)
+     
+
+---- e_SumProduktion  =E=  
+
+e_SumProduktion(1)..  Menge(1,1) + Menge(1,2) + Menge(1,3) + Menge(1,4) + Menge(1,5) + Menge(1,6) + Menge(1,7) =E= 10 ; (LHS = 0, INFES = 10 ****)
+     
+e_SumProduktion(2)..  Menge(2,1) + Menge(2,2) + Menge(2,3) + Menge(2,4) + Menge(2,5) + Menge(2,6) + Menge(2,7) =E= 10 ; (LHS = 0, INFES = 10 ****)
+     
+e_SumProduktion(3)..  Menge(3,1) + Menge(3,2) + Menge(3,3) + Menge(3,4) + Menge(3,5) + Menge(3,6) + Menge(3,7) =E= 15 ; (LHS = 0, INFES = 15 ****)
+     
+
+---- e_SumVerbrauch  =E=  
+
+e_SumVerbrauch(1)..  Menge(1,1) + Menge(2,1) + Menge(3,1) =E= 4 ; (LHS = 0, INFES = 4 ****)
+     
+e_SumVerbrauch(2)..  Menge(1,2) + Menge(2,2) + Menge(3,2) =E= 6 ; (LHS = 0, INFES = 6 ****)
+     
+e_SumVerbrauch(3)..  Menge(1,3) + Menge(2,3) + Menge(3,3) =E= 2 ; (LHS = 0, INFES = 2 ****)
+     
+REMAINING 4 ENTRIES SKIPPED
+
+
+---- e_Container  =E=  
+
+e_Container(1)..  Menge(3,1) - 5*int_container_5(1) =E= 0 ; (LHS = 0)
+     
+e_Container(2)..  Menge(3,2) - 5*int_container_5(2) =E= 0 ; (LHS = 0)
+     
+e_Container(3)..  Menge(3,3) - 5*int_container_5(3) =E= 0 ; (LHS = 0)
+     
+REMAINING 4 ENTRIES SKIPPED
+
+
+---- e_Mindesttransport  =G=  
+
+e_Mindesttransport..  Menge(1,4) =G= 2 ; (LHS = 0, INFES = 2 ****)
+     
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE Transport Using MIP From line 79
+
+
+---- Menge  
+
+Menge(1,1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -9.5     cost
+        1       e_SumProduktion(1)
+        1       e_SumVerbrauch(1)
+
+Menge(1,2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -7.5     cost
+        1       e_SumProduktion(1)
+        1       e_SumVerbrauch(2)
+
+Menge(1,3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -3.7     cost
+        1       e_SumProduktion(1)
+        1       e_SumVerbrauch(3)
+
+REMAINING 18 ENTRIES SKIPPED
+
+---- zz  
+
+zz
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       cost
+
+
+---- int_container_5  
+
+int_container_5(1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -5       e_Container(1)
+
+int_container_5(2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -5       e_Container(2)
+
+int_container_5(3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -5       e_Container(3)
+
+REMAINING 4 ENTRIES SKIPPED
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Range Statistics    SOLVE Transport Using MIP From line 79
+
+
+RANGE STATISTICS (ABSOLUTE NON-ZERO FINITE VALUES)
+
+RHS       [min, max] : [ 2.000E+00, 1.500E+01] - Zero values observed as well
+Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+Matrix    [min, max] : [ 1.000E-01, 9.600E+00]
+
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE Transport Using MIP From line 79
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           5     SINGLE EQUATIONS           19
+BLOCKS OF VARIABLES           3     SINGLE VARIABLES           29
+NON ZERO ELEMENTS            79     DISCRETE VARIABLES          7
+
+
+GENERATION TIME      =        0.016 SECONDS      4 MB  48.3.0 71b5641f WEX-WEI
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE Transport Using MIP From line 79
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   Transport           OBJECTIVE  zz
+     TYPE    MIP                 DIRECTION  MINIMIZE
+     SOLVER  CPLEX               FROM LINE  79
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      1 Optimal
+**** OBJECTIVE VALUE               63.0000
+
+ RESOURCE USAGE, LIMIT          0.000 10000000000.000
+ ITERATION COUNT, LIMIT         4    2147483647
+*** This solver runs with a demo license. No commercial use.
+--- GMO setup time: 0.00s
+--- GMO memory 0.50 Mb (peak 0.50 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 0.00 Mb (peak 0.00 Mb)
+--- Starting Cplex
+
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 0.00sec (det. 0.11 ticks)
+
+--- Returning a primal only solution to GAMS (marginals all set to NA).
+--- Fixing integer variables and solving final LP...
+
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.00sec (det. 0.02 ticks)
+
+
+Proven optimal solution
+MIP Solution:           63.000000    (4 iterations, 0 nodes)
+Final Solve:            63.000000    (0 iterations)
+
+Best possible:          63.000000
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU cost                .              .              .             1.0000      
+
+---- EQU e_SumProduktion  
+
+         LOWER          LEVEL          UPPER         MARGINAL
+
+1        10.0000        10.0000        10.0000        -5.1000      
+2        10.0000        10.0000        10.0000          .          
+3        15.0000        15.0000        15.0000          .          
+
+---- EQU e_SumVerbrauch  
+
+         LOWER          LEVEL          UPPER         MARGINAL
+
+1         4.0000         4.0000         4.0000         2.1000      
+2         6.0000         6.0000         6.0000         5.8000      
+3         2.0000         2.0000         2.0000         8.8000      
+4         8.0000         8.0000         8.0000         5.2000      
+5         3.0000         3.0000         3.0000         4.2000      
+6         7.0000         7.0000         7.0000         8.5000      
+7         5.0000         5.0000         5.0000          .          
+
+---- EQU e_Container  
+
+         LOWER          LEVEL          UPPER         MARGINAL
+
+1          .              .              .              .          
+2          .              .              .            -5.6000      
+3          .              .              .            -4.2000      
+4          .              .              .              .          
+5          .              .              .              .          
+6          .              .              .            -7.8000      
+7          .              .              .             1.3000      
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU e_Mindest~         2.0000         8.0000        +INF             .          
+
+---- VAR Menge  
+
+           LOWER          LEVEL          UPPER         MARGINAL
+
+1.1          .              .            +INF           12.5000      
+1.2          .              .            +INF            6.8000      
+1.3          .              .            +INF             .          
+1.4          .             8.0000        +INF             .          
+1.5          .              .            +INF            4.7000      
+1.6          .             2.0000        +INF             .          
+1.7          .              .            +INF            5.4000      
+2.1          .             4.0000        +INF             .          
+2.2          .             1.0000        +INF             .          
+2.3          .             2.0000        +INF             .          
+2.4          .              .            +INF            EPS         
+2.5          .             3.0000        +INF             .          
+2.6          .              .            +INF            1.1000      
+2.7          .              .            +INF            9.1000      
+3.1          .              .            +INF            2.1000      
+3.2          .             5.0000        +INF             .          
+3.3          .              .            +INF             .          
+3.4          .              .            +INF            1.3000      
+3.5          .              .            +INF            1.2000      
+3.6          .             5.0000        +INF             .          
+3.7          .             5.0000        +INF             .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR zz                -INF           63.0000        +INF             .          
+
+---- VAR int_container_5  
+
+         LOWER          LEVEL          UPPER         MARGINAL
+
+1          .              .            +INF            EPS         
+2          .             1.0000        +INF          -28.0000      
+3          .              .            +INF          -21.0000      
+4          .              .            +INF            EPS         
+5          .              .            +INF            EPS         
+6          .             1.0000        +INF          -39.0000      
+7          .             1.0000        +INF            6.5000      
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/21/24 18:28:04 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+**** REPORT FILE SUMMARY
+
+results1 D:\Main\UNI\Master\Elekktrizitäts- und Wasserwirtschaft\Alt\VO Elektrizitäts- und Wasserwirtschaft\VO Elektrizitäts- und Wasserwirtschaft\alt\Einheit 2\Modelle Einheit 2\Modelle Einheit 2\Output1.txt
+
+
+EXECUTION TIME       =        0.125 SECONDS      4 MB  48.3.0 71b5641f WEX-WEI
+
+
+USER: GAMS Demo, for EULA and demo limitations see   G241001/0001CB-GEN
+      https://www.gams.com/latest/docs/UG%5FLicense.html         DC0000
+
+
+**** FILE SUMMARY
+
+Input      D:\Main\UNI\Master\Elekktrizitäts- und Wasserwirtschaft\electricity-and-water-management\Transportproblem_1.gms
+Output     D:\Main\UNI\Master\Elekktrizitäts- und Wasserwirtschaft\Alt\VO Elektrizitäts- und Wasserwirtschaft\VO Elektrizitäts- und Wasserwirtschaft\alt\Einheit 2\Modelle Einheit 2\Modelle Einheit 2\Transportproblem_1.lst

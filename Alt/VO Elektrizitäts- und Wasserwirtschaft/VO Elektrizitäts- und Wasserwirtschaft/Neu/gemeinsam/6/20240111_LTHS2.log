@@ -1,0 +1,373 @@
+
+--- Job 20240111_LTHS_Pr�fung_2.gms Start 01/16/24 23:00:54 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\Pr�fung\20240111_LTHS_Pr�fung_2.gms"
+    PageSize 0
+    ScrDir "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\225i\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.3.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- 20240111_LTHS_Pr�fung_2.gms(37) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=p_Preis rng=Input!A3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.xlsx
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  p_Preis        1      Input                B3:B8762      A3:A8762      --:--         
+Total time = 985 Ms
+--- 20240111_LTHS_Pr�fung_2.gms(38) 3 Mb
+--- GDXin=C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- 20240111_LTHS_Pr�fung_2.gms(44) 4 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=Dar rng=Input!C3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.xlsx
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  Dar            1      Input                D3:D8762      C3:C8762      --:--         
+Total time = 891 Ms
+--- 20240111_LTHS_Pr�fung_2.gms(45) 4 Mb
+--- GDXin=C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- 20240111_LTHS_Pr�fung_2.gms(185) 4 Mb
+--- Starting execution: elapsed 0:00:01.977
+--- 20240111_LTHS_Pr�fung_2.gms(153) 6 Mb  7 secs
+--- Generating LP model Aufgabenstellung
+--- 20240111_LTHS_Pr�fung_2.gms(175) 19 Mb
+--- LOOPS i = i1
+---   52,561 rows  43,801 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.141E+00, 1.692E+03] - Zero values observed as well
+--- Bound     [min, max] : [ 2.894E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 3.034E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:09.534
+
+IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.42 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 17.49 Mb (peak 17.83 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.44 Mb (peak 6.15 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 26280 rows, 17520 columns, and 61320 nonzeros.
+Presolve time = 0.06 sec. (48.93 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual objective     =     765180241.004284
+Iteration:   626   Dual objective     =     763024652.773625
+Iteration:  1363   Dual objective     =     741482761.990920
+Iteration:  2106   Dual objective     =     719796815.709916
+Iteration:  2854   Dual objective     =     699018821.828428
+Iteration:  3608   Dual objective     =     678750990.132148
+Iteration:  4355   Dual objective     =     670745536.909062
+Iteration:  5121   Dual objective     =     663692504.560624
+Iteration:  5893   Dual objective     =     658273210.476449
+Iteration:  6664   Dual objective     =     653820954.971589
+Iteration:  7447   Dual objective     =     646285785.105164
+Iteration:  8237   Dual objective     =     640130658.656162
+Iteration:  8764   Dual objective     =     577006920.995138
+Iteration:  9200   Dual objective     =     179715598.003609
+Iteration:  9343   Dual objective     =     179467244.113736
+Iteration:  9544   Dual objective     =     179356499.999490
+Iteration:  9686   Dual objective     =     179167331.275388
+Iteration:  9771   Dual objective     =     179094784.123652
+Iteration:  9847   Dual objective     =     179041476.837835
+Iteration:  9921   Dual objective     =     178993730.808265
+Iteration:  9983   Dual objective     =     178963602.358298
+Iteration: 10045   Dual objective     =     178938450.296066
+Iteration: 10111   Dual objective     =     178912180.109810
+Iteration: 10173   Dual objective     =     178884937.806536
+Iteration: 10235   Dual objective     =     178866693.440806
+Iteration: 10297   Dual objective     =     178843622.961511
+Iteration: 10359   Dual objective     =     178821596.765749
+Iteration: 10464   Dual objective     =     178796443.743798
+Iteration: 10607   Dual objective     =     178786829.591804
+Iteration: 10784   Dual objective     =     178783799.187249
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.92sec (det. 2210.25 ticks)
+
+
+Optimal solution found
+Objective:    178783586.408480
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:10.716
+--- 20240111_LTHS_Pr�fung_2.gms(153) 19 Mb  11 secs
+--- Generating LP model Aufgabenstellung
+--- 20240111_LTHS_Pr�fung_2.gms(175) 25 Mb
+--- LOOPS i = i2
+---   52,561 rows  43,801 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.141E+00, 1.717E+03] - Zero values observed as well
+--- Bound     [min, max] : [ 2.894E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:22.466
+
+IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.42 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 17.49 Mb (peak 17.83 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.44 Mb (peak 6.15 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 26280 rows, 17520 columns, and 61320 nonzeros.
+Presolve time = 0.05 sec. (36.83 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =             4.367694
+Iteration:   673   Scaled dual infeas =             4.114486
+Iteration:  1357   Scaled dual infeas =             3.784343
+Iteration:  2035   Scaled dual infeas =             3.586693
+Iteration:  2668   Scaled dual infeas =             3.135038
+Iteration:  3306   Scaled dual infeas =             2.527896
+Iteration:  4038   Scaled dual infeas =             2.173687
+Iteration:  4802   Scaled dual infeas =             2.170714
+Iteration:  5572   Scaled dual infeas =             2.155174
+Iteration:  6237   Scaled dual infeas =             2.047472
+Iteration:  6794   Scaled dual infeas =             0.461446
+Iteration:  6933   Dual objective     =    1574028958.488960
+Iteration:  7715   Dual objective     =    1386006861.584271
+Iteration:  8515   Dual objective     =    1077344420.394106
+Iteration:  8762   Dual objective     =     479719944.642144
+Iteration:  8865   Dual objective     =     154601106.909256
+Perturbation started.
+Iteration:  8947   Dual objective     =     178593688.158250
+Iteration:  9248   Dual objective     =     178024158.746607
+Iteration:  9333   Dual objective     =     177814873.502352
+Iteration:  9424   Dual objective     =     177669750.388271
+Iteration:  9531   Dual objective     =     177584121.481068
+Iteration:  9625   Dual objective     =     177499823.115985
+Iteration:  9698   Dual objective     =     177453962.486907
+Iteration:  9779   Dual objective     =     177417647.327056
+Iteration:  9869   Dual objective     =     177331896.809355
+Iteration:  9946   Dual objective     =     177292086.017947
+Iteration: 10008   Dual objective     =     177270423.265720
+Iteration: 10070   Dual objective     =     177244606.701987
+Iteration: 10153   Dual objective     =     177217633.746354
+Iteration: 10215   Dual objective     =     177201091.439042
+Iteration: 10277   Dual objective     =     177186655.400712
+Iteration: 10339   Dual objective     =     177169462.481309
+Iteration: 10401   Dual objective     =     177154581.521609
+Iteration: 10463   Dual objective     =     177145594.690361
+Iteration: 10560   Dual objective     =     177140494.340082
+Iteration: 10702   Dual objective     =     177137715.674625
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.61sec (det. 1416.82 ticks)
+
+
+Optimal solution found
+Objective:    177137044.704021
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:23.360
+--- 20240111_LTHS_Pr�fung_2.gms(153) 25 Mb  10 secs
+--- Generating LP model Aufgabenstellung
+--- 20240111_LTHS_Pr�fung_2.gms(175) 25 Mb
+--- LOOPS i = i3
+---   52,561 rows  43,801 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.141E+00, 1.717E+03] - Zero values observed as well
+--- Bound     [min, max] : [ 2.894E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:34.015
+
+IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.42 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 17.49 Mb (peak 17.83 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.44 Mb (peak 6.15 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 26280 rows, 17520 columns, and 61320 nonzeros.
+Presolve time = 0.03 sec. (36.83 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     177123004.787013
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.08sec (det. 127.34 ticks)
+
+
+Optimal solution found
+Objective:    177128955.645289
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:34.374
+--- 20240111_LTHS_Pr�fung_2.gms(153) 25 Mb  10 secs
+--- Generating LP model Aufgabenstellung
+--- 20240111_LTHS_Pr�fung_2.gms(175) 25 Mb
+--- LOOPS i = i4
+---   52,561 rows  43,801 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.141E+00, 1.717E+03] - Zero values observed as well
+--- Bound     [min, max] : [ 2.894E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:44.859
+
+IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.42 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 17.49 Mb (peak 17.83 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.44 Mb (peak 6.15 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 26280 rows, 17520 columns, and 61320 nonzeros.
+Presolve time = 0.03 sec. (36.83 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     177124532.105782
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.09sec (det. 127.94 ticks)
+
+
+Optimal solution found
+Objective:    177128657.412708
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:45.207
+--- 20240111_LTHS_Pr�fung_2.gms(153) 25 Mb  10 secs
+--- Generating LP model Aufgabenstellung
+--- 20240111_LTHS_Pr�fung_2.gms(175) 25 Mb
+--- LOOPS i = i5
+---   52,561 rows  43,801 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.141E+00, 1.717E+03] - Zero values observed as well
+--- Bound     [min, max] : [ 2.894E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:56.165
+
+IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.42 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 17.49 Mb (peak 17.83 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.44 Mb (peak 6.15 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 26280 rows, 17520 columns, and 61320 nonzeros.
+Presolve time = 0.03 sec. (36.83 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     177124715.584323
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.11sec (det. 122.75 ticks)
+
+
+Optimal solution found
+Objective:    177127894.993468
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:56.640
+--- 20240111_LTHS_Pr�fung_2.gms(180) 25 Mb
+--- GDX File (execute_unload) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\results2.gdx
+--- 20240111_LTHS_Pr�fung_2.gms(181) 25 Mb
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\results2.gdx
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.xlsx
+Total time = 1375 Ms
+--- 20240111_LTHS_Pr�fung_2.gms(182) 25 Mb
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\results2.gdx
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.xlsx
+Total time = 1344 Ms
+--- 20240111_LTHS_Pr�fung_2.gms(184) 25 Mb
+*** Status: Normal completion
+--- Job 20240111_LTHS_Pr�fung_2.gms Stop 01/16/24 23:01:54 elapsed 0:00:59.482

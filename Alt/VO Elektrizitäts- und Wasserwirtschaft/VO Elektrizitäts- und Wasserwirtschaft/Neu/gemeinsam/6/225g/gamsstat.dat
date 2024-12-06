@@ -1,0 +1,78 @@
+=1
+=2
+=0IBM ILOG CPLEX   45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+=1
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+=2
+=1
+--- GMO setup time: 0.00s
+=2
+=1
+--- Space for names approximately 2.18 Mb
+=2
+=1
+--- Use option 'names no' to turn use of names off
+=2
+=1
+--- GMO memory 15.53 Mb (peak 15.86 Mb)
+=2
+=1
+--- Dictionary memory 0.00 Mb
+=2
+=1
+--- Cplex 22.1.1.0 link memory 1.34 Mb (peak 5.60 Mb)
+=2
+=1
+--- Starting Cplex
+=2
+=C
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.05 sec. (41.74 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =     733952025.835401
+Iteration:   565   Dual objective     =     644085139.890086
+Iteration:  1161   Dual objective     =     620279456.424817
+Iteration:  1734   Dual objective     =     582980167.038423
+Iteration:  1933   Dual objective     =     278305077.121178
+Iteration:  2065   Dual objective     =     180446263.027496
+Iteration:  2127   Dual objective     =     180380425.171912
+Iteration:  2189   Dual objective     =     180310265.462601
+Iteration:  2251   Dual objective     =     180266173.246973
+Iteration:  2313   Dual objective     =     180218950.723836
+Iteration:  2375   Dual objective     =     180172885.965744
+Iteration:  2437   Dual objective     =     180136651.242478
+Iteration:  2499   Dual objective     =     180111395.501008
+Iteration:  2561   Dual objective     =     180084714.490548
+Iteration:  2623   Dual objective     =     180062908.444125
+Iteration:  2696   Dual objective     =     180036529.947649
+Iteration:  2769   Dual objective     =     180014925.895301
+Iteration:  2877   Dual objective     =     179975187.098673
+Iteration:  2975   Dual objective     =     179949573.798265
+Iteration:  3071   Dual objective     =     179940573.014511
+Iteration:  3173   Dual objective     =     179936811.558575
+Iteration:  3239   Dual objective     =     179935353.554524
+Iteration:  3320   Dual objective     =     179934051.882583
+Iteration:  3388   Dual objective     =     179933301.229602
+=C
+=1
+--- LP status (1): optimal.
+=2
+=1
+--- Cplex Time: 0.33sec (det. 907.32 ticks)
+
+=2
+=C
+=COptimal solution found
+=CObjective:    179932687.716265
+=C

@@ -1,0 +1,133 @@
+B 3 C o m p i l a t i o n
+B 161 Include File Summary
+B 176 E x e c u t i o n
+I 176 p_Preis
+I 250 Dar
+I 324 E_max
+I 326 E_max_winter
+B 330 Equation Listing    SOLVE Aufgabenstellung Using LP From line 150
+D 333 e_Erloes
+D 350 e_Pegelstand
+D 361 e_Energieinhalt
+D 372 e_Fallhoehe
+D 383 e_Turbinieren
+B 395 Column Listing      SOLVE Aufgabenstellung Using LP From line 150
+E 398 v_Erloes
+E 405 v_EnInh
+E 427 v_Turb
+E 449 v_Pegel
+E 468 v_Fallhoehe
+B 491 Range Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 502 Model Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 520 Solution Report     SOLVE Aufgabenstellung Using LP From line 150
+F 555 e_Erloes
+F 557 e_Pegelstand
+F 9322 e_Energieinhalt
+F 18087 e_Fallhoehe
+F 26852 e_Turbinieren
+G 35619 v_Erloes
+G 35623 v_EnInh
+G 44388 v_Turb
+G 53153 v_Pegel
+G 61918 v_Fallhoehe
+B 70689 Equation Listing    SOLVE Aufgabenstellung Using LP From line 150
+D 70692 e_Erloes
+D 70709 e_Pegelstand
+D 70720 e_Energieinhalt
+D 70731 e_Fallhoehe
+D 70742 e_Turbinieren
+B 70754 Column Listing      SOLVE Aufgabenstellung Using LP From line 150
+E 70757 v_Erloes
+E 70764 v_EnInh
+E 70786 v_Turb
+E 70808 v_Pegel
+E 70827 v_Fallhoehe
+B 70850 Range Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 70861 Model Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 70879 Solution Report     SOLVE Aufgabenstellung Using LP From line 150
+F 70914 e_Erloes
+F 70916 e_Pegelstand
+F 79681 e_Energieinhalt
+F 88446 e_Fallhoehe
+F 97211 e_Turbinieren
+G 105978 v_Erloes
+G 105982 v_EnInh
+G 114747 v_Turb
+G 123512 v_Pegel
+G 132277 v_Fallhoehe
+B 141048 Equation Listing    SOLVE Aufgabenstellung Using LP From line 150
+D 141051 e_Erloes
+D 141068 e_Pegelstand
+D 141079 e_Energieinhalt
+D 141090 e_Fallhoehe
+D 141101 e_Turbinieren
+B 141113 Column Listing      SOLVE Aufgabenstellung Using LP From line 150
+E 141116 v_Erloes
+E 141123 v_EnInh
+E 141145 v_Turb
+E 141167 v_Pegel
+E 141186 v_Fallhoehe
+B 141209 Range Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 141220 Model Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 141238 Solution Report     SOLVE Aufgabenstellung Using LP From line 150
+F 141273 e_Erloes
+F 141275 e_Pegelstand
+F 150040 e_Energieinhalt
+F 158805 e_Fallhoehe
+F 167570 e_Turbinieren
+G 176337 v_Erloes
+G 176341 v_EnInh
+G 185106 v_Turb
+G 193871 v_Pegel
+G 202636 v_Fallhoehe
+B 211407 Equation Listing    SOLVE Aufgabenstellung Using LP From line 150
+D 211410 e_Erloes
+D 211427 e_Pegelstand
+D 211438 e_Energieinhalt
+D 211449 e_Fallhoehe
+D 211460 e_Turbinieren
+B 211472 Column Listing      SOLVE Aufgabenstellung Using LP From line 150
+E 211475 v_Erloes
+E 211482 v_EnInh
+E 211504 v_Turb
+E 211526 v_Pegel
+E 211545 v_Fallhoehe
+B 211568 Range Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 211579 Model Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 211597 Solution Report     SOLVE Aufgabenstellung Using LP From line 150
+F 211632 e_Erloes
+F 211634 e_Pegelstand
+F 220399 e_Energieinhalt
+F 229164 e_Fallhoehe
+F 237929 e_Turbinieren
+G 246696 v_Erloes
+G 246700 v_EnInh
+G 255465 v_Turb
+G 264230 v_Pegel
+G 272995 v_Fallhoehe
+B 281766 Equation Listing    SOLVE Aufgabenstellung Using LP From line 150
+D 281769 e_Erloes
+D 281786 e_Pegelstand
+D 281797 e_Energieinhalt
+D 281808 e_Fallhoehe
+D 281819 e_Turbinieren
+B 281831 Column Listing      SOLVE Aufgabenstellung Using LP From line 150
+E 281834 v_Erloes
+E 281841 v_EnInh
+E 281863 v_Turb
+E 281885 v_Pegel
+E 281904 v_Fallhoehe
+B 281927 Range Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 281938 Model Statistics    SOLVE Aufgabenstellung Using LP From line 150
+B 281956 Solution Report     SOLVE Aufgabenstellung Using LP From line 150
+F 281991 e_Erloes
+F 281993 e_Pegelstand
+F 290758 e_Energieinhalt
+F 299523 e_Fallhoehe
+F 308288 e_Turbinieren
+G 317055 v_Erloes
+G 317059 v_EnInh
+G 325824 v_Turb
+G 334589 v_Pegel
+G 343354 v_Fallhoehe
+B 352125 E x e c u t i o n

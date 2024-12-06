@@ -1,0 +1,64 @@
+
+--- Job 20240111_LTHS_Pr�fung_2.gms Start 01/16/24 23:00:06 45.3.0 c4c31d8a WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\Pr�fung\20240111_LTHS_Pr�fung_2.gms"
+    PageSize 0
+    ScrDir "C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\225i\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.3.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- 20240111_LTHS_Pr�fung_2.gms(37) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=p_Preis rng=Input!A3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.xlsx
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  p_Preis        1      Input                B3:B8762      A3:A8762      --:--         
+Total time = 1016 Ms
+--- 20240111_LTHS_Pr�fung_2.gms(38) 3 Mb
+--- GDXin=C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- 20240111_LTHS_Pr�fung_2.gms(44) 4 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=Dar rng=Input!C3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.3.0 c4c31d8a Nov 11, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.xlsx
+Output file: C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  Dar            1      Input                D3:D8762      C3:C8762      --:--         
+Total time = 953 Ms
+--- 20240111_LTHS_Pr�fung_2.gms(45) 4 Mb
+--- GDXin=C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\6\Input-Output_Langfristig.gdx
+--- 20240111_LTHS_Pr�fung_2.gms(184) 4 Mb 2 Errors
+*** Error 143 in C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\Pr�fung\20240111_LTHS_Pr�fung_2.gms
+    A suffix is missing
+*** Error 409 in C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\gemeinsam\Pr�fung\20240111_LTHS_Pr�fung_2.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- 20240111_LTHS_Pr�fung_2.gms(185) 4 Mb 2 Errors
+*** Status: Compilation error(s)
+--- Job 20240111_LTHS_Pr�fung_2.gms Stop 01/16/24 23:00:08 elapsed 0:00:02.092

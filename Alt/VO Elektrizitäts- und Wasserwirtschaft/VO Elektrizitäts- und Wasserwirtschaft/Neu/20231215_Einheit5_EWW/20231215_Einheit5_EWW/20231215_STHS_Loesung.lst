@@ -1,0 +1,476 @@
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 01/26/24 10:53:55 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  Sets
+   2   n            Index Stützstellen für Modellierung Turbinen-Wirkungsgrad            /n0* n20/
+   3   t            Zeitpunkt bzw. Stunde                                                /t1*t168/
+   4   t_start (t)  Erste Stunde                                                         /     t1/
+   5   t_ende  (t)  Letzte Stunde                                                        /   t168/
+   6  ;
+   7   
+   8  Scalars
+   9   Anzahl_MS    Anzahl der Maschinensätze [1]                                           /   2/
+  10   H            Fall- bzw. Förderhöhe (als konstant angenommen)[m]                      / 410/
+  11   Q_min        Minimaler Turbinendurchfluss eines Maschinensatzes [m3 pro s]           /  16/
+  12   Q_max        Maximaler Turbinendurchfluss eines Maschinensatzes [m3 pro s]           /  40/
+  13   Q_pump       Förderstrom eines Maschinensatzes  [m3 pro s]                           /  35/
+  14   eta_pump     Hydraulischer Wirkungsgrad im Pumpbetrieb [1]                           /0.92/
+  15   I_max        Maximaler Betriebsinhalt des Oberliegers [hm3]                          /  60/
+  16   I_Start      Anfangs- und Endbedingung für den Betriebsinhalt des Oberliegers [hm3]  /  40/
+  17   Dargebot     Natürlicher Zufluss des Oberliegers [m3 pro s]                          /   2/
+  18  ;
+  19   
+  20  Parameters
+  21   Preis    (t)  Prognose des Spot-Markt-Preis in der Stunde von t-1 bis t [EUR pro MWh]
+  22   Q_Stuetz (n)  Stützstellen (verschiedene Durchflüsse) für die Leistungskennlinie [m3 pro s]
+  23   P_Stuetz (n)  Zugehörige Leistungen an den Stützstellen für die Leistungskennlinie [MW]
+  24   ;
+  25   
+  26  * Einlesen der prognostitierten Strompreise aus dem .xlsx-File
+GDXIN   C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+--- LOAD  Preis = 1:Preis
+  31  ;
+  32   
+  33  * Äquidistante Stützstellen von Q und zugehörige Leistungen P der Leistungskennlinie
+  34   Q_Stuetz(n)                            = (ord(n)-1)/(card(n)-1)*Q_max;
+  35   P_Stuetz(n)$(Q_Stuetz(n)/Q_max>0.095)  =  H*Q_Stuetz(n)*9.81/1000*(Q_Stuetz(n)/Q_max-0.095)/(0.18+0.63*(Q_Stuetz(n)/Q_max-0.095)+0.31*(Q_Stuetz(n)/Q_max-0.095)**2);
+  36   P_Stuetz(n)$(Q_Stuetz(n)/Q_max<0.095)  =  0;
+  37   
+  38  Variables
+  39   v_Erloes                Erlös [EUR]
+  40   v_Preis_m
+  41  ;
+  42  Positive variables
+  43   v_Inh            (t  )  Betriebsinhalt des Speichers (Oberlieger) zum Zeitpunkt t [hm3]
+  44   v_P_Turb         (t  )  Abgegebene Leistung im Turbinenbetrieb des Kraftwerkes in der Stunde von t-1 bis t [MW]
+  45   v_P_Pump         (t  )  Aufgenommene Leistung im Pumpbetrieb des Kraftwerkes in der Stunde von t-1 bis t [MW]
+  46   v_Q_Turb         (t  )  Summierte Turbinendurchflüsse der Maschinensätze des Kraftwerkes in der Stunde von t-1 bis t [m3 pro s]
+  47   v_Q_Pump         (t  )  Summierte Pumpenförderströme der Maschinensätze des Kraftwerkes in der Stunde von t-1 bis t [m3 pro s]
+  48  ;
+  49  SOS2 variables
+  50   v_lambda_Turbine (t,n)  SOS2-Variablen zur linearen Approximation der Leistungs-Kennlinie im Turbinenbetrieb  [1]
+  51  ;
+  52  Integer variables
+  53   v_on_Pump        (t  )  Anzahl Maschinensätze im Turbinenbetrieb [1]
+  54   v_on_Turb        (t  )  Anzahl Maschinensätze im Pumpbetrieb [1]
+  55  ;
+  56   
+  57  * Box Constraints
+  58   v_Inh.up     (t)         = I_max;
+  59   v_Inh.fx     (t_ende)    = I_Start;
+  60   v_on_Turb.up (t)         = Anzahl_MS;
+  61   v_on_Pump.up (t)         = Anzahl_MS;
+  62   
+  63  Equations
+  64   g_Erloes                         Gesamterlös (Zielfunktion)
+  65   g_BetriebsinhaltSpeicher  (t)    Speicherbilanzgleichung
+  66   g_Turbinen_Leistung       (t)    Abgegebene Leistung im Turbinenbetrieb des Kraftwerkes
+  67   g_Turbinen_Durchfluss     (t)    Summierte Turbinendurchflüsse der Maschinensätze des Kraftwerkes
+  68   g_Turbinen_SummeLambda    (t)    Summe Gewichte der P-Q-Kurve-Approximation entspricht Anzahl Maschinensätze im Turbinenbetrieb
+  69   g_Pumpen_Leistung         (t)    Aufgenommene Leistung im Pumpbetrieb des Kraftwerkes
+  70   g_Pumpen_Foerderstrom     (t)    Summierte Pumpenförderströme der Maschinensätze des Kraftwerkes
+  71   g_MinTurbinenDurchfluss   (t)    Minimaler Turbinendurchfluss
+  72   g_Preis_marg              (t)    Marginal Preis
+  73  ;
+  74   
+  75  * Zielfunktion
+  76   g_Erloes                     .. v_Erloes =e= sum(t,(Preis(t)-12)*v_P_Turb(t)-(Preis(t)+20)*v_P_Pump(t));
+  77   
+  78  * Speicherinhalt
+  79   g_BetriebsinhaltSpeicher(t)  .. (v_Inh(t)-v_Inh(t-1)-I_Start$t_start(t))*1000000 =e= 3600*(Dargebot-v_Q_Turb(t)+v_Q_Pump(t));
+  80   
+  81  * Leistungen und VDurchflüsse im Turbinenbetrieb
+  82   g_Turbinen_Leistung(t)       .. v_P_Turb(t)  =e= sum(n,v_lambda_Turbine(t,n)*P_Stuetz(n));
+  83   g_Turbinen_Durchfluss(t)     .. v_Q_Turb(t)  =e= sum(n,v_lambda_Turbine(t,n)*Q_Stuetz(n));
+  84   g_Turbinen_SummeLambda(t)    .. v_on_Turb(t) =e= sum(n,v_lambda_Turbine(t,n));
+  85   g_MinTurbinenDurchfluss(t)   .. v_Q_Turb(t)  =g= v_on_Turb(t)*Q_min;
+  86   
+  87  * Leistungen und Förderströme im Pumpbetrieb
+  88   g_Pumpen_Leistung(t)         .. v_P_Pump(t) =e= 9.81/1000*v_Q_Pump(t)/eta_pump*H ;
+  89   g_Pumpen_Foerderstrom(t)     .. v_Q_Pump(t) =e= v_on_Pump(t)*Q_pump;
+  90   
+  91  g_Preis_marg(t)               .. v_Preis_m =e= (Preis(t)-12)*v_P_Turb(t);
+  92  model Aufgabenstellung /all/
+  93   
+  94  * Wähle passenden Solver
+  95  Option MIP = CPLEX;
+  96  solve Aufgabenstellung using MIP maximising v_Erloes;
+  97   
+  98  execute_unload "results.gdx" v_P_Turb.L v_P_Pump.L v_Q_Turb.L v_Q_Pump.L v_Inh.L v_Erloes.L
+  99  execute 'gdxxrw.exe  results.gdx o=Input-Output_Kurzfristig.xlsx squeeze=N var=v_Inh.L rng=Output!C3 rdim=1 cdim=0'
+ 100  execute 'gdxxrw.exe  results.gdx o=Input-Output_Kurzfristig.xlsx squeeze=N var=v_P_Pump.L  rng=Output!B3 rdim=1 cdim=0'
+ 101  execute 'gdxxrw.exe  results.gdx o=Input-Output_Kurzfristig.xlsx squeeze=N var=v_P_Turb.L  rng=Output!A3 rdim=1 cdim=0'
+ 102  execute 'gdxxrw.exe  results.gdx o=Input-Output_Kurzfristig.xlsx squeeze=N var=v_Erloes.L rng=Output!G1 rdim=0 cdim=0'
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 01/26/24 10:53:55 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\20231215_STHS_Loesung.gms
+     2       27 CALL           1      27  GDXXRW.EXE  Input-Output_Kurzfristig.xlsx Par=Preis rng=Input!A3:B170 Cdim=0 Rdim=1 Trace = 3 
+     3       28 GDXIN          1      28  C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizit�ts- und Wasserwirtschaft\Neu\20231215_Einheit5_EWW\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+
+
+COMPILATION TIME     =        0.750 SECONDS      3 MB  45.3.0 c4c31d8a WEX-WEI
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 01/26/24 10:53:55 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE Aufgabenstellung Using MIP From line 96
+
+
+---- g_Erloes  =E=  Gesamterlös (Zielfunktion)
+
+g_Erloes..  v_Erloes - 182.73*v_P_Turb(t1) - 175.97*v_P_Turb(t2) - 169.14*v_P_Turb(t3) - 163.78*v_P_Turb(t4) - 180.89*v_P_Turb(t5) - 245.34*v_P_Turb(t6) - 298.1*v_P_Turb(t7) - 363.05*v_P_Turb(t8) - 390.81*v_P_Turb(t9) - 398.19*v_P_Turb(t10) - 391.55*v_P_Turb(t11) - 412.93*v_P_Turb(t12) - 392.91*v_P_Turb(t13) - 380.96*v_P_Turb(t14) - 401.46*v_P_Turb(t15) - 417.91*v_P_Turb(t16) - 418.58*v_P_Turb(t17) - 432.98*v_P_Turb(t18) - 426.5*v_P_Turb(t19) - 421.87*v_P_Turb(t20) - 380.65*v_P_Turb(t21) - 321.11*v_P_Turb(t22) - 312.56*v_P_Turb(t23) - 283.08*v_P_Turb(t24) - 290.47*v_P_Turb(t25) - 267.9*v_P_Turb(t26) - 264.05*v_P_Turb(t27) - 266.14*v_P_Turb(t28) - 275.38*v_P_Turb(t29) - 297.23*v_P_Turb(t30) - 357.73*v_P_Turb(t31) - 442.93*v_P_Turb(t32) - 443.68*v_P_Turb(t33) - 447.95*v_P_Turb(t34) - 441.2*v_P_Turb(t35) - 448.17*v_P_Turb(t36) - 441.97*v_P_Turb(t37) - 434.1*v_P_Turb(t38) - 447.06*v_P_Turb(t39) - 441.84*v_P_Turb(t40) - 453.36*v_P_Turb(t41) - 467.4*v_P_Turb(t42) - 450.77*v_P_Turb(t43) - 423.1*v_P_Turb(t44) - 375.63*v_P_Turb(t45) - 312.85*v_P_Turb(t46) - 300.89*v_P_Turb(t47) - 286.09*v_P_Turb(t48) - 268*v_P_Turb(t49) - 244.49*v_P_Turb(t50) - 221.17*v_P_Turb(t51) - 210.13*v_P_Turb(t52) - 230.33*v_P_Turb(t53) - 268.48*v_P_Turb(t54) - 406.87*v_P_Turb(t55) - 427.97*v_P_Turb(t56) - 437.98*v_P_Turb(t57) - 422.96*v_P_Turb(t58) - 417.98*v_P_Turb(t59) - 386.18*v_P_Turb(t60) - 349.4*v_P_Turb(t61) - 347.3*v_P_Turb(t62) - 398.52*v_P_Turb(t63) - 424.74*v_P_Turb(t64) - 442.07*v_P_Turb(t65) - 434.09*v_P_Turb(t66) - 427.92*v_P_Turb(t67) - 388.1*v_P_Turb(t68) - 408.05*v_P_Turb(t69) - 329.68*v_P_Turb(t70) - 313.01*v_P_Turb(t71) - 286.17*v_P_Turb(t72) - 276.56*v_P_Turb(t73) - 268.4*v_P_Turb(t74) - 257.27*v_P_Turb(t75) - 252.27*v_P_Turb(t76) - 263.33*v_P_Turb(t77) - 288.45*v_P_Turb(t78) - 320.77*v_P_Turb(t79) - 402.32*v_P_Turb(t80) - 437.99*v_P_Turb(t81) - 444.51*v_P_Turb(t82) - 438.19*v_P_Turb(t83) - 437.99*v_P_Turb(t84) - 435.35*v_P_Turb(t85) - 435.26*v_P_Turb(t86) - 441.98*v_P_Turb(t87) - 444.99*v_P_Turb(t88) - 450.92*v_P_Turb(t89) - 486.21*v_P_Turb(t90) - 457.75*v_P_Turb(t91) - 453.36*v_P_Turb(t92) - 427.94*v_P_Turb(t93) - 344.97*v_P_Turb(t94) - 313.02*v_P_Turb(t95) - 284.49*v_P_Turb(t96) - 322.01*v_P_Turb(t97) - 293.48*v_P_Turb(t98) - 290.38*v_P_Turb(t99) - 286.49*v_P_Turb(t100) - 292.04*v_P_Turb(t101) - 305.66*v_P_Turb(t102) - 350.64*v_P_Turb(t103) - 444.43*v_P_Turb(t104) - 477.76*v_P_Turb(t105) - 474.44*v_P_Turb(t106) - 466.7*v_P_Turb(t107) - 476.05*v_P_Turb(t108) - 469.1*v_P_Turb(t109) - 458*v_P_Turb(t110) - 464.44*v_P_Turb(t111) - 458.57*v_P_Turb(t112) - 462.88*v_P_Turb(t113) - 495.91*v_P_Turb(t114) - 468.01*v_P_Turb(t115) - 451.46*v_P_Turb(t116) - 434.22*v_P_Turb(t117) - 368.81*v_P_Turb(t118) - 366.47*v_P_Turb(t119) - 303.06*v_P_Turb(t120) - 295.89*v_P_Turb(t121) - 287.96*v_P_Turb(t122) - 272.25*v_P_Turb(t123) - 269.73*v_P_Turb(t124) - 268.98*v_P_Turb(t125) - 271.88*v_P_Turb(t126) - 280.28*v_P_Turb(t127) - 299.12*v_P_Turb(t128) - 333.08*v_P_Turb(t129) - 384.61*v_P_Turb(t130) - 407.33*v_P_Turb(t131) - 400.38*v_P_Turb(t132) - 386.1*v_P_Turb(t133) - 363.9*v_P_Turb(t134) - 365.07*v_P_Turb(t135) - 381.5*v_P_Turb(t136) - 408.59*v_P_Turb(t137) - 437.92*v_P_Turb(t138) - 430.7*v_P_Turb(t139) - 408.03*v_P_Turb(t140) - 348.7*v_P_Turb(t141) - 311.28*v_P_Turb(t142) - 288.18*v_P_Turb(t143) - 265.87*v_P_Turb(t144) - 243.24*v_P_Turb(t145) - 240.44*v_P_Turb(t146) - 243.96*v_P_Turb(t147) - 234.56*v_P_Turb(t148) - 233.75*v_P_Turb(t149) - 234.64*v_P_Turb(t150) - 236.39*v_P_Turb(t151) - 244.9*v_P_Turb(t152) - 269.56*v_P_Turb(t153) - 303.47*v_P_Turb(t154) - 312.99*v_P_Turb(t155) - 327.68*v_P_Turb(t156) - 326.45*v_P_Turb(t157) - 312.74*v_P_Turb(t158) - 315.89*v_P_Turb(t159) - 324.51*v_P_Turb(t160) - 349.6*v_P_Turb(t161) - 401.94*v_P_Turb(t162) - 418.6*v_P_Turb(t163) - 401.26*v_P_Turb(t164) - 372.54*v_P_Turb(t165) - 323.35*v_P_Turb(t166) - 311.96*v_P_Turb(t167) - 286.83*v_P_Turb(t168) + 214.73*v_P_Pump(t1) + 207.97*v_P_Pump(t2) + 201.14*v_P_Pump(t3) + 195.78*v_P_Pump(t4) + 212.89*v_P_Pump(t5) + 277.34*v_P_Pump(t6) + 330.1*v_P_Pump(t7) + 395.05*v_P_Pump(t8) + 422.81*v_P_Pump(t9) + 430.19*v_P_Pump(t10) + 423.55*v_P_Pump(t11) + 444.93*v_P_Pump(t12) + 424.91*v_P_Pump(t13) + 412.96*v_P_Pump(t14) + 433.46*v_P_Pump(t15) + 449.91*v_P_Pump(t16) + 450.58*v_P_Pump(t17) + 464.98*v_P_Pump(t18) + 458.5*v_P_Pump(t19) + 453.87*v_P_Pump(t20) + 412.65*v_P_Pump(t21) + 353.11*v_P_Pump(t22) + 344.56*v_P_Pump(t23) + 315.08*v_P_Pump(t24) + 322.47*v_P_Pump(t25) + 299.9*v_P_Pump(t26) + 296.05*v_P_Pump(t27) + 298.14*v_P_Pump(t28) + 307.38*v_P_Pump(t29) + 329.23*v_P_Pump(t30) + 389.73*v_P_Pump(t31) + 474.93*v_P_Pump(t32) + 475.68*v_P_Pump(t33) + 479.95*v_P_Pump(t34) + 473.2*v_P_Pump(t35) + 480.17*v_P_Pump(t36) + 473.97*v_P_Pump(t37) + 466.1*v_P_Pump(t38) + 479.06*v_P_Pump(t39) + 473.84*v_P_Pump(t40) + 485.36*v_P_Pump(t41) + 499.4*v_P_Pump(t42) + 482.77*v_P_Pump(t43) + 455.1*v_P_Pump(t44) + 407.63*v_P_Pump(t45) + 344.85*v_P_Pump(t46) + 332.89*v_P_Pump(t47) + 318.09*v_P_Pump(t48) + 300*v_P_Pump(t49) + 276.49*v_P_Pump(t50) + 253.17*v_P_Pump(t51) + 242.13*v_P_Pump(t52) + 262.33*v_P_Pump(t53) + 300.48*v_P_Pump(t54) + 438.87*v_P_Pump(t55) + 459.97*v_P_Pump(t56) + 469.98*v_P_Pump(t57) + 454.96*v_P_Pump(t58) + 449.98*v_P_Pump(t59) + 418.18*v_P_Pump(t60) + 381.4*v_P_Pump(t61) + 379.3*v_P_Pump(t62) + 430.52*v_P_Pump(t63) + 456.74*v_P_Pump(t64) + 474.07*v_P_Pump(t65) + 466.09*v_P_Pump(t66) + 459.92*v_P_Pump(t67) + 420.1*v_P_Pump(t68) + 440.05*v_P_Pump(t69) + 361.68*v_P_Pump(t70) + 345.01*v_P_Pump(t71) + 318.17*v_P_Pump(t72) + 308.56*v_P_Pump(t73) + 300.4*v_P_Pump(t74) + 289.27*v_P_Pump(t75) + 284.27*v_P_Pump(t76) + 295.33*v_P_Pump(t77) + 320.45*v_P_Pump(t78) + 352.77*v_P_Pump(t79) + 434.32*v_P_Pump(t80) + 469.99*v_P_Pump(t81) + 476.51*v_P_Pump(t82) + 470.19*v_P_Pump(t83) + 469.99*v_P_Pump(t84) + 467.35*v_P_Pump(t85) + 467.26*v_P_Pump(t86) + 473.98*v_P_Pump(t87) + 476.99*v_P_Pump(t88) + 482.92*v_P_Pump(t89) + 518.21*v_P_Pump(t90) + 489.75*v_P_Pump(t91) + 485.36*v_P_Pump(t92) + 459.94*v_P_Pump(t93) + 376.97*v_P_Pump(t94) + 345.02*v_P_Pump(t95) + 316.49*v_P_Pump(t96) + 354.01*v_P_Pump(t97) + 325.48*v_P_Pump(t98) + 322.38*v_P_Pump(t99) + 318.49*v_P_Pump(t100) + 324.04*v_P_Pump(t101) + 337.66*v_P_Pump(t102) + 382.64*v_P_Pump(t103) + 476.43*v_P_Pump(t104) + 509.76*v_P_Pump(t105) + 506.44*v_P_Pump(t106) + 498.7*v_P_Pump(t107) + 508.05*v_P_Pump(t108) + 501.1*v_P_Pump(t109) + 490*v_P_Pump(t110) + 496.44*v_P_Pump(t111) + 490.57*v_P_Pump(t112) + 494.88*v_P_Pump(t113) + 527.91*v_P_Pump(t114) + 500.01*v_P_Pump(t115) + 483.46*v_P_Pump(t116) + 466.22*v_P_Pump(t117) + 400.81*v_P_Pump(t118) + 398.47*v_P_Pump(t119) + 335.06*v_P_Pump(t120) + 327.89*v_P_Pump(t121) + 319.96*v_P_Pump(t122) + 304.25*v_P_Pump(t123) + 301.73*v_P_Pump(t124) + 300.98*v_P_Pump(t125) + 303.88*v_P_Pump(t126) + 312.28*v_P_Pump(t127) + 331.12*v_P_Pump(t128) + 365.08*v_P_Pump(t129) + 416.61*v_P_Pump(t130) + 439.33*v_P_Pump(t131) + 432.38*v_P_Pump(t132) + 418.1*v_P_Pump(t133) + 395.9*v_P_Pump(t134) + 397.07*v_P_Pump(t135) + 413.5*v_P_Pump(t136) + 440.59*v_P_Pump(t137) + 469.92*v_P_Pump(t138) + 462.7*v_P_Pump(t139) + 440.03*v_P_Pump(t140) + 380.7*v_P_Pump(t141) + 343.28*v_P_Pump(t142) + 320.18*v_P_Pump(t143) + 297.87*v_P_Pump(t144) + 275.24*v_P_Pump(t145) + 272.44*v_P_Pump(t146) + 275.96*v_P_Pump(t147) + 266.56*v_P_Pump(t148) + 265.75*v_P_Pump(t149) + 266.64*v_P_Pump(t150) + 268.39*v_P_Pump(t151) + 276.9*v_P_Pump(t152) + 301.56*v_P_Pump(t153) + 335.47*v_P_Pump(t154) + 344.99*v_P_Pump(t155) + 359.68*v_P_Pump(t156) + 358.45*v_P_Pump(t157) + 344.74*v_P_Pump(t158) + 347.89*v_P_Pump(t159) + 356.51*v_P_Pump(t160) + 381.6*v_P_Pump(t161) + 433.94*v_P_Pump(t162) + 450.6*v_P_Pump(t163) + 433.26*v_P_Pump(t164) + 404.54*v_P_Pump(t165) + 355.35*v_P_Pump(t166) + 343.96*v_P_Pump(t167) + 318.83*v_P_Pump(t168) =E= 0 ; (LHS = 0)
+     
+
+---- g_BetriebsinhaltSpeicher  =E=  Speicherbilanzgleichung
+
+g_BetriebsinhaltSpeicher(t1)..  1000000*v_Inh(t1) + 3600*v_Q_Turb(t1) - 3600*v_Q_Pump(t1) =E= 40007200 ; (LHS = 0, INFES = 40007200 ****)
+     
+g_BetriebsinhaltSpeicher(t2)..  - 1000000*v_Inh(t1) + 1000000*v_Inh(t2) + 3600*v_Q_Turb(t2) - 3600*v_Q_Pump(t2) =E= 7200 ; (LHS = 0, INFES = 7200 ****)
+     
+g_BetriebsinhaltSpeicher(t3)..  - 1000000*v_Inh(t2) + 1000000*v_Inh(t3) + 3600*v_Q_Turb(t3) - 3600*v_Q_Pump(t3) =E= 7200 ; (LHS = 0, INFES = 7200 ****)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+
+---- g_Turbinen_Leistung  =E=  Abgegebene Leistung im Turbinenbetrieb des Kraftwerkes
+
+g_Turbinen_Leistung(t1)..  v_P_Turb(t1) - 0.43919517465136*v_lambda_Turbine(t1,n2) - 6.15662531846082*v_lambda_Turbine(t1,n3) - 13.5376626186677*v_lambda_Turbine(t1,n4) - 21.8670789229308*v_lambda_Turbine(t1,n5) - 30.710891736006*v_lambda_Turbine(t1,n6) - 39.7965315323742*v_lambda_Turbine(t1,n7) - 48.9487471874141*v_lambda_Turbine(t1,n8) - 58.0532833842781*v_lambda_Turbine(t1,n9) - 67.035310348659*v_lambda_Turbine(t1,n10) - 75.846112039169*v_lambda_Turbine(t1,n11) - 84.4546040831919*v_lambda_Turbine(t1,n12) - 92.8417824711434*v_lambda_Turbine(t1,n13) - 100.997007564654*v_lambda_Turbine(t1,n14) - 108.915468972377*v_lambda_Turbine(t1,n15) - 116.596428230682*v_lambda_Turbine(t1,n16) - 124.04198435108*v_lambda_Turbine(t1,n17) - 131.256197160537*v_lambda_Turbine(t1,n18) - 138.244459307958*v_lambda_Turbine(t1,n19) - 145.013043453362*v_lambda_Turbine(t1,n20) =E= 0 ; (LHS = 0)
+     
+g_Turbinen_Leistung(t2)..  v_P_Turb(t2) - 0.43919517465136*v_lambda_Turbine(t2,n2) - 6.15662531846082*v_lambda_Turbine(t2,n3) - 13.5376626186677*v_lambda_Turbine(t2,n4) - 21.8670789229308*v_lambda_Turbine(t2,n5) - 30.710891736006*v_lambda_Turbine(t2,n6) - 39.7965315323742*v_lambda_Turbine(t2,n7) - 48.9487471874141*v_lambda_Turbine(t2,n8) - 58.0532833842781*v_lambda_Turbine(t2,n9) - 67.035310348659*v_lambda_Turbine(t2,n10) - 75.846112039169*v_lambda_Turbine(t2,n11) - 84.4546040831919*v_lambda_Turbine(t2,n12) - 92.8417824711434*v_lambda_Turbine(t2,n13) - 100.997007564654*v_lambda_Turbine(t2,n14) - 108.915468972377*v_lambda_Turbine(t2,n15) - 116.596428230682*v_lambda_Turbine(t2,n16) - 124.04198435108*v_lambda_Turbine(t2,n17) - 131.256197160537*v_lambda_Turbine(t2,n18) - 138.244459307958*v_lambda_Turbine(t2,n19) - 145.013043453362*v_lambda_Turbine(t2,n20) =E= 0 ; (LHS = 0)
+     
+g_Turbinen_Leistung(t3)..  v_P_Turb(t3) - 0.43919517465136*v_lambda_Turbine(t3,n2) - 6.15662531846082*v_lambda_Turbine(t3,n3) - 13.5376626186677*v_lambda_Turbine(t3,n4) - 21.8670789229308*v_lambda_Turbine(t3,n5) - 30.710891736006*v_lambda_Turbine(t3,n6) - 39.7965315323742*v_lambda_Turbine(t3,n7) - 48.9487471874141*v_lambda_Turbine(t3,n8) - 58.0532833842781*v_lambda_Turbine(t3,n9) - 67.035310348659*v_lambda_Turbine(t3,n10) - 75.846112039169*v_lambda_Turbine(t3,n11) - 84.4546040831919*v_lambda_Turbine(t3,n12) - 92.8417824711434*v_lambda_Turbine(t3,n13) - 100.997007564654*v_lambda_Turbine(t3,n14) - 108.915468972377*v_lambda_Turbine(t3,n15) - 116.596428230682*v_lambda_Turbine(t3,n16) - 124.04198435108*v_lambda_Turbine(t3,n17) - 131.256197160537*v_lambda_Turbine(t3,n18) - 138.244459307958*v_lambda_Turbine(t3,n19) - 145.013043453362*v_lambda_Turbine(t3,n20) =E= 0 ; (LHS = 0)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+
+---- g_Turbinen_Durchfluss  =E=  Summierte Turbinendurchflüsse der Maschinensätze des Kraftwerkes
+
+g_Turbinen_Durchfluss(t1)..  v_Q_Turb(t1) - 2*v_lambda_Turbine(t1,n1) - 4*v_lambda_Turbine(t1,n2) - 6*v_lambda_Turbine(t1,n3) - 8*v_lambda_Turbine(t1,n4) - 10*v_lambda_Turbine(t1,n5) - 12*v_lambda_Turbine(t1,n6) - 14*v_lambda_Turbine(t1,n7) - 16*v_lambda_Turbine(t1,n8) - 18*v_lambda_Turbine(t1,n9) - 20*v_lambda_Turbine(t1,n10) - 22*v_lambda_Turbine(t1,n11) - 24*v_lambda_Turbine(t1,n12) - 26*v_lambda_Turbine(t1,n13) - 28*v_lambda_Turbine(t1,n14) - 30*v_lambda_Turbine(t1,n15) - 32*v_lambda_Turbine(t1,n16) - 34*v_lambda_Turbine(t1,n17) - 36*v_lambda_Turbine(t1,n18) - 38*v_lambda_Turbine(t1,n19) - 40*v_lambda_Turbine(t1,n20) =E= 0 ; (LHS = 0)
+     
+g_Turbinen_Durchfluss(t2)..  v_Q_Turb(t2) - 2*v_lambda_Turbine(t2,n1) - 4*v_lambda_Turbine(t2,n2) - 6*v_lambda_Turbine(t2,n3) - 8*v_lambda_Turbine(t2,n4) - 10*v_lambda_Turbine(t2,n5) - 12*v_lambda_Turbine(t2,n6) - 14*v_lambda_Turbine(t2,n7) - 16*v_lambda_Turbine(t2,n8) - 18*v_lambda_Turbine(t2,n9) - 20*v_lambda_Turbine(t2,n10) - 22*v_lambda_Turbine(t2,n11) - 24*v_lambda_Turbine(t2,n12) - 26*v_lambda_Turbine(t2,n13) - 28*v_lambda_Turbine(t2,n14) - 30*v_lambda_Turbine(t2,n15) - 32*v_lambda_Turbine(t2,n16) - 34*v_lambda_Turbine(t2,n17) - 36*v_lambda_Turbine(t2,n18) - 38*v_lambda_Turbine(t2,n19) - 40*v_lambda_Turbine(t2,n20) =E= 0 ; (LHS = 0)
+     
+g_Turbinen_Durchfluss(t3)..  v_Q_Turb(t3) - 2*v_lambda_Turbine(t3,n1) - 4*v_lambda_Turbine(t3,n2) - 6*v_lambda_Turbine(t3,n3) - 8*v_lambda_Turbine(t3,n4) - 10*v_lambda_Turbine(t3,n5) - 12*v_lambda_Turbine(t3,n6) - 14*v_lambda_Turbine(t3,n7) - 16*v_lambda_Turbine(t3,n8) - 18*v_lambda_Turbine(t3,n9) - 20*v_lambda_Turbine(t3,n10) - 22*v_lambda_Turbine(t3,n11) - 24*v_lambda_Turbine(t3,n12) - 26*v_lambda_Turbine(t3,n13) - 28*v_lambda_Turbine(t3,n14) - 30*v_lambda_Turbine(t3,n15) - 32*v_lambda_Turbine(t3,n16) - 34*v_lambda_Turbine(t3,n17) - 36*v_lambda_Turbine(t3,n18) - 38*v_lambda_Turbine(t3,n19) - 40*v_lambda_Turbine(t3,n20) =E= 0 ; (LHS = 0)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+
+---- g_Turbinen_SummeLambda  =E=  Summe Gewichte der P-Q-Kurve-Approximation entspricht Anzahl Maschinensätze im Turbinenbetrieb
+
+g_Turbinen_SummeLambda(t1)..  - v_lambda_Turbine(t1,n0) - v_lambda_Turbine(t1,n1) - v_lambda_Turbine(t1,n2) - v_lambda_Turbine(t1,n3) - v_lambda_Turbine(t1,n4) - v_lambda_Turbine(t1,n5) - v_lambda_Turbine(t1,n6) - v_lambda_Turbine(t1,n7) - v_lambda_Turbine(t1,n8) - v_lambda_Turbine(t1,n9) - v_lambda_Turbine(t1,n10) - v_lambda_Turbine(t1,n11) - v_lambda_Turbine(t1,n12) - v_lambda_Turbine(t1,n13) - v_lambda_Turbine(t1,n14) - v_lambda_Turbine(t1,n15) - v_lambda_Turbine(t1,n16) - v_lambda_Turbine(t1,n17) - v_lambda_Turbine(t1,n18) - v_lambda_Turbine(t1,n19) - v_lambda_Turbine(t1,n20) + v_on_Turb(t1) =E= 0 ; (LHS = 0)
+     
+g_Turbinen_SummeLambda(t2)..  - v_lambda_Turbine(t2,n0) - v_lambda_Turbine(t2,n1) - v_lambda_Turbine(t2,n2) - v_lambda_Turbine(t2,n3) - v_lambda_Turbine(t2,n4) - v_lambda_Turbine(t2,n5) - v_lambda_Turbine(t2,n6) - v_lambda_Turbine(t2,n7) - v_lambda_Turbine(t2,n8) - v_lambda_Turbine(t2,n9) - v_lambda_Turbine(t2,n10) - v_lambda_Turbine(t2,n11) - v_lambda_Turbine(t2,n12) - v_lambda_Turbine(t2,n13) - v_lambda_Turbine(t2,n14) - v_lambda_Turbine(t2,n15) - v_lambda_Turbine(t2,n16) - v_lambda_Turbine(t2,n17) - v_lambda_Turbine(t2,n18) - v_lambda_Turbine(t2,n19) - v_lambda_Turbine(t2,n20) + v_on_Turb(t2) =E= 0 ; (LHS = 0)
+     
+g_Turbinen_SummeLambda(t3)..  - v_lambda_Turbine(t3,n0) - v_lambda_Turbine(t3,n1) - v_lambda_Turbine(t3,n2) - v_lambda_Turbine(t3,n3) - v_lambda_Turbine(t3,n4) - v_lambda_Turbine(t3,n5) - v_lambda_Turbine(t3,n6) - v_lambda_Turbine(t3,n7) - v_lambda_Turbine(t3,n8) - v_lambda_Turbine(t3,n9) - v_lambda_Turbine(t3,n10) - v_lambda_Turbine(t3,n11) - v_lambda_Turbine(t3,n12) - v_lambda_Turbine(t3,n13) - v_lambda_Turbine(t3,n14) - v_lambda_Turbine(t3,n15) - v_lambda_Turbine(t3,n16) - v_lambda_Turbine(t3,n17) - v_lambda_Turbine(t3,n18) - v_lambda_Turbine(t3,n19) - v_lambda_Turbine(t3,n20) + v_on_Turb(t3) =E= 0 ; (LHS = 0)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+
+---- g_Pumpen_Leistung  =E=  Aufgenommene Leistung im Pumpbetrieb des Kraftwerkes
+
+g_Pumpen_Leistung(t1)..  v_P_Pump(t1) - 4.37184782608696*v_Q_Pump(t1) =E= 0 ; (LHS = 0)
+     
+g_Pumpen_Leistung(t2)..  v_P_Pump(t2) - 4.37184782608696*v_Q_Pump(t2) =E= 0 ; (LHS = 0)
+     
+g_Pumpen_Leistung(t3)..  v_P_Pump(t3) - 4.37184782608696*v_Q_Pump(t3) =E= 0 ; (LHS = 0)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+
+---- g_Pumpen_Foerderstrom  =E=  Summierte Pumpenförderströme der Maschinensätze des Kraftwerkes
+
+g_Pumpen_Foerderstrom(t1)..  v_Q_Pump(t1) - 35*v_on_Pump(t1) =E= 0 ; (LHS = 0)
+     
+g_Pumpen_Foerderstrom(t2)..  v_Q_Pump(t2) - 35*v_on_Pump(t2) =E= 0 ; (LHS = 0)
+     
+g_Pumpen_Foerderstrom(t3)..  v_Q_Pump(t3) - 35*v_on_Pump(t3) =E= 0 ; (LHS = 0)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+
+---- g_MinTurbinenDurchfluss  =G=  Minimaler Turbinendurchfluss
+
+g_MinTurbinenDurchfluss(t1)..  v_Q_Turb(t1) - 16*v_on_Turb(t1) =G= 0 ; (LHS = 0)
+     
+g_MinTurbinenDurchfluss(t2)..  v_Q_Turb(t2) - 16*v_on_Turb(t2) =G= 0 ; (LHS = 0)
+     
+g_MinTurbinenDurchfluss(t3)..  v_Q_Turb(t3) - 16*v_on_Turb(t3) =G= 0 ; (LHS = 0)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+
+---- g_Preis_marg  =E=  Marginal Preis
+
+g_Preis_marg(t1)..  v_Preis_m - 182.73*v_P_Turb(t1) =E= 0 ; (LHS = 0)
+     
+g_Preis_marg(t2)..  v_Preis_m - 175.97*v_P_Turb(t2) =E= 0 ; (LHS = 0)
+     
+g_Preis_marg(t3)..  v_Preis_m - 169.14*v_P_Turb(t3) =E= 0 ; (LHS = 0)
+     
+REMAINING 165 ENTRIES SKIPPED
+
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 01/26/24 10:53:55 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE Aufgabenstellung Using MIP From line 96
+
+
+---- v_Erloes  Erlös [EUR]
+
+v_Erloes
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       g_Erloes
+
+
+---- v_Preis_m  
+
+v_Preis_m
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       g_Preis_marg(t1)
+        1       g_Preis_marg(t2)
+        1       g_Preis_marg(t3)
+        1       g_Preis_marg(t4)
+        1       g_Preis_marg(t5)
+        1       g_Preis_marg(t6)
+        1       g_Preis_marg(t7)
+        1       g_Preis_marg(t8)
+        1       g_Preis_marg(t9)
+        1       g_Preis_marg(t10)
+        1       g_Preis_marg(t11)
+        1       g_Preis_marg(t12)
+        1       g_Preis_marg(t13)
+        1       g_Preis_marg(t14)
+        1       g_Preis_marg(t15)
+        1       g_Preis_marg(t16)
+        1       g_Preis_marg(t17)
+        1       g_Preis_marg(t18)
+        1       g_Preis_marg(t19)
+        1       g_Preis_marg(t20)
+        1       g_Preis_marg(t21)
+        1       g_Preis_marg(t22)
+        1       g_Preis_marg(t23)
+        1       g_Preis_marg(t24)
+        1       g_Preis_marg(t25)
+        1       g_Preis_marg(t26)
+        1       g_Preis_marg(t27)
+        1       g_Preis_marg(t28)
+        1       g_Preis_marg(t29)
+        1       g_Preis_marg(t30)
+        1       g_Preis_marg(t31)
+        1       g_Preis_marg(t32)
+        1       g_Preis_marg(t33)
+        1       g_Preis_marg(t34)
+        1       g_Preis_marg(t35)
+        1       g_Preis_marg(t36)
+        1       g_Preis_marg(t37)
+        1       g_Preis_marg(t38)
+        1       g_Preis_marg(t39)
+        1       g_Preis_marg(t40)
+        1       g_Preis_marg(t41)
+        1       g_Preis_marg(t42)
+        1       g_Preis_marg(t43)
+        1       g_Preis_marg(t44)
+        1       g_Preis_marg(t45)
+        1       g_Preis_marg(t46)
+        1       g_Preis_marg(t47)
+        1       g_Preis_marg(t48)
+        1       g_Preis_marg(t49)
+        1       g_Preis_marg(t50)
+        1       g_Preis_marg(t51)
+        1       g_Preis_marg(t52)
+        1       g_Preis_marg(t53)
+        1       g_Preis_marg(t54)
+        1       g_Preis_marg(t55)
+        1       g_Preis_marg(t56)
+        1       g_Preis_marg(t57)
+        1       g_Preis_marg(t58)
+        1       g_Preis_marg(t59)
+        1       g_Preis_marg(t60)
+        1       g_Preis_marg(t61)
+        1       g_Preis_marg(t62)
+        1       g_Preis_marg(t63)
+        1       g_Preis_marg(t64)
+        1       g_Preis_marg(t65)
+        1       g_Preis_marg(t66)
+        1       g_Preis_marg(t67)
+        1       g_Preis_marg(t68)
+        1       g_Preis_marg(t69)
+        1       g_Preis_marg(t70)
+        1       g_Preis_marg(t71)
+        1       g_Preis_marg(t72)
+        1       g_Preis_marg(t73)
+        1       g_Preis_marg(t74)
+        1       g_Preis_marg(t75)
+        1       g_Preis_marg(t76)
+        1       g_Preis_marg(t77)
+        1       g_Preis_marg(t78)
+        1       g_Preis_marg(t79)
+        1       g_Preis_marg(t80)
+        1       g_Preis_marg(t81)
+        1       g_Preis_marg(t82)
+        1       g_Preis_marg(t83)
+        1       g_Preis_marg(t84)
+        1       g_Preis_marg(t85)
+        1       g_Preis_marg(t86)
+        1       g_Preis_marg(t87)
+        1       g_Preis_marg(t88)
+        1       g_Preis_marg(t89)
+        1       g_Preis_marg(t90)
+        1       g_Preis_marg(t91)
+        1       g_Preis_marg(t92)
+        1       g_Preis_marg(t93)
+        1       g_Preis_marg(t94)
+        1       g_Preis_marg(t95)
+        1       g_Preis_marg(t96)
+        1       g_Preis_marg(t97)
+        1       g_Preis_marg(t98)
+        1       g_Preis_marg(t99)
+        1       g_Preis_marg(t100)
+        1       g_Preis_marg(t101)
+        1       g_Preis_marg(t102)
+        1       g_Preis_marg(t103)
+        1       g_Preis_marg(t104)
+        1       g_Preis_marg(t105)
+        1       g_Preis_marg(t106)
+        1       g_Preis_marg(t107)
+        1       g_Preis_marg(t108)
+        1       g_Preis_marg(t109)
+        1       g_Preis_marg(t110)
+        1       g_Preis_marg(t111)
+        1       g_Preis_marg(t112)
+        1       g_Preis_marg(t113)
+        1       g_Preis_marg(t114)
+        1       g_Preis_marg(t115)
+        1       g_Preis_marg(t116)
+        1       g_Preis_marg(t117)
+        1       g_Preis_marg(t118)
+        1       g_Preis_marg(t119)
+        1       g_Preis_marg(t120)
+        1       g_Preis_marg(t121)
+        1       g_Preis_marg(t122)
+        1       g_Preis_marg(t123)
+        1       g_Preis_marg(t124)
+        1       g_Preis_marg(t125)
+        1       g_Preis_marg(t126)
+        1       g_Preis_marg(t127)
+        1       g_Preis_marg(t128)
+        1       g_Preis_marg(t129)
+        1       g_Preis_marg(t130)
+        1       g_Preis_marg(t131)
+        1       g_Preis_marg(t132)
+        1       g_Preis_marg(t133)
+        1       g_Preis_marg(t134)
+        1       g_Preis_marg(t135)
+        1       g_Preis_marg(t136)
+        1       g_Preis_marg(t137)
+        1       g_Preis_marg(t138)
+        1       g_Preis_marg(t139)
+        1       g_Preis_marg(t140)
+        1       g_Preis_marg(t141)
+        1       g_Preis_marg(t142)
+        1       g_Preis_marg(t143)
+        1       g_Preis_marg(t144)
+        1       g_Preis_marg(t145)
+        1       g_Preis_marg(t146)
+        1       g_Preis_marg(t147)
+        1       g_Preis_marg(t148)
+        1       g_Preis_marg(t149)
+        1       g_Preis_marg(t150)
+        1       g_Preis_marg(t151)
+        1       g_Preis_marg(t152)
+        1       g_Preis_marg(t153)
+        1       g_Preis_marg(t154)
+        1       g_Preis_marg(t155)
+        1       g_Preis_marg(t156)
+        1       g_Preis_marg(t157)
+        1       g_Preis_marg(t158)
+        1       g_Preis_marg(t159)
+        1       g_Preis_marg(t160)
+        1       g_Preis_marg(t161)
+        1       g_Preis_marg(t162)
+        1       g_Preis_marg(t163)
+        1       g_Preis_marg(t164)
+        1       g_Preis_marg(t165)
+        1       g_Preis_marg(t166)
+        1       g_Preis_marg(t167)
+        1       g_Preis_marg(t168)
+
+
+---- v_Inh  Betriebsinhalt des Speichers (Oberlieger) zum Zeitpunkt t [hm3]
+
+v_Inh(t1)
+                (.LO, .L, .UP, .M = 0, 0, 60, 0)
+  1000000       g_BetriebsinhaltSpeicher(t1)
+  -1.000000E+6  g_BetriebsinhaltSpeicher(t2)
+
+v_Inh(t2)
+                (.LO, .L, .UP, .M = 0, 0, 60, 0)
+  1000000       g_BetriebsinhaltSpeicher(t2)
+  -1.000000E+6  g_BetriebsinhaltSpeicher(t3)
+
+v_Inh(t3)
+                (.LO, .L, .UP, .M = 0, 0, 60, 0)
+  1000000       g_BetriebsinhaltSpeicher(t3)
+  -1.000000E+6  g_BetriebsinhaltSpeicher(t4)
+
+REMAINING 165 ENTRIES SKIPPED
+
+---- v_P_Turb  Abgegebene Leistung im Turbinenbetrieb des Kraftwerkes in der Stunde von t-1 bis t [MW]
+
+v_P_Turb(t1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+     -182.73    g_Erloes
+        1       g_Turbinen_Leistung(t1)
+     -182.73    g_Preis_marg(t1)
+
+v_P_Turb(t2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+     -175.97    g_Erloes
+        1       g_Turbinen_Leistung(t2)
+     -175.97    g_Preis_marg(t2)
+
+v_P_Turb(t3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+     -169.14    g_Erloes
+        1       g_Turbinen_Leistung(t3)
+     -169.14    g_Preis_marg(t3)
+
+REMAINING 165 ENTRIES SKIPPED
+
+---- v_P_Pump  Aufgenommene Leistung im Pumpbetrieb des Kraftwerkes in der Stunde von t-1 bis t [MW]
+
+v_P_Pump(t1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      214.73    g_Erloes
+        1       g_Pumpen_Leistung(t1)
+
+v_P_Pump(t2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      207.97    g_Erloes
+        1       g_Pumpen_Leistung(t2)
+
+v_P_Pump(t3)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+      201.14    g_Erloes
+        1       g_Pumpen_Leistung(t3)
+
+REMAINING 165 ENTRIES SKIPPED
+
+---- v_Q_Turb  Summierte Turbinendurchflüsse der Maschinensätze des Kraftwerkes in der Stunde von t-1 bis t [m3 pro s]
+
+v_Q_Turb(t1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+     3600       g_BetriebsinhaltSpeicher(t1)
+        1       g_Turbinen_Durchfluss(t1)
+        1       g_MinTurbinenDurchfluss(t1)
+
+v_Q_Turb(t2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+     3600       g_BetriebsinhaltSpeicher(t2)
+        1       g_Turbinen_Durchfluss(t2)
+        1       g_MinTurbinenDurchfluss(t2)
+
+v_

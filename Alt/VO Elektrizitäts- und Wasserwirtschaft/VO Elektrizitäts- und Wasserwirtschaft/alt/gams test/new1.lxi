@@ -1,0 +1,20 @@
+B 3 C o m p i l a t i o n
+B 68 Equation Listing    SOLVE position Using MIP From line 52
+D 71 cost
+D 76 Grenze1
+D 87 Grenze3
+D 92 IntOrtX1Y1
+B 104 Column Listing      SOLVE position Using MIP From line 52
+E 107 zz
+E 114 ort
+E 140 v_intX1Y1
+B 151 Range Statistics    SOLVE position Using MIP From line 52
+B 162 Model Statistics    SOLVE position Using MIP From line 52
+B 175 Solution Report     SOLVE position Using MIP From line 52
+F 220 cost
+F 222 Grenze1
+F 233 Grenze3
+F 235 IntOrtX1Y1
+G 246 zz
+G 248 ort
+G 259 v_intX1Y1

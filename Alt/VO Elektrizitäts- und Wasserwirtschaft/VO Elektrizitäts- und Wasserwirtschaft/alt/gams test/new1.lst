@@ -1,0 +1,277 @@
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/18/23 21:26:04 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   2  # definiert # als Kommentaroperator
+   3   
+      Kommentar
+   7   
+   8  set x /1*2/ #set sagt index 1 bis 2
+   9  ;
+  10  set y /1*2/
+  11  ;
+  12   
+  13  Variable
+  14  zz
+  15  ;
+  16  positive variable ort(x,y)
+  17  ;
+  18  integer variable v_intX1Y1
+  19  ;
+  20   
+  21  Parameter   #erster Position, zweiter Wert
+  22  a(x,y)/
+  23  1.1 1
+  24  1.2 1
+  25  2.1 1
+  26  2.2 1
+  27  /
+  28  ;
+  29   
+  30  Equations
+  31  cost
+  32  Grenze1(x,y)
+  33  Grenze3
+  34  IntOrtX1Y1(x,y)
+  35  ;
+  36   
+      =e= entspricht = ... equal
+      =l= entspricht kleiner, low
+  41   
+  42  cost .. zz =e= sum((x,y), ort(x,y));
+  43  #Grenze1 .. x =l= 1;
+  44  #Grenze2 .. y =l= 1;
+  45  Grenze1(x,y) .. ort(x,y) =l= 1;
+  46  IntOrtX1Y1(x,y) .. ort('1','1') =e= v_intX1Y1;
+  47   
+  48  Grenze3 .. sum((x,y), ort(x,y)*a(x,y)) =l= 1;
+  49   
+  50  model position /cost, Grenze1, Grenze3, IntOrtX1Y1/;
+  51   
+  52  solve position using mip maximize zz;
+  53   
+      file results /Output.txt/;
+      put results/;
+       
+          put zz.l:>8:2;
+          loop(x,
+          loop(y,
+                  put ort.l(x,y):>8:2;
+          )
+          )
+
+
+COMPILATION TIME     =        0.000 SECONDS      3 MB  45.3.0 c4c31d8a WEX-WEI
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/18/23 21:26:04 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE position Using MIP From line 52
+
+
+---- cost  =E=  
+
+cost..  zz - ort(1,1) - ort(1,2) - ort(2,1) - ort(2,2) =E= 0 ; (LHS = 0)
+     
+
+---- Grenze1  =L=  
+
+Grenze1(1,1)..  ort(1,1) =L= 1 ; (LHS = 0)
+     
+Grenze1(1,2)..  ort(1,2) =L= 1 ; (LHS = 0)
+     
+Grenze1(2,1)..  ort(2,1) =L= 1 ; (LHS = 0)
+     
+REMAINING ENTRY SKIPPED
+
+
+---- Grenze3  =L=  
+
+Grenze3..  ort(1,1) + ort(1,2) + ort(2,1) + ort(2,2) =L= 1 ; (LHS = 0)
+     
+
+---- IntOrtX1Y1  =E=  
+
+IntOrtX1Y1(1,1)..  ort(1,1) - v_intX1Y1 =E= 0 ; (LHS = 0)
+     
+IntOrtX1Y1(1,2)..  ort(1,1) - v_intX1Y1 =E= 0 ; (LHS = 0)
+     
+IntOrtX1Y1(2,1)..  ort(1,1) - v_intX1Y1 =E= 0 ; (LHS = 0)
+     
+REMAINING ENTRY SKIPPED
+
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/18/23 21:26:04 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE position Using MIP From line 52
+
+
+---- zz  
+
+zz
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       cost
+
+
+---- ort  
+
+ort(1,1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       cost
+        1       Grenze1(1,1)
+        1       Grenze3
+        1       IntOrtX1Y1(1,1)
+        1       IntOrtX1Y1(1,2)
+        1       IntOrtX1Y1(2,1)
+        1       IntOrtX1Y1(2,2)
+
+ort(1,2)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       cost
+        1       Grenze1(1,2)
+        1       Grenze3
+
+ort(2,1)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       cost
+        1       Grenze1(2,1)
+        1       Grenze3
+
+REMAINING ENTRY SKIPPED
+
+---- v_intX1Y1  
+
+v_intX1Y1
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       IntOrtX1Y1(1,1)
+       -1       IntOrtX1Y1(1,2)
+       -1       IntOrtX1Y1(2,1)
+       -1       IntOrtX1Y1(2,2)
+
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/18/23 21:26:04 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Range Statistics    SOLVE position Using MIP From line 52
+
+
+RANGE STATISTICS (ABSOLUTE NON-ZERO FINITE VALUES)
+
+RHS       [min, max] : [ 1.000E+00, 1.000E+00] - Zero values observed as well
+Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+Matrix    [min, max] : [ 1.000E+00, 1.000E+00]
+
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/18/23 21:26:04 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE position Using MIP From line 52
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           4     SINGLE EQUATIONS           10
+BLOCKS OF VARIABLES           3     SINGLE VARIABLES            6
+NON ZERO ELEMENTS            21     DISCRETE VARIABLES          1
+
+
+GENERATION TIME      =        0.016 SECONDS      4 MB  45.3.0 c4c31d8a WEX-WEI
+GAMS 45.3.0  c4c31d8a Nov 11, 2023          WEX-WEI x86 64bit/MS Windows - 11/18/23 21:26:04 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE position Using MIP From line 52
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   position            OBJECTIVE  zz
+     TYPE    MIP                 DIRECTION  MAXIMIZE
+     SOLVER  CPLEX               FROM LINE  52
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      1 Optimal
+**** OBJECTIVE VALUE                1.0000
+
+ RESOURCE USAGE, LIMIT          0.000 10000000000.000
+ ITERATION COUNT, LIMIT         0    2147483647
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- GMO memory 0.50 Mb (peak 0.50 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 0.00 Mb (peak 0.00 Mb)
+--- Starting Cplex
+
+
+--- MIP status (101): integer optimal solution.
+--- Cplex Time: 0.00sec (det. 0.01 ticks)
+
+--- Returning a primal only solution to GAMS (marginals all set to NA).
+--- Fixing integer variables and solving final LP...
+
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.00sec (det. 0.01 ticks)
+
+
+Proven optimal solution
+MIP Solution:            1.000000    (0 iterations, 0 nodes)
+Final Solve:             1.000000    (0 iterations)
+
+Best possible:           1.000000
+Absolute gap:            0.000000
+Relative gap:            0.000000
+
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU cost                .              .              .             1.0000      
+
+---- EQU Grenze1  
+
+           LOWER          LEVEL          UPPER         MARGINAL
+
+1.1        -INF             .             1.0000          .          
+1.2        -INF            1.0000         1.0000          .          
+2.1        -INF             .             1.0000          .          
+2.2        -INF             .             1.0000          .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU Grenze3           -INF            1.0000         1.0000         1.0000      
+
+---- EQU IntOrtX1Y1  
+
+           LOWER          LEVEL          UPPER         MARGINAL
+
+1.1          .              .              .              .          
+1.2          .              .              .              .          
+2.1          .              .              .              .          
+2.2          .              .              .              .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR zz                -INF            1.0000        +INF             .          
+
+---- VAR ort  
+
+           LOWER          LEVEL          UPPER         MARGINAL
+
+1.1          .              .            +INF            EPS         
+1.2          .             1.0000        +INF             .          
+2.1          .              .            +INF            EPS         
+2.2          .              .            +INF            EPS         
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR v_intX1Y1           .              .            +INF            EPS         
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+
+
+EXECUTION TIME       =        0.047 SECONDS      4 MB  45.3.0 c4c31d8a WEX-WEI
+
+
+USER: Course License                                 S231018|0002CN-GEN
+      Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizitäts- und Wasserwirtschaft\gams test\new1.gms
+Output     C:\Users\chris\Documents\Studium\Semester 3\VO Elektrizitäts- und Wasserwirtschaft\gams test\new1.lst

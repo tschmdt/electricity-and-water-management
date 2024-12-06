@@ -1,0 +1,52 @@
+B 3 C o m p i l a t i o n
+B 1753 Include File Summary
+B 1768 Equation Listing    SOLVE Pumpspeicherkraftwerk Using MIP From line 1729
+D 1771 e_Gewinn
+D 1784 e_p_Max_Speicherinhalt
+D 1795 e_pv_fuellstand
+D 1806 e_p_Max_Turbinenleistung
+D 1817 e_p_Max_Pumpleistung
+D 1828 e_fuellstand_start
+D 1833 e_fuellstand_ende
+D 1838 e_max_erzeugung_GuD
+D 1849 e_mindestlast_GuD
+D 1860 e_anfahren_GuD
+D 1871 e_linearisierung
+D 1882 e_erzeugung_Gt
+D 1893 e_erzeugung_Lk
+B 1905 Column Listing      SOLVE Pumpspeicherkraftwerk Using MIP From line 1729
+E 1908 v_gewinn
+E 1915 pv_pumpen
+E 1936 pv_turbinieren
+E 1957 pv_fuellstand
+E 1979 pv_gud_erzeugung
+E 2001 pv_start_gud
+E 2020 bv_zustand_gud
+E 2048 pv_gasturbinieren
+E 2067 pv_wasserturbinieren
+B 2087 Range Statistics    SOLVE Pumpspeicherkraftwerk Using MIP From line 1729
+B 2098 Model Statistics    SOLVE Pumpspeicherkraftwerk Using MIP From line 1729
+B 2111 Solution Report     SOLVE Pumpspeicherkraftwerk Using MIP From line 1729
+F 2146 e_Gewinn
+F 2148 e_p_Max_Speicherinhalt
+F 2921 e_pv_fuellstand
+F 3693 e_p_Max_Turbinenleistung
+F 4466 e_p_Max_Pumpleistung
+F 5241 e_fuellstand_start
+F 5242 e_fuellstand_ende
+F 5244 e_max_erzeugung_GuD
+F 6017 e_mindestlast_GuD
+F 6790 e_anfahren_GuD
+F 7563 e_linearisierung
+F 8336 e_erzeugung_Gt
+F 9109 e_erzeugung_Lk
+G 9884 v_gewinn
+G 9888 pv_pumpen
+G 10661 pv_turbinieren
+G 11434 pv_fuellstand
+G 12207 pv_gud_erzeugung
+G 12980 pv_start_gud
+G 13753 bv_zustand_gud
+G 14526 pv_gasturbinieren
+G 15299 pv_wasserturbinieren
+B 16078 E x e c u t i o n
