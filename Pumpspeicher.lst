@@ -1,4 +1,4 @@
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 1
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 1
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 C o m p i l a t i o n
 
@@ -822,7 +822,7 @@ INCLUDE    C:\Users\E370_\Documents\Uni\electricity-and-water-management\Stunden
  817  loop(t,put , ord(t):12:3, Spot(t):12:3,
  818           speicher.l(t):12:3,turbine.l(t):12:3, pumpe.l(t):12:3 /);
  819   
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 2
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 2
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Include File Summary
 
@@ -834,7 +834,7 @@ Include File Summary
 
 
 COMPILATION TIME     =        0.016 SECONDS      3 MB  48.3.0 71b5641f WEX-WEI
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 3
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 3
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Equation Listing    SOLVE Pumpspeicher Using LP From line 810
 
@@ -897,7 +897,7 @@ e_leistung_pumpe(3)..  pumpe(3) =L= 300 ; (LHS = 0)
      
 REMAINING 766 ENTRIES SKIPPED
 
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 4
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 4
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Column Listing      SOLVE Pumpspeicher Using LP From line 810
 
@@ -970,7 +970,7 @@ speicher(3)
         1       e_speichermax(3)
 
 REMAINING 766 ENTRIES SKIPPED
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 5
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 5
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Range Statistics    SOLVE Pumpspeicher Using LP From line 810
 
@@ -981,7 +981,7 @@ RHS       [min, max] : [ 1.000E+01, 2.000E+03] - Zero values observed as well
 Bound     [min, max] : [        NA,        NA] - Zero values observed as well
 Matrix    [min, max] : [ 7.500E-01, 8.712E+01]
 
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 6
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 6
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Model Statistics    SOLVE Pumpspeicher Using LP From line 810
 
@@ -993,8 +993,8 @@ BLOCKS OF VARIABLES           4     SINGLE VARIABLES        2,308
 NON ZERO ELEMENTS         6,918
 
 
-GENERATION TIME      =        0.047 SECONDS      5 MB  48.3.0 71b5641f WEX-WEI
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 7
+GENERATION TIME      =        0.031 SECONDS      5 MB  48.3.0 71b5641f WEX-WEI
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 7
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 Solution Report     SOLVE Pumpspeicher Using LP From line 810
 
@@ -1009,7 +1009,7 @@ Solution Report     SOLVE Pumpspeicher Using LP From line 810
 **** MODEL STATUS      1 Optimal
 **** OBJECTIVE VALUE           971552.8833
 
- RESOURCE USAGE, LIMIT          0.031 10000000000.000
+ RESOURCE USAGE, LIMIT          0.016 10000000000.000
  ITERATION COUNT, LIMIT       383    2147483647
 --- GAMS/CPLEX licensed for continuous and discrete problems.
 --- GMO setup time: 0.00s
@@ -1022,7 +1022,7 @@ Solution Report     SOLVE Pumpspeicher Using LP From line 810
 
 
 --- LP status (1): optimal.
---- Cplex Time: 0.03sec (det. 6.84 ticks)
+--- Cplex Time: 0.02sec (det. 6.84 ticks)
 
 
 Optimal solution found
@@ -6460,7 +6460,7 @@ Objective:       971552.883333
 **** REPORT SUMMARY :        0     NONOPT
                              0 INFEASIBLE
                              0  UNBOUNDED
-GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 11/22/24 11:33:11 Page 8
+GAMS 48.3.0  71b5641f Nov 12, 2024          WEX-WEI x86 64bit/MS Windows - 01/15/25 19:53:46 Page 8
 G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
 E x e c u t i o n
 
@@ -6470,7 +6470,7 @@ E x e c u t i o n
 results1 C:\Users\E370_\Documents\Uni\electricity-and-water-management\speichereinsatz.txt
 
 
-EXECUTION TIME       =        0.265 SECONDS      7 MB  48.3.0 71b5641f WEX-WEI
+EXECUTION TIME       =        0.156 SECONDS      7 MB  48.3.0 71b5641f WEX-WEI
 
 
 USER: Course License                                 S241011|0002CO-GEN

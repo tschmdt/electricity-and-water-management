@@ -1,0 +1,42 @@
+B 3 C o m p i l a t i o n
+B 936 Include File Summary
+B 950 Equation Listing    SOLVE Fundamentalmodell Using LP From line 917
+D 953 e_Profit
+D 962 e_MaxSpeicher
+D 973 e_Speicherinhalt
+D 984 e_MaxSpeicherinhalt
+D 995 e_EndSpeicherinhalt
+D 1000 e_MaxPumpe
+D 1011 e_MaxLeistungGuD
+D 1022 e_Startkosten
+D 1033 e_MinGeneration
+D 1044 e_Online
+B 1056 Column Listing      SOLVE Fundamentalmodell Using LP From line 917
+E 1059 Gewinn
+E 1066 GenSpeicher
+E 1086 GenPumpe
+E 1106 Fuellstand
+E 1127 Erzeugung_GuD
+E 1149 Startkosten_GasKW
+E 1168 ON
+B 1197 Range Statistics    SOLVE Fundamentalmodell Using LP From line 917
+B 1208 Model Statistics    SOLVE Fundamentalmodell Using LP From line 917
+B 1221 Solution Report     SOLVE Fundamentalmodell Using LP From line 917
+F 1256 e_Profit
+F 1258 e_MaxSpeicher
+F 2032 e_Speicherinhalt
+F 2805 e_MaxSpeicherinhalt
+F 3579 e_EndSpeicherinhalt
+F 3585 e_MaxPumpe
+F 4359 e_MaxLeistungGuD
+F 5133 e_Startkosten
+F 5907 e_MinGeneration
+F 6681 e_Online
+G 7457 Gewinn
+G 7459 GenSpeicher
+G 8233 GenPumpe
+G 9007 Fuellstand
+G 9781 Erzeugung_GuD
+G 10555 Startkosten_GasKW
+G 11329 ON
+B 12109 E x e c u t i o n
