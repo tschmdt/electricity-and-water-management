@@ -1,0 +1,48 @@
+B 3 C o m p i l a t i o n
+B 159 Include File Summary
+B 172 Equation Listing    SOLVE Aufgabenstellung Using MIP From line 134
+D 175 e_Erloes
+D 180 e_Betriebsinhalt
+D 191 e_Turbinenbetrieb_Durchfluss
+D 202 e_Turbinenbetrieb_Leistung
+D 213 e_Maschinensatzbedingung
+D 224 e_Max_Turbinendurchfluss
+D 235 e_Min_Turbinendurchfluss
+D 246 e_Pumbenbetrieb_Durchfluss
+D 257 e_Pumpenbetrieb_Leistung
+D 268 e_Angebotene_Leistung
+B 280 Column Listing      SOLVE Aufgabenstellung Using MIP From line 134
+E 283 v_Erloes
+E 290 v_Angebotene_Leistung
+E 306 v_Inh
+E 325 v_P_Turb
+E 347 v_P_Pump
+E 369 v_Q_Turb
+E 394 v_Q_Pump
+E 416 lambda
+E 435 iv_Pump_on
+E 451 iv_Turb_on
+B 474 Range Statistics    SOLVE Aufgabenstellung Using MIP From line 134
+B 485 Model Statistics    SOLVE Aufgabenstellung Using MIP From line 134
+B 498 Solution Report     SOLVE Aufgabenstellung Using MIP From line 134
+F 545 e_Erloes
+F 547 e_Betriebsinhalt
+F 720 e_Turbinenbetrieb_Durchfluss
+F 893 e_Turbinenbetrieb_Leistung
+F 1066 e_Maschinensatzbedingung
+F 1239 e_Max_Turbinendurchfluss
+F 1412 e_Min_Turbinendurchfluss
+F 1585 e_Pumbenbetrieb_Durchfluss
+F 1758 e_Pumpenbetrieb_Leistung
+F 1931 e_Angebotene_Leistung
+G 2106 v_Erloes
+G 2110 v_Angebotene_Leistung
+G 2283 v_Inh
+G 2456 v_P_Turb
+G 2629 v_P_Pump
+G 2802 v_Q_Turb
+G 2975 v_Q_Pump
+G 3148 lambda
+G 6681 iv_Pump_on
+G 6854 iv_Turb_on
+B 7033 E x e c u t i o n

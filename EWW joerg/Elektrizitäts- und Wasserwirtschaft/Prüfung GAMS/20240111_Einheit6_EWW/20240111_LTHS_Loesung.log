@@ -1,0 +1,594 @@
+
+--- Job Pruefung.gms Start 01/26/24 12:29:27 45.5.0 8d95ac18 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Pruefung.gms"
+    PageSize 0
+    ScrDir "C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\225a\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.5.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- Pruefung.gms(27) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=p_Preis rng=Input!A3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  p_Preis        1      Input                B3:B8762      A3:A8762      --:--         
+Total time = 1235 Ms
+--- Pruefung.gms(28) 3 Mb
+--- GDXin=C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.gdx
+--- Pruefung.gms(34) 4 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=Dar rng=Input!C3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  Dar            1      Input                D3:D8762      C3:C8762      --:--         
+Total time = 1110 Ms
+--- Pruefung.gms(35) 4 Mb
+--- GDXin=C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.gdx
+--- Pruefung.gms(128) 4 Mb
+--- Starting execution: elapsed 0:00:02.482
+--- Pruefung.gms(103) 6 Mb  8 secs
+--- Generating LP model Aufgabenstellung
+--- Pruefung.gms(120) 16 Mb
+--- LOOPS i = i1
+---   35,041 rows  35,041 columns  105,121 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 7.461E-01, 8.203E+02] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 3.034E-04, 4.755E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:11.073
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 1.70 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 13.02 Mb (peak 13.29 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.07 Mb (peak 4.48 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 8760 substitutions.
+Reduced LP has 26280 rows, 26280 columns, and 70080 nonzeros.
+Presolve time = 0.05 sec. (43.76 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =     671152811.617601
+Perturbation started.
+Iteration:   101   Dual objective     =     671152811.617599
+Iteration:   739   Dual objective     =     638527585.393548
+Iteration:  1388   Dual objective     =     607882630.176163
+Iteration:  2040   Dual objective     =     588867043.237086
+Iteration:  2484   Dual objective     =     274686762.239569
+Iteration:  2608   Dual objective     =     182383293.071601
+Iteration:  2757   Dual objective     =     182344484.882943
+Iteration:  2889   Dual objective     =     182309012.631235
+Iteration:  3003   Dual objective     =     182264489.371779
+Iteration:  3082   Dual objective     =     182233972.422297
+Iteration:  3155   Dual objective     =     182211038.467251
+Iteration:  3234   Dual objective     =     182155582.495870
+Iteration:  3319   Dual objective     =     182046843.167845
+Iteration:  3381   Dual objective     =     181808249.601867
+Iteration:  3443   Dual objective     =     181614210.643762
+Iteration:  3505   Dual objective     =     181464901.267645
+Iteration:  3590   Dual objective     =     181267852.040174
+Iteration:  3669   Dual objective     =     181079275.066120
+Iteration:  3741   Dual objective     =     180930379.393051
+Iteration:  3812   Dual objective     =     180821459.298703
+Iteration:  3886   Dual objective     =     180693407.951628
+Iteration:  3967   Dual objective     =     180528737.083783
+Iteration:  4034   Dual objective     =     180291963.011102
+Iteration:  4098   Dual objective     =     180065368.376585
+Iteration:  4163   Dual objective     =     179827046.950607
+Iteration:  4376   Dual objective     =     179700085.878339
+Iteration:  4563   Dual objective     =     179649691.755937
+Iteration:  4709   Dual objective     =     179616135.911458
+Iteration:  4874   Dual objective     =     179574591.075930
+Iteration:  5018   Dual objective     =     179536148.384172
+Iteration:  5144   Dual objective     =     179482771.317481
+Iteration:  5288   Dual objective     =     179366158.519916
+Iteration:  5392   Dual objective     =     179263882.591477
+Iteration:  5478   Dual objective     =     179231855.429764
+Iteration:  5540   Dual objective     =     179137358.267279
+Iteration:  5603   Dual objective     =     179083642.874312
+Iteration:  5665   Dual objective     =     179054719.400310
+Iteration:  5805   Dual objective     =     179035542.670915
+Iteration:  5933   Dual objective     =     179019316.268413
+Iteration:  6063   Dual objective     =     179003820.505371
+Iteration:  6189   Dual objective     =     178989883.954756
+Iteration:  6325   Dual objective     =     178974341.824851
+Iteration:  6454   Dual objective     =     178959839.874979
+Iteration:  6552   Dual objective     =     178883504.212606
+Iteration:  6639   Dual objective     =     178824504.705151
+Iteration:  6701   Dual objective     =     178760197.263211
+Iteration:  6793   Dual objective     =     178721733.780602
+Iteration:  6855   Dual objective     =     178626071.904528
+Iteration:  6917   Dual objective     =     178535573.089868
+Iteration:  6981   Dual objective     =     178482834.088712
+Iteration:  7086   Dual objective     =     178427963.647924
+Iteration:  7158   Dual objective     =     178376674.877843
+Iteration:  7220   Dual objective     =     178323913.248341
+Iteration:  7282   Dual objective     =     178252918.776826
+Iteration:  7390   Dual objective     =     178220588.294957
+Iteration:  7465   Dual objective     =     178169397.288977
+Iteration:  7569   Dual objective     =     178136283.176579
+Iteration:  7644   Dual objective     =     178112746.615449
+Iteration:  7706   Dual objective     =     178066278.725818
+Iteration:  7768   Dual objective     =     178028582.981654
+Iteration:  7843   Dual objective     =     177983883.566953
+Iteration:  7925   Dual objective     =     177902299.917137
+Iteration:  7999   Dual objective     =     177842064.752249
+Iteration:  8061   Dual objective     =     177784427.755906
+Iteration:  8144   Dual objective     =     177756298.524002
+Iteration:  8206   Dual objective     =     177694774.108446
+Iteration:  8268   Dual objective     =     177646214.843653
+Iteration:  8330   Dual objective     =     177600485.117364
+Iteration:  8397   Dual objective     =     177548768.120776
+Iteration:  8459   Dual objective     =     177496847.720278
+Iteration:  8521   Dual objective     =     177457017.839848
+Iteration:  8583   Dual objective     =     177416052.861576
+Iteration:  8645   Dual objective     =     177370511.273675
+Iteration:  8747   Dual objective     =     177349706.638615
+Iteration:  8809   Dual objective     =     177310151.901636
+Iteration:  8871   Dual objective     =     177278969.383083
+Iteration:  8933   Dual objective     =     177250522.327064
+Iteration:  8995   Dual objective     =     177220783.876349
+Iteration:  9066   Dual objective     =     177191070.382922
+Iteration:  9128   Dual objective     =     177179297.233452
+Iteration:  9190   Dual objective     =     177160881.819507
+Iteration:  9253   Dual objective     =     177129113.878526
+Iteration:  9336   Dual objective     =     177097105.117351
+Iteration:  9398   Dual objective     =     177079717.091421
+Iteration:  9460   Dual objective     =     177057046.549885
+Iteration:  9528   Dual objective     =     177030855.596228
+Iteration:  9590   Dual objective     =     177015110.767249
+Iteration:  9652   Dual objective     =     176999031.537021
+Iteration:  9714   Dual objective     =     176973534.127327
+Iteration:  9812   Dual objective     =     176950738.021425
+Iteration:  9875   Dual objective     =     176921901.370944
+Iteration:  9937   Dual objective     =     176889556.802187
+Iteration:  9999   Dual objective     =     176863900.437352
+Iteration: 10071   Dual objective     =     176842005.970490
+Iteration: 10150   Dual objective     =     176818775.431215
+Iteration: 10229   Dual objective     =     176804276.739149
+Iteration: 10302   Dual objective     =     176791050.246270
+Iteration: 10377   Dual objective     =     176780719.048112
+Iteration: 10509   Dual objective     =     176766162.718347
+Iteration: 10571   Dual objective     =     176760275.553251
+Iteration: 10633   Dual objective     =     176740343.223831
+Iteration: 10702   Dual objective     =     176735984.434022
+Iteration: 10768   Dual objective     =     176731327.574141
+Iteration: 10830   Dual objective     =     176727384.573552
+Iteration: 10892   Dual objective     =     176724055.482360
+Iteration: 10991   Dual objective     =     176719932.308467
+Iteration: 11127   Dual objective     =     176716728.793357
+Iteration: 11307   Dual objective     =     176712860.218464
+Iteration: 11427   Dual objective     =     176710511.283770
+Iteration: 11571   Dual objective     =     176708357.764529
+Iteration: 11737   Dual objective     =     176706400.528741
+Iteration: 11883   Dual objective     =     176705242.399830
+Iteration: 12011   Dual objective     =     176704509.703839
+Iteration: 12146   Dual objective     =     176703603.484307
+Iteration: 12281   Dual objective     =     176702876.948543
+Iteration: 12430   Dual objective     =     176702088.744913
+Iteration: 12586   Dual objective     =     176701155.710583
+Iteration: 12729   Dual objective     =     176700206.063183
+Iteration: 12930   Dual objective     =     176699526.983094
+Iteration: 13196   Dual objective     =     176689021.256474
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 2.41sec (det. 6148.55 ticks)
+
+
+Optimal solution found
+Objective:    176688098.573492
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:13.708
+--- Pruefung.gms(103) 16 Mb  18 secs
+--- Generating LP model Aufgabenstellung
+--- Pruefung.gms(120) 21 Mb
+--- LOOPS i = i2
+---   35,041 rows  35,041 columns  105,121 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 7.461E-01, 8.448E+02] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.755E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:32.651
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 1.70 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 13.02 Mb (peak 13.29 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.07 Mb (peak 4.48 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 10273 substitutions.
+Reduced LP has 24767 rows, 24767 columns, and 65541 nonzeros.
+Presolve time = 0.03 sec. (39.84 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =          1133.575912
+Iteration:   335   Dual objective     =    1187164357.504904
+Iteration:  1044   Dual objective     =    1179762233.281521
+Perturbation started.
+Iteration:  1648   Dual objective     =     780099454.123463
+Iteration:  2372   Dual objective     =     780099384.492904
+Iteration:  3102   Dual objective     =     780099315.163750
+Iteration:  3838   Dual objective     =     780099246.387113
+Iteration:  4580   Dual objective     =     780099176.407409
+Iteration:  5321   Dual objective     =     780099114.009856
+Iteration:  6039   Dual objective     =     780099057.929961
+Iteration:  6697   Dual objective     =     780099012.582566
+Iteration:  7286   Dual objective     =     780098975.480603
+Iteration:  7814   Dual objective     =     780098939.993437
+Iteration:  8286   Dual objective     =     765583000.887069
+Iteration:  8631   Dual objective     =     537763692.995686
+Iteration:  8836   Dual objective     =     427010762.808800
+Iteration:  8939   Dual objective     =     426916425.658930
+Iteration:  9034   Dual objective     =     426144285.994819
+Iteration:  9125   Dual objective     =     425655863.902125
+Iteration:  9207   Dual objective     =     424759260.011599
+Iteration:  9321   Dual objective     =     424564468.131031
+Iteration:  9383   Dual objective     =     424266611.366892
+Iteration:  9511   Dual objective     =     423906437.486848
+Iteration:  9639   Dual objective     =     422105932.671005
+Iteration:  9741   Dual objective     =     337634099.859645
+Iteration:  9857   Dual objective     =     330058216.948237
+Iteration:  9958   Dual objective     =     325470841.494004
+Iteration: 10075   Dual objective     =     315929299.361843
+Iteration: 10176   Dual objective     =     307006333.536158
+Iteration: 10343   Dual objective     =     295534899.473008
+Iteration: 10526   Dual objective     =     280386816.439420
+Iteration: 10653   Dual objective     =     244769516.076051
+Iteration: 10803   Dual objective     =     236061143.247497
+Iteration: 10926   Dual objective     =     228504358.487838
+Iteration: 10988   Dual objective     =     225990068.342776
+Iteration: 11059   Dual objective     =     223192462.158540
+Iteration: 11150   Dual objective     =     220791326.542079
+Iteration: 11282   Dual objective     =     216750752.168432
+Iteration: 11404   Dual objective     =     213968212.724193
+Iteration: 11526   Dual objective     =     211542752.759739
+Iteration: 11638   Dual objective     =     206974111.162650
+Iteration: 11721   Dual objective     =     203271793.881285
+Iteration: 11830   Dual objective     =     198555578.839496
+Iteration: 11898   Dual objective     =     196080558.597058
+Iteration: 12001   Dual objective     =     192443169.499167
+Iteration: 12113   Dual objective     =     191965899.405030
+Iteration: 12193   Dual objective     =     190756641.428522
+Iteration: 12255   Dual objective     =     190267171.331995
+Iteration: 12317   Dual objective     =     189673546.293879
+Iteration: 12379   Dual objective     =     189185485.233789
+Iteration: 12441   Dual objective     =     189073157.833212
+Iteration: 12503   Dual objective     =     188610815.089400
+Iteration: 12565   Dual objective     =     188000451.273783
+Iteration: 12643   Dual objective     =     187551417.221233
+Iteration: 12705   Dual objective     =     187011240.466604
+Iteration: 12800   Dual objective     =     186644643.894311
+Iteration: 12862   Dual objective     =     186277597.032942
+Iteration: 12924   Dual objective     =     185981537.304468
+Iteration: 12986   Dual objective     =     185585514.892052
+Iteration: 13048   Dual objective     =     185200348.600860
+Iteration: 13110   Dual objective     =     185019479.694238
+Iteration: 13172   Dual objective     =     184764955.294535
+Iteration: 13234   Dual objective     =     184644919.572824
+Iteration: 13296   Dual objective     =     184455995.711275
+Iteration: 13358   Dual objective     =     184267254.793204
+Iteration: 13420   Dual objective     =     184081832.061180
+Iteration: 13482   Dual objective     =     183896702.857794
+Iteration: 13544   Dual objective     =     183663920.641195
+Iteration: 13606   Dual objective     =     183557997.329331
+Iteration: 13668   Dual objective     =     183395040.933637
+Iteration: 13730   Dual objective     =     183166729.104432
+Iteration: 13792   Dual objective     =     183012178.089109
+Iteration: 13854   Dual objective     =     182766601.560531
+Iteration: 13933   Dual objective     =     182512863.049800
+Iteration: 13995   Dual objective     =     182358867.303523
+Iteration: 14057   Dual objective     =     182222446.240858
+Iteration: 14119   Dual objective     =     181986072.177934
+Iteration: 14181   Dual objective     =     181783674.794826
+Iteration: 14243   Dual objective     =     181515673.953476
+Iteration: 14329   Dual objective     =     181283617.059387
+Iteration: 14391   Dual objective     =     181042345.052190
+Iteration: 14455   Dual objective     =     180861824.540151
+Iteration: 14517   Dual objective     =     180715928.357544
+Iteration: 14579   Dual objective     =     180706563.560210
+Iteration: 14641   Dual objective     =     180696790.700075
+Iteration: 14703   Dual objective     =     180602816.105953
+Iteration: 14765   Dual objective     =     180440626.540810
+Iteration: 14848   Dual objective     =     180318902.068729
+Iteration: 14910   Dual objective     =     180169341.813476
+Iteration: 14977   Dual objective     =     180051314.430040
+Iteration: 15039   Dual objective     =     179995164.275282
+Iteration: 15101   Dual objective     =     179871207.527566
+Iteration: 15163   Dual objective     =     179823119.690002
+Iteration: 15225   Dual objective     =     179647434.551042
+Iteration: 15287   Dual objective     =     179512478.719824
+Iteration: 15349   Dual objective     =     179420004.669463
+Iteration: 15411   Dual objective     =     179324018.011570
+Iteration: 15473   Dual objective     =     179258305.475539
+Iteration: 15535   Dual objective     =     179171062.413508
+Iteration: 15597   Dual objective     =     179124858.312938
+Iteration: 15659   Dual objective     =     179049791.652896
+Iteration: 15721   Dual objective     =     179000154.000267
+Iteration: 15783   Dual objective     =     178929976.202115
+Iteration: 15845   Dual objective     =     178843676.848209
+Iteration: 15907   Dual objective     =     178755009.938099
+Iteration: 15969   Dual objective     =     178666204.709818
+Iteration: 16031   Dual objective     =     178611118.496174
+Iteration: 16093   Dual objective     =     178520618.346073
+Iteration: 16155   Dual objective     =     178445766.702337
+Iteration: 16217   Dual objective     =     178408187.774329
+Iteration: 16279   Dual objective     =     178363718.869154
+Iteration: 16341   Dual objective     =     178347166.483980
+Iteration: 16403   Dual objective     =     178311211.037678
+Iteration: 16465   Dual objective     =     178277332.435242
+Iteration: 16527   Dual objective     =     178249645.547745
+Iteration: 16589   Dual objective     =     178208840.225164
+Iteration: 16651   Dual objective     =     178179145.864556
+Iteration: 16713   Dual objective     =     178149801.953932
+Iteration: 16775   Dual objective     =     178098494.971575
+Iteration: 16837   Dual objective     =     178003972.444826
+Iteration: 16899   Dual objective     =     177999819.830311
+Iteration: 16961   Dual objective     =     177952609.408303
+Iteration: 17023   Dual objective     =     177920182.372100
+Iteration: 17085   Dual objective     =     177884608.136481
+Iteration: 17147   Dual objective     =     177797687.686782
+Iteration: 17209   Dual objective     =     177563405.476407
+Iteration: 17322   Dual objective     =     177198765.610458
+Iteration: 17384   Dual objective     =     177135729.127437
+Iteration: 17446   Dual objective     =     176925756.776915
+Iteration: 17508   Dual objective     =     176742673.671595
+Iteration: 17592   Dual objective     =     176491059.367735
+Iteration: 17663   Dual objective     =     176314815.242684
+Iteration: 17736   Dual objective     =     176252426.090515
+Iteration: 17801   Dual objective     =     176180630.286714
+Iteration: 17920   Dual objective     =     176098100.917511
+Iteration: 17985   Dual objective     =     176051518.378082
+Iteration: 18077   Dual objective     =     176004934.719573
+Iteration: 18157   Dual objective     =     175862407.670307
+Iteration: 18219   Dual objective     =     175761729.512844
+Iteration: 18281   Dual objective     =     175735231.817428
+Iteration: 18343   Dual objective     =     175649599.717404
+Iteration: 18405   Dual objective     =     175586451.101464
+Iteration: 18467   Dual objective     =     175548530.704882
+Iteration: 18529   Dual objective     =     175452003.518424
+Iteration: 18591   Dual objective     =     175451048.403994
+Iteration: 18653   Dual objective     =     175432560.110904
+Iteration: 18715   Dual objective     =     175431816.322703
+Iteration: 18777   Dual objective     =     175415357.810315
+Iteration: 18849   Dual objective     =     175392910.764583
+Iteration: 18931   Dual objective     =     175370293.303114
+Iteration: 19028   Dual objective     =     175365091.683302
+Iteration: 19115   Dual objective     =     175354297.664928
+Iteration: 19239   Dual objective     =     175345812.472025
+Iteration: 19386   Dual objective     =     175345051.384805
+Iteration: 19502   Dual objective     =     175343437.234190
+Iteration: 19628   Dual objective     =     175341631.474618
+Iteration: 19752   Dual objective     =     175341226.236036
+Iteration: 19852   Dual objective     =     175340760.300310
+Iteration: 19985   Dual objective     =     175338880.988459
+Iteration: 20109   Dual objective     =     175333112.810708
+Iteration: 20241   Dual objective     =     175331482.759918
+Iteration: 20419   Dual objective     =     175324665.669387
+Iteration: 20563   Dual objective     =     175320498.265973
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 2.62sec (det. 8333.01 ticks)
+
+
+Optimal solution found
+Objective:    175319954.682415
+
+--- Reading solution for model Aufgabenstellung
+--- Pruefung.gms(120) 21 Mb  3 secs
+--- Executing after solve: elapsed 0:00:35.796
+--- Pruefung.gms(103) 21 Mb  35 secs
+--- Generating LP model Aufgabenstellung
+--- Pruefung.gms(120) 21 Mb
+--- LOOPS i = i3
+---   35,041 rows  35,041 columns  105,121 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 7.461E-01, 8.448E+02] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.755E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:13.646
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 1.70 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 13.02 Mb (peak 13.29 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.07 Mb (peak 4.48 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 10117 substitutions.
+Reduced LP has 24923 rows, 24923 columns, and 66009 nonzeros.
+Presolve time = 0.03 sec. (39.95 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     175318106.222230
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.08sec (det. 101.52 ticks)
+
+
+Optimal solution found
+Objective:    175318339.426661
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:01:14.234
+--- Pruefung.gms(103) 21 Mb  35 secs
+--- Generating LP model Aufgabenstellung
+--- Pruefung.gms(120) 21 Mb
+--- LOOPS i = i4
+---   35,041 rows  35,041 columns  105,121 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 7.461E-01, 8.448E+02] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.755E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:51.923
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 1.70 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 13.02 Mb (peak 13.29 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.07 Mb (peak 4.48 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 10141 substitutions.
+Reduced LP has 24899 rows, 24899 columns, and 65937 nonzeros.
+Presolve time = 0.03 sec. (39.93 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     175318158.960878
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.08sec (det. 101.71 ticks)
+
+
+Optimal solution found
+Objective:    175318491.009070
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:01:52.578
+--- Pruefung.gms(103) 21 Mb  26 secs
+--- Generating LP model Aufgabenstellung
+--- Pruefung.gms(120) 21 Mb
+--- LOOPS i = i5
+---   35,041 rows  35,041 columns  105,121 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 7.461E-01, 8.448E+02] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.755E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:02:19.522
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 1.70 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 13.02 Mb (peak 13.29 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.07 Mb (peak 4.48 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 0 rows and 1 columns.
+Aggregator did 10117 substitutions.
+Reduced LP has 24923 rows, 24923 columns, and 66009 nonzeros.
+Presolve time = 0.03 sec. (39.95 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     175318165.521297
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.08sec (det. 102.49 ticks)
+
+
+Optimal solution found
+Objective:    175318355.715605
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:02:19.858
+--- Pruefung.gms(125) 21 Mb
+--- GDX File (execute_unload) C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\results2.gdx
+--- Pruefung.gms(126) 21 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\results2.gdx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.xlsx
+Total time = 1500 Ms
+--- Pruefung.gms(127) 21 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\results2.gdx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20240111_Einheit6_EWW\Input-Output_Langfristig.xlsx
+Total time = 1515 Ms
+*** Status: Normal completion
+--- Job Pruefung.gms Stop 01/26/24 12:31:50 elapsed 0:02:22.990

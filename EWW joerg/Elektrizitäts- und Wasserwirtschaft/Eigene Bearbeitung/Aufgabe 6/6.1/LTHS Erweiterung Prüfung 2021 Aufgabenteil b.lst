@@ -1,0 +1,191 @@
+GAMS 45.5.0  8d95ac18 Dec 14, 2023          WEX-WEI x86 64bit/MS Windows - 01/16/24 18:20:43 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   2   
+   3  Sets
+   4  t Zeitschritte                                         /t1*t8760/
+   5  i Iterationen für SLP-Verfahren                        /i1*i5   /
+   6  j Iterationen für Pegelberechnung aus Energieinhalt    /j1*j30  /
+   7  k Index der Koeffezienten der Energieinhaltskurve      /k1*k6   /
+   8  ;
+   9   
+  10  Scalars
+  11   Peg_min            Absenkziel Speicher [m]                                             / 1665/
+  12   Peg_max            Stauziel Speicher [m]                                               / 1767/
+  13   H_Bezug            Bezugshorizont Energieinhalt [m]                                    /  872/
+  14   E_max              Maximaler Energieinhalt (potentielle Energie) des Speichers [MWh]
+  15   etaTurb            Gesamtwirkungsgrad im Turbinenbetrieb [1]                           /0.875/
+  16   Qmax_Turb          Maximaler Durchfluss im Turbinenbetrieb [m3 pro s]                  / 52.0/
+  17   Peg_Untergrenze    Untergrenze Pegelstand für das Bisektionsverfahren [m]
+  18   Peg_Obergrenze     Obergrenze Pegelstand für das Bisektionsverfahren [m]
+  19   E_approx           Energieinhalt für das Bisektionsverfahren [MWh]
+  20   Netzkosten         Systemnutzungsentgeld in [Euro pro MWh]                             /16/
+  21   Peg_max_Lawine     Stauziel in den Monaten Nov bis April [m]                           /1762/
+  22   E_max_Lawine
+  23  ;
+  24   
+  25   
+  26  Parameter  p_Preis(t) Stundenpreis im Zeitraum im Intervall von t-1 bis t [EUR pro MWh];
+GDXIN   C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LOAD  p_Preis = 1:p_Preis
+  31  display p_Preis;
+  32   
+  33  Parameter  Dar(t)     Natürlicher Zufluss von t-1 bis t [m3 pro s];
+GDXIN   C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LOAD  Dar = 1:Dar
+  38  display Dar;
+  39   
+  40  Parameters
+  41   E_alt(t)             Energieinhalte aus der vorangegangenen Iteration  [MWh]
+  42   Peg_alt(t)           Pegelstand aus der vorangegangenen Iteration [m]
+  43   Steigung_alt(t)      Steigung der Fallhöhen bzgl. Energieinhalt aus der vorangegangenen Iteration [m pro MWh]
+  44   Koeff(k)             Koeffezienten der Energieinhaltskurve [1]
+  45    /
+  46    k1   115.7511
+  47    k2   -1.14234
+  48    k3   0.3398127
+  49    k4   -0.003401161
+  50    k5   0.00000986934
+  51    k6   0.00000001431875
+  52    /
+  53  ;
+  54   
+  55  E_max = 9.81/3.6*sum(k,Koeff(k)*(Peg_max-Peg_min)**ord(k));
+  56  E_max_Lawine = 9.81/3.6*sum(k,Koeff(k)*(Peg_max_Lawine-Peg_min)**ord(k));
+  57   
+  58  Variables
+  59   v_Erloes            Gesamterlös [EUR]
+  60  ;
+  61  Positive Variables
+  62   v_EnInh(t)          Energienhalt zum Zeitpunkt t [MWh]
+  63   v_Turb(t)           Turbinenleistung zum Zeitpunkt t [MW]
+  64   v_Pegel(t)          Pegelstand in [m]
+  65   v_Fallhoehe(t)
+  66  ;
+  67   
+  68  *Box Constraint
+  69  v_EnInh.up(t) = E_max;
+  70   
+  71  Display E_max_Lawine;
+  72   
+  73  Equations
+  74   e_Erloes
+  75   e_Pegelstand(t)
+  76   e_Energieinhalt(t)  Energieinhaltsbilanz des Speichers
+  77   e_Fallhoehe(t)
+  78   e_Turbinieren(t)
+  79   e_EnergieinhaltLawine(t)
+  80   e_Oeko1(t)
+  81   e_Oeko2(t)
+  82   #e_Oeko3(t)
+  83  ;
+  84   
+  85  e_Erloes .. v_Erloes =e= Sum(t, p_Preis(t) * v_Turb(t) - v_Turb(t) * Netzkosten);
+  86   
+  87  e_Pegelstand(t) .. v_Pegel(t) =e=  Peg_alt(t) + Steigung_alt(t) * (v_EnInh(t)- E_alt(t));
+  88   
+  89  e_Fallhoehe(t) .. v_Fallhoehe(t) =e= v_Pegel(t) - H_Bezug;
+  90   
+  91  e_Energieinhalt(t) .. v_EnInh(t) =e= v_EnInh(t--1) + ((Dar(t) * 9.81 * 1000 * v_Fallhoehe(t))/1000000)*1 - (v_Turb(t) / etaTurb)*1; #Mal 1 steht für mal 1 Stunde um auf MWh zu kommen
+  92  #Bei 15-min Intervallen muss mit 0,25h multiplitziert werden
+  93   
+  94  e_Turbinieren(t) .. v_Turb(t) =l=  (Qmax_Turb * 9.81 * 1000 * v_Fallhoehe(t))/1000000;
+  95   
+  96  e_EnergieinhaltLawine(t)$(Ord(t)>745 and Ord(t)<5088) ..  v_EnInh(t) =l= E_max_Lawine; #Prüfungsaufgabe 2021 1A
+  97   
+  98  e_Oeko1(t)$(v_Turb(t--1) = 400) .. v_Turb(t) =g= 200;
+  99   
+ 100  e_Oeko2(t)$(v_Turb(t--1) = 100) .. v_Turb(t) =g= 0;
+ 101   
+ 102  *e_Oeko3(t)$(v_Turb(t) > 100 and v_Turb(t) < 400) .. v_Turb(t+1) =g= v_Turb(t) + (-200-(-100))/(400-100) * (v_Turb(t+1)-v_Turb(t));
+ 103   
+ 104   
+ 105   
+ 106   
+ 107   
+ 108  Model Aufgabenstellung /all/
+ 109   
+ 110  *************************
+ 111  **** SLP-ALGORITHMUS ****
+ 112  *************************
+ 113   
+ 114  * INITALISIERUNG:
+ 115  loop(t,v_EnInh.l(t) = 9.81/3.6*sum(k,Koeff(k)*((Peg_max-Peg_min)/2)**ord(k)))
+ 116  #Zu jedem t wird der Energieinhalt in der Mitte der Pegelständen mit der Summe über alle k's berechnet
+ 117   
+ 118  * ITERATIONEN:
+ 119  loop(i,
+ 120  * I. Ermittlung der Parameter für die (i+1)-te Itertion:
+ 121    loop(t,
+ 122  **** Energieinhalte der i-ten Iteration
+ 123       E_alt(t) = v_EnInh.l(t);
+ 124       #Hier wird der Energieinhalt in der Mitte der Pegelstände für jedes t in E_alt(t) gespeichert
+ 125  **** Fallhöhe der i-ten Iteration (Ermittlung mittels Bisektionsverfahren)
+ 126       Peg_Untergrenze = Peg_min; Peg_Obergrenze = Peg_max;
+ 127       #Hier wird der Min Max Pegelstand erstmals zugewiesen
+ 128       Loop(j,
+ 129           Peg_alt(t) = (Peg_Untergrenze+Peg_Obergrenze)/2;
+ 130  #Der vorhergehende Pegelstand wird hier im ersten Durchlauf als Mitte zwischen Min Max festgelegt,
+ 131  #dann je nach Richtung nach oben oder unten angenähert an den Tatsächlichen Pegelstand
+ 132           E_approx = 9.81/3.6*sum(k,Koeff(k)*(Peg_alt(t)-Peg_min)**ord(k));
+ 133  #Hier wird der approximierte Energieinhalt mit dem Pegelstand MItteangenäherten Pegelstand berechnet
+ 134           if(E_approx>E_alt(t), Peg_Obergrenze=Peg_alt(t));
+ 135           if(E_approx<E_alt(t), Peg_Untergrenze=Peg_alt(t));
+ 136       );
+ 137  **** Ableitung des Pegelstands nach dem Energieinhalt an der Stelle des optimalen Energieinhaltes der i-ten Iteration (Ermittlung mittels Umkehrregel)
+ 138       Steigung_alt(t) = 1/(9.81/3.6*sum(k,ord(k)*Koeff(k)*(Peg_alt(t)-Peg_min)**(ord(k)-1)));
+ 139    );
+ 140  * II. Lösen des linearen Problems:
+ 141   solve Aufgabenstellung using LP maximizing v_Erloes;
+****                                                      $57,256
+****  57  Endogenous relational operations require model type "dnlp"
+**** 256  Error(s) in analyzing solve statement.
+**** The following LP errors were detected in model Aufgabenstellung:
+****  57 equation e_Oeko1.. VAR operands relational or boolean
+****  57 equation e_Oeko2.. VAR operands relational or boolean
+ 142   );
+ 143   
+ 144  ****************************
+ 145   
+ 146  execute_unload "results2.gdx" v_EnInh.L e_Energieinhalt.M
+ 147  execute 'gdxxrw.exe  results2.gdx o=Input-Output_Langfristig.xlsx squeeze=N Equ=e_Energieinhalt.M   rng=Output!B3 rdim=1 cdim=0'
+ 148  execute 'gdxxrw.exe  results2.gdx o=Input-Output_Langfristig.xlsx squeeze=N var=v_EnInh.L  rng=Output!A3 rdim=1 cdim=0'
+ 149   
+ 150   
+ 151   
+ 152  File Output /Output.txt/;
+ 153   
+ 154  put Output;
+ 155  put 'Stunde t:':20:20, 'Turbinenleistung':20:20/
+ 156  loop(t,put , ord(t):20:0, v_Turb.l(t):20:2/);
+
+**** 2 ERROR(S)   0 WARNING(S)
+GAMS 45.5.0  8d95ac18 Dec 14, 2023          WEX-WEI x86 64bit/MS Windows - 01/16/24 18:20:43 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms
+     2       27 CALL           1      27  GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=p_Preis rng=Input!A3 Cdim=0 Rdim=1 Trace = 3 
+     3       28 GDXIN          1      28  C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+     4       34 CALL           1      34  GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=Dar rng=Input!C3 Cdim=0 Rdim=1 Trace = 3  3 
+     5       35 GDXIN          1      35  C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+
+
+COMPILATION TIME     =        3.250 SECONDS      4 MB  45.5.0 8d95ac18 WEX-WEI
+
+
+USER: Course License                                 S231018|0002CN-GEN
+      Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+
+
+**** FILE SUMMARY
+
+Input      C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms
+Output     C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.lst
+
+**** USER ERROR(S) ENCOUNTERED

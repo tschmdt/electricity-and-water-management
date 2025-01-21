@@ -1,0 +1,54 @@
+B 3 C o m p i l a t i o n
+B 147 Include File Summary
+B 160 Equation Listing    SOLVE Aufgabenstellung Using MIP From line 123
+D 163 g_Erloes
+D 168 g_BetriebsinhaltSpeicher
+D 179 g_Turbinen_Leistung
+D 190 g_Turbinen_Durchfluss
+D 201 g_Turbinen_SummeLambda
+D 212 g_Pumpen_Leistung
+D 223 g_Pumpen_Foerderstrom
+D 234 g_MinTurbinenDurchfluss
+D 245 g_Verlustleistung
+D 256 g_Verlustdurchfluss
+D 267 g_Verlust_SummeLambda
+B 279 Column Listing      SOLVE Aufgabenstellung Using MIP From line 123
+E 282 v_Erloes
+E 289 v_Inh
+E 308 v_P_Turb
+E 327 v_P_Pump
+E 346 v_Q_Turb
+E 368 v_Q_Pump
+E 390 v_P_Turbverlust
+E 409 v_Q_Turbverlust
+E 425 v_lambda_Turbine
+E 444 v_lambda_Verlust
+E 464 v_on_Pump
+E 480 v_on_Turb
+B 500 Range Statistics    SOLVE Aufgabenstellung Using MIP From line 123
+B 511 Model Statistics    SOLVE Aufgabenstellung Using MIP From line 123
+B 524 Solution Report     SOLVE Aufgabenstellung Using MIP From line 123
+F 571 g_Erloes
+F 575 g_BetriebsinhaltSpeicher
+F 748 g_Turbinen_Leistung
+F 921 g_Turbinen_Durchfluss
+F 1094 g_Turbinen_SummeLambda
+F 1267 g_Pumpen_Leistung
+F 1440 g_Pumpen_Foerderstrom
+F 1613 g_MinTurbinenDurchfluss
+F 1786 g_Verlustleistung
+F 1959 g_Verlustdurchfluss
+F 2132 g_Verlust_SummeLambda
+G 2307 v_Erloes
+G 2311 v_Inh
+G 2484 v_P_Turb
+G 2657 v_P_Pump
+G 2830 v_Q_Turb
+G 3003 v_Q_Pump
+G 3176 v_P_Turbverlust
+G 3349 v_Q_Turbverlust
+G 3522 v_lambda_Turbine
+G 7055 v_lambda_Verlust
+G 10588 v_on_Pump
+G 10761 v_on_Turb
+B 10940 E x e c u t i o n

@@ -1,0 +1,54 @@
+B 3 C o m p i l a t i o n
+B 973 Include File Summary
+B 987 Equation Listing    SOLVE Fundamentalmodell Using LP From line 954
+D 990 g_Kosten
+D 997 g_MaxSpeicher
+D 1008 g_Speicherinhalt
+D 1019 g_StartSpeicherinhalt
+D 1024 g_MaxSpeicherinhalt
+D 1035 g_EndSpeicherinhalt
+D 1040 g_MaxPumpe
+D 1051 g_MaxLeistungGuD
+D 1062 g_Startkosten
+D 1073 g_MinGeneration
+D 1084 g_Online
+D 1095 g_MaxLeistungGT
+D 1106 g_MaxLeistungLW
+D 1117 g_Lastdeckung
+B 1129 Column Listing      SOLVE Fundamentalmodell Using LP From line 954
+E 1132 Kosten
+E 1139 GenSpeicher
+E 1160 GenPumpe
+E 1181 Volume_Speicher
+E 1203 Erzeugung_GuD
+E 1228 Startkosten_GasKW
+E 1247 ON
+E 1275 Erzeugung_GT
+E 1297 Erzeugung_LW
+B 1317 Range Statistics    SOLVE Fundamentalmodell Using LP From line 954
+B 1328 Model Statistics    SOLVE Fundamentalmodell Using LP From line 954
+B 1341 Solution Report     SOLVE Fundamentalmodell Using LP From line 954
+F 1376 g_Kosten
+F 1380 g_MaxSpeicher
+F 2153 g_Speicherinhalt
+F 2925 g_StartSpeicherinhalt
+F 2931 g_MaxSpeicherinhalt
+F 3704 g_EndSpeicherinhalt
+F 3710 g_MaxPumpe
+F 4483 g_MaxLeistungGuD
+F 5256 g_Startkosten
+F 6029 g_MinGeneration
+F 6802 g_Online
+F 7575 g_MaxLeistungGT
+F 8348 g_MaxLeistungLW
+F 9121 g_Lastdeckung
+G 9896 Kosten
+G 9898 GenSpeicher
+G 10671 GenPumpe
+G 11444 Volume_Speicher
+G 12217 Erzeugung_GuD
+G 12990 Startkosten_GasKW
+G 13763 ON
+G 14536 Erzeugung_GT
+G 15309 Erzeugung_LW
+B 16088 E x e c u t i o n

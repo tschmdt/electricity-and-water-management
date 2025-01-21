@@ -1,0 +1,55 @@
+=1
+=2
+=0IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+=1
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+=2
+=1
+--- GMO setup time: 0.00s
+=2
+=1
+--- Space for names approximately 2.00 Mb
+=2
+=1
+--- Use option 'names no' to turn use of names off
+=2
+=1
+--- GMO memory 13.83 Mb (peak 14.10 Mb)
+=2
+=1
+--- Dictionary memory 0.00 Mb
+=2
+=1
+--- Cplex 22.1.1.0 link memory 1.15 Mb (peak 4.95 Mb)
+=2
+=1
+--- Starting Cplex
+=2
+=C
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 7309 rows and 1 columns.
+Aggregator did 17520 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.05 sec. (37.54 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     180838472.242002
+=C
+=1
+--- LP status (1): optimal.
+=2
+=1
+--- Cplex Time: 0.11sec (det. 112.03 ticks)
+
+=2
+=C
+=COptimal solution found
+=CObjective:    180866129.060905
+=C

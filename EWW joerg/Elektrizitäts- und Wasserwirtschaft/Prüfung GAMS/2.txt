@@ -1,0 +1,23 @@
+Skalare für Pumpe hinzufügen
+
+ Netzkosten_pump    Systemnutzungsentgelte [Euro pro MW]                                /3.2/
+ etaPump            Wirkungsgrad Pumpe                                                  /0.8/
+ Hoehe              Fasshöhe von 20 Prozent des Dargebots [m]                           /0.2/
+
+Positive Varialbe
+
+ v_Pump(t) Pumpleistung
+
+Gleichungen
+
+e_Pumpen(t)
+ e_Pumphoehe(t);
+
+e_Pumphoehe(t) .. v_Pumphoehe(t) =e= v_Pegel(t) - Hoehe;
+
+e_Pumpen(t) .. v_Pump(t) =e= (0.2* Dar(t) * 9.81 * 1000 * v_Pumphoehe(t))/(1000000/etaPump);
+
+e_Erloes .. v_Erloes =e= Sum(t, p_Preis(t) * v_Turb(t) - v_Turb(t) * Netzkosten - v_Pump(t) * Netzkosten_pump);
+
+
+v_Fallhoehe(t)+H_Bezug-1597 Vergleichen

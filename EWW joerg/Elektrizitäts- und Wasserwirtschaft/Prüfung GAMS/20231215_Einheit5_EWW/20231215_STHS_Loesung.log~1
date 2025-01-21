@@ -1,0 +1,325 @@
+
+--- Job Pruefung.gms Start 01/26/24 11:48:46 45.5.0 8d95ac18 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Pruefung.gms"
+    PageSize 0
+    ScrDir "C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\225a\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.5.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- Pruefung.gms(38) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Kurzfristig.xlsx Par=Preis rng=Input!A3:B170 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:B170
+Reading Slice: A1:B170
+Par  Preis          1      Input                B3:B170       A3:A170       --:--         
+Total time = 1109 Ms
+--- Pruefung.gms(39) 3 Mb
+--- GDXin=C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.gdx
+--- Pruefung.gms(142) 3 Mb
+--- Starting execution: elapsed 0:00:01.199
+--- Pruefung.gms(128) 4 Mb
+--- Generating MIP model Aufgabenstellung
+--- Pruefung.gms(129) 5 Mb
+---   1,849 rows  5,209 columns  14,280 non-zeroes
+---   672 discrete-columns
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 7.200E+03, 4.001E+07] - Zero values observed as well
+--- Bound     [min, max] : [ 2.000E+00, 6.000E+01] - Zero values observed as well
+--- Matrix    [min, max] : [ 4.392E-01, 1.000E+06]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:01.218
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 0.21 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 1.82 Mb (peak 1.86 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 0.12 Mb (peak 0.60 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Generic callback                                 0x50
+Tried aggregator 2 times.
+MIP Presolve eliminated 2016 rows and 506 columns.
+MIP Presolve added 3360 rows and 840 columns.
+Aggregator did 502 substitutions.
+Reduced MIP has 2690 rows, 5041 columns, and 28184 nonzeros.
+Reduced MIP has 840 binaries, 336 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (13.59 ticks)
+Probing fixed 0 vars, tightened 193 bounds.
+Probing time = 0.02 sec. (2.68 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 2690 rows, 5041 columns, and 28184 nonzeros.
+Reduced MIP has 840 binaries, 336 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (12.39 ticks)
+Probing fixed 0 vars, tightened 19 bounds.
+Probing time = 0.00 sec. (2.46 ticks)
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Tried aggregator 1 time.
+Aggregator did 840 substitutions.
+Reduced LP has 1850 rows, 4201 columns, and 26504 nonzeros.
+Presolve time = 0.00 sec. (4.97 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =      16363854.156418
+Iteration:   211   Dual objective     =       2206374.302042
+Iteration:   437   Dual objective     =       1962674.480943
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =       1819866.572915
+Root relaxation solution time = 0.00 sec. (23.70 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+      0     0  1819866.5729     7                1819866.5729      532         
+*     0+    0                      1817009.5300  1819866.5729             0.16%
+Found incumbent of value 1817009.530034 after 0.08 sec. (102.82 ticks)
+      0     0  1819825.1427    10  1817009.5300      Cuts: 21      541    0.15%
+      0     0  1819480.3578     3  1817009.5300      Cuts: 42      546    0.14%
+*     0+    0                      1818862.9225  1819480.3578             0.03%
+Found incumbent of value 1818862.922500 after 0.09 sec. (143.27 ticks)
+*     0+    0                      1818883.7833  1819480.3578             0.03%
+Found incumbent of value 1818883.783281 after 0.11 sec. (163.29 ticks)
+      0     0        cutoff        1818883.7833  1819480.3578      546    0.03%
+Detecting symmetries...
+
+Repeating presolve.
+Tried aggregator 2 times.
+MIP Presolve eliminated 1190 rows and 2216 columns.
+MIP Presolve modified 808 coefficients.
+Aggregator did 61 substitutions.
+Reduced MIP has 1439 rows, 2764 columns, and 15777 nonzeros.
+Reduced MIP has 498 binaries, 36 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (8.52 ticks)
+Probing fixed 139 vars, tightened 1424 bounds.
+Probing time = 0.02 sec. (2.41 ticks)
+Cover probing fixed 9 vars, tightened 442 bounds.
+Tried aggregator 2 times.
+MIP Presolve eliminated 428 rows and 1414 columns.
+MIP Presolve modified 566 coefficients.
+Aggregator did 17 substitutions.
+Reduced MIP has 994 rows, 1333 columns, and 5926 nonzeros.
+Reduced MIP has 292 binaries, 33 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (4.30 ticks)
+Probing fixed 1 vars, tightened 186 bounds.
+Probing time = 0.02 sec. (1.01 ticks)
+Cover probing fixed 21 vars, tightened 19 bounds.
+Tried aggregator 2 times.
+MIP Presolve eliminated 44 rows and 184 columns.
+MIP Presolve modified 280 coefficients.
+Aggregator did 7 substitutions.
+Reduced MIP has 943 rows, 1142 columns, and 4827 nonzeros.
+Reduced MIP has 270 binaries, 33 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (2.30 ticks)
+Probing fixed 0 vars, tightened 41 bounds.
+Probing time = 0.00 sec. (0.68 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+MIP Presolve eliminated 8 rows and 12 columns.
+MIP Presolve modified 14 coefficients.
+Reduced MIP has 935 rows, 1130 columns, and 4767 nonzeros.
+Reduced MIP has 266 binaries, 33 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (2.37 ticks)
+Represolve time = 0.03 sec. (28.70 ticks)
+Probing fixed 0 vars, tightened 27 bounds.
+Probing time = 0.00 sec. (0.65 ticks)
+Clique table members: 53.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Tried aggregator 1 time.
+Aggregator did 251 substitutions.
+Reduced LP has 704 rows, 879 columns, and 4501 nonzeros.
+Presolve time = 0.00 sec. (0.99 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =       7697355.983962
+Iteration:    91   Dual objective     =       2850493.147754
+Iteration:   199   Dual objective     =       1828708.728654
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =       1819396.471236
+Root relaxation solution time = 0.00 sec. (6.88 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                      1818883.7833  1819480.3578             0.03%
+Found incumbent of value 1818883.783281 after 0.17 sec. (219.29 ticks)
+      0     0  1819396.4712     1  1818883.7833  1819396.4712      796    0.03%
+      0     0  1819396.4712    24  1818883.7833      Fract: 1      819    0.03%
+      0     0  1819396.2203    39  1818883.7833     Cuts: 149      890    0.03%
+Detecting symmetries...
+
+Repeating presolve.
+Tried aggregator 3 times.
+MIP Presolve eliminated 341 rows and 428 columns.
+MIP Presolve modified 186 coefficients.
+Aggregator did 39 substitutions.
+Reduced MIP has 555 rows, 663 columns, and 2582 nonzeros.
+Reduced MIP has 165 binaries, 6 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.02 sec. (2.50 ticks)
+Probing fixed 5 vars, tightened 48 bounds.
+Probing time = 0.00 sec. (0.28 ticks)
+Cover probing fixed 2 vars, tightened 7 bounds.
+Tried aggregator 1 time.
+MIP Presolve eliminated 10 rows and 17 columns.
+MIP Presolve modified 27 coefficients.
+Reduced MIP has 545 rows, 646 columns, and 2486 nonzeros.
+Reduced MIP has 160 binaries, 6 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (0.85 ticks)
+Probing fixed 0 vars, tightened 16 bounds.
+Probing time = 0.00 sec. (0.22 ticks)
+Tried aggregator 1 time.
+Detecting symmetries...
+Reduced MIP has 545 rows, 646 columns, and 2486 nonzeros.
+Reduced MIP has 160 binaries, 6 generals, 0 SOSs, and 0 indicators.
+Presolve time = 0.00 sec. (1.27 ticks)
+Represolve time = 0.02 sec. (8.28 ticks)
+Probing fixed 0 vars, tightened 11 bounds.
+Probing time = 0.00 sec. (0.21 ticks)
+Clique table members: 50.
+MIP emphasis: balance optimality and feasibility.
+MIP search method: dynamic search.
+Parallel mode: none, using 1 thread.
+Tried aggregator 1 time.
+Aggregator did 140 substitutions.
+Reduced LP has 462 rows, 506 columns, and 2884 nonzeros.
+Presolve time = 0.00 sec. (0.69 ticks)
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =       2461022.142086
+Iteration:    83   Dual objective     =       2388832.248369
+Perturbation started.
+Iteration:   102   Dual objective     =       2388832.248369
+Iteration:   196   Dual objective     =       1822910.903548
+Removing perturbation.
+Initializing dual steep norms . . .
+
+Iteration log . . .
+Iteration:     1   Dual objective     =       1819396.220342
+Root relaxation solution time = 0.00 sec. (4.06 ticks)
+
+        Nodes                                         Cuts/
+   Node  Left     Objective  IInf  Best Integer    Best Bound    ItCnt     Gap
+
+*     0+    0                      1818883.7833  1819396.2203             0.03%
+Found incumbent of value 1818883.783281 after 0.20 sec. (259.19 ticks)
+      0     0  1819396.2203    40  1818883.7833  1819396.2203     1131    0.03%
+      0     0  1819395.5285     4  1818883.7833     Cuts: 158     1179    0.03%
+*     0+    0                      1819374.7764  1819395.5285             0.00%
+Found incumbent of value 1819374.776388 after 0.22 sec. (267.40 ticks)
+
+Implied bound cuts applied:  1
+Flow cuts applied:  38
+Mixed integer rounding cuts applied:  23
+Lift and project cuts applied:  1
+Gomory fractional cuts applied:  59
+
+Root node processing (before b&c):
+  Real time             =    0.22 sec. (267.49 ticks)
+Sequential b&c:
+  Real time             =    0.00 sec. (0.00 ticks)
+                          ------------
+Total (root+branch&cut) =    0.22 sec. (267.49 ticks)
+
+--- MIP status (102): integer optimal, tolerance.
+--- Cplex Time: 0.22sec (det. 267.50 ticks)
+
+--- Returning a primal only solution to GAMS (marginals all set to NA).
+--- Fixing integer variables and solving final LP...
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 1583 rows and 4944 columns.
+Aggregator did 265 substitutions.
+All rows and columns eliminated.
+Presolve time = 0.00 sec. (2.08 ticks)
+
+--- Fixed MIP status (1): optimal.
+--- Cplex Time: 0.00sec (det. 3.20 ticks)
+
+
+Solution satisfies tolerances
+MIP Solution:      1819374.776388    (1179 iterations, 0 nodes)
+Final Solve:       1819374.776388    (0 iterations)
+
+Best possible:     1819395.528548
+Absolute gap:           20.752160
+Relative gap:            0.000011
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:01.535
+--- Pruefung.gms(131) 5 Mb
+--- GDX File (execute_unload) C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\results.gdx
+--- Pruefung.gms(132) 5 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\results.gdx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
+Total time = 1156 Ms
+--- Pruefung.gms(133) 5 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\results.gdx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
+Total time = 1265 Ms
+--- Pruefung.gms(134) 5 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\results.gdx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
+Total time = 1093 Ms
+--- Pruefung.gms(135) 5 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\results.gdx
+Output file: C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Input-Output_Kurzfristig.xlsx
+Total time = 984 Ms
+--- Pruefung.gms(142) 7 Mb
+--- Putfile Akku C:\Users\joerg\Desktop\Pr�fung GAMS\20231215_Einheit5_EWW\Akkuleistung.txt
+*** Status: Normal completion
+--- Job Pruefung.gms Stop 01/26/24 11:48:52 elapsed 0:00:06.354

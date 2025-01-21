@@ -1,0 +1,34 @@
+* Berechnung P_max bei Scalar
+;
+P_max = H*Q_max*9.81/1000*(1-0.095)/(0.18+0.63*(1-0.095)+0.31*(1-0.095)**2);
+P_min =  H*Q_min*9.81/1000*(1-0.095)/(0.18+0.63*(1-0.095)+0.31*(1-0.095)**2);
+
+*Positive Variable 
+v_P_Akku(t) Akkuleistung
+
+Integer Varialben
+v_on_Akku        (t) Anzahl Akkumulatoren
+*v_on_regelTurb   (t) Anzahl Maschinensaetze mit Regelleistung
+v_on_regel(t) es muessen immer zwei systeme zur Verfuegung stehen
+;
+
+Box Constraints
+v_on_Akku.up(t) =2;
+*v_on_regelTurb.up(t) =  Anzahl_MS;
+v_on_regel.fx(t) =2;
+
+
+Gleichungen
+g_Akku(t) Wieviel Leistung wird von Akkus zur Verf gung gestellt
+g_Regel_on(t)
+g_max_Turb(t)
+g_min_Turb(t)
+;
+
+g_Regel_on(t)                 .. v_on_regel(t) =e= v_on_Akku(t) + v_on_Turb(t);
+g_Akku(t)                     .. v_P_Akku(t) =e= v_on_Akku(t)*8;
+g_max_Turb(t)                 ..v_P_Turb(t) =l= (P_max -8) * v_on_Turb(t);
+g_min_Turb(t)                 ..v_P_Turb(t) =g= (P_min +8) * v_on_Turb(t);
+
+* Zielfunktion
+ g_Erloes                     .. v_Erloes =e= sum(t,(Preis(t)-12)*v_P_Turb(t)-(Preis(t)+20)*v_P_Pump(t) - v_P_Akku(t)*30);

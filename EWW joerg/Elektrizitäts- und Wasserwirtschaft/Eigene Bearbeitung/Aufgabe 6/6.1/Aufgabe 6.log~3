@@ -1,0 +1,66 @@
+
+--- Job LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms Start 01/16/24 18:15:09 45.5.0 8d95ac18 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms"
+    PageSize 0
+    ScrDir "C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\225c\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.5.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms(27) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=p_Preis rng=Input!A3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  p_Preis        1      Input                B3:B8762      A3:A8762      --:--         
+Total time = 1766 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms(28) 3 Mb
+--- GDXin=C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms(34) 4 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=Dar rng=Input!C3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  Dar            1      Input                D3:D8762      C3:C8762      --:--         
+Total time = 1531 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms(35) 4 Mb
+--- GDXin=C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms(143) 4 Mb 2 Errors
+*** Error  57 in C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms
+    Endogenous relational operations require model type "dnlp"
+*** Error 256 in C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms
+    Error(s) in analyzing solve statement.
+*** The following LP errors were detected in model Aufgabenstellung:
+     57 equation e_Oeko1.. VAR operands relational or boolean
+     57 equation e_Oeko2.. VAR operands relational or boolean
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms(158) 4 Mb 2 Errors
+*** Status: Compilation error(s)
+--- Job LTHS Erweiterung Pr�fung 2021 Aufgabenteil b.gms Stop 01/16/24 18:15:13 elapsed 0:00:03.508

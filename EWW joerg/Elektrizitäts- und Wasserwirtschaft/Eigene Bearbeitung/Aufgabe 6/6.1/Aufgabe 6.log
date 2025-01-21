@@ -1,0 +1,459 @@
+
+--- Job LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms Start 01/16/24 18:51:12 45.5.0 8d95ac18 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms"
+    PageSize 0
+    ScrDir "C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\225c\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.5.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(30) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=p_Preis rng=Input!A3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  p_Preis        1      Input                B3:B8762      A3:A8762      --:--         
+Total time = 1656 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(31) 3 Mb
+--- GDXin=C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(37) 4 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=Dar rng=Input!C3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  Dar            1      Input                D3:D8762      C3:C8762      --:--         
+Total time = 1438 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(38) 4 Mb
+--- GDXin=C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(167) 4 Mb
+--- Starting execution: elapsed 0:00:03.273
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 6 Mb  8 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 20 Mb
+--- LOOPS i = i1
+---   56,903 rows  52,561 columns  144,503 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 2.894E+05] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 3.034E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:12.584
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.73 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 19.51 Mb (peak 19.91 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.65 Mb (peak 6.89 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 13102 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.08 sec. (49.42 ticks)
+
+Iteration log . . .
+Iteration:     1   Dual objective     =     765221378.097506
+Iteration:   554   Dual objective     =     765165700.323821
+Iteration:  1157   Dual objective     =     747546629.530494
+Iteration:  1766   Dual objective     =     729749532.563251
+Iteration:  2381   Dual objective     =     712119907.779518
+Iteration:  3002   Dual objective     =     694982504.386604
+Iteration:  3616   Dual objective     =     680313220.204051
+Iteration:  4249   Dual objective     =     672866543.588313
+Iteration:  4888   Dual objective     =     666453525.952193
+Iteration:  5533   Dual objective     =     661420958.814682
+Iteration:  6177   Dual objective     =     656949169.046963
+Iteration:  6831   Dual objective     =     652824692.964528
+Iteration:  7494   Dual objective     =     646820848.254043
+Iteration:  8162   Dual objective     =     641550653.361213
+Iteration:  8762   Dual objective     =     584395962.905561
+Iteration:  8878   Dual objective     =     182561318.227570
+Iteration:  8940   Dual objective     =     182496198.422703
+Iteration:  9002   Dual objective     =     182427670.156693
+Iteration:  9064   Dual objective     =     182381809.783749
+Iteration:  9126   Dual objective     =     182331599.085243
+Iteration:  9188   Dual objective     =     182288286.552404
+Iteration:  9250   Dual objective     =     182248566.246253
+Iteration:  9312   Dual objective     =     182221614.982377
+Iteration:  9374   Dual objective     =     182194705.384373
+Iteration:  9436   Dual objective     =     182170030.328032
+Iteration:  9498   Dual objective     =     182146208.266916
+Iteration:  9560   Dual objective     =     182125936.935590
+Iteration:  9622   Dual objective     =     182106628.011374
+Iteration:  9684   Dual objective     =     182083954.914711
+Iteration:  9746   Dual objective     =     182063227.365409
+Iteration:  9816   Dual objective     =     182048912.306434
+Iteration:  9887   Dual objective     =     182041275.016813
+Iteration:  9970   Dual objective     =     182036988.567151
+Iteration: 10032   Dual objective     =     182035030.012381
+Iteration: 10104   Dual objective     =     182033574.349463
+Iteration: 10179   Dual objective     =     182032524.547037
+Iteration: 10267   Dual objective     =     182031744.260495
+
+--- LP status (1): optimal.
+--- Cplex Time: 1.17sec (det. 2204.09 ticks)
+
+
+Optimal solution found
+Objective:    182031573.018884
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:14.176
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 20 Mb  13 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 27 Mb
+--- LOOPS i = i2
+---   56,903 rows  52,561 columns  144,503 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 2.894E+05] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:27.588
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.73 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 19.51 Mb (peak 19.91 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.65 Mb (peak 6.89 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 13102 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.06 sec. (46.40 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =             6.088127
+Iteration:   538   Scaled dual infeas =             6.023072
+Iteration:  1094   Scaled dual infeas =             5.665797
+Iteration:  1655   Scaled dual infeas =             5.486611
+Iteration:  2202   Scaled dual infeas =             5.218579
+Iteration:  2765   Scaled dual infeas =             4.692225
+Iteration:  3233   Scaled dual infeas =             4.082795
+Iteration:  3822   Scaled dual infeas =             3.230379
+Iteration:  4362   Scaled dual infeas =             2.915905
+Iteration:  4991   Scaled dual infeas =             2.786197
+Iteration:  5533   Scaled dual infeas =             2.059380
+Iteration:  6148   Scaled dual infeas =             1.670200
+Iteration:  6730   Scaled dual infeas =             1.042455
+Perturbation started.
+Iteration:  6767   Scaled dual infeas =             1.042718
+Iteration:  7336   Scaled dual infeas =             0.684020
+Iteration:  7803   Dual objective     =    1523813838.345090
+Iteration:  8473   Dual objective     =    1307782615.983348
+Iteration:  8762   Dual objective     =     408843366.673296
+Iteration:  8826   Dual objective     =     181278735.980970
+Iteration:  8888   Dual objective     =     180913641.085737
+Iteration:  8950   Dual objective     =     180752868.817723
+Iteration:  9012   Dual objective     =     180677124.985911
+Iteration:  9074   Dual objective     =     180622225.819636
+Iteration:  9136   Dual objective     =     180570612.655110
+Iteration:  9198   Dual objective     =     180529666.341468
+Iteration:  9260   Dual objective     =     180492460.775253
+Iteration:  9322   Dual objective     =     180470453.768872
+Iteration:  9394   Dual objective     =     180445420.816920
+Iteration:  9463   Dual objective     =     180425139.133861
+Iteration:  9531   Dual objective     =     180406580.554603
+Iteration:  9593   Dual objective     =     180392716.882044
+Iteration:  9666   Dual objective     =     180374701.732806
+Iteration:  9738   Dual objective     =     180358157.966708
+Iteration:  9814   Dual objective     =     180346135.274484
+Iteration:  9895   Dual objective     =     180340147.786776
+Iteration:  9986   Dual objective     =     180336870.757456
+Iteration: 10073   Dual objective     =     180335362.796079
+Iteration: 10211   Dual objective     =     180333954.542478
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.55sec (det. 1310.10 ticks)
+
+
+Optimal solution found
+Objective:    180333746.277889
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:28.540
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 27 Mb  12 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 27 Mb
+--- LOOPS i = i3
+---   56,903 rows  52,561 columns  144,503 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 2.894E+05] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:41.481
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.73 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 19.51 Mb (peak 19.91 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.65 Mb (peak 6.89 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 13102 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.06 sec. (46.40 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =             3.274859
+Iteration:   588   Scaled dual infeas =             3.186724
+Iteration:  1191   Scaled dual infeas =             3.161608
+Iteration:  1711   Scaled dual infeas =             1.648512
+Iteration:  2259   Scaled dual infeas =             1.308513
+Iteration:  2816   Scaled dual infeas =             1.077345
+Iteration:  3393   Scaled dual infeas =             0.466183
+Iteration:  3953   Scaled dual infeas =             0.233154
+Iteration:  4242   Dual objective     =    1218802748.133878
+Iteration:  4613   Dual objective     =     422680447.447259
+Iteration:  5255   Dual objective     =     405612540.866858
+Iteration:  5903   Dual objective     =     393170240.930299
+Perturbation started.
+Iteration:  6161   Dual objective     =     460534747.120853
+Iteration:  6806   Dual objective     =     452728222.409348
+Iteration:  7469   Dual objective     =     444774020.612613
+Iteration:  8138   Dual objective     =     438138368.823680
+Iteration:  8764   Dual objective     =     423102437.991376
+Iteration:  8841   Dual objective     =     181333947.749333
+Iteration:  8919   Dual objective     =     180989288.162087
+Iteration:  8981   Dual objective     =     180771967.565875
+Iteration:  9043   Dual objective     =     180681638.308918
+Iteration:  9105   Dual objective     =     180619623.060898
+Iteration:  9167   Dual objective     =     180569332.651237
+Iteration:  9229   Dual objective     =     180525006.462010
+Iteration:  9291   Dual objective     =     180480988.683649
+Iteration:  9353   Dual objective     =     180459402.329864
+Iteration:  9415   Dual objective     =     180436675.345090
+Iteration:  9477   Dual objective     =     180418200.252620
+Iteration:  9539   Dual objective     =     180400985.940409
+Iteration:  9601   Dual objective     =     180386173.746330
+Iteration:  9663   Dual objective     =     180372504.644147
+Iteration:  9731   Dual objective     =     180355285.632654
+Iteration:  9809   Dual objective     =     180338133.185033
+Iteration:  9871   Dual objective     =     180330023.151594
+Iteration:  9944   Dual objective     =     180324733.413829
+Iteration: 10035   Dual objective     =     180321366.237386
+Iteration: 10117   Dual objective     =     180319766.196341
+Iteration: 10266   Dual objective     =     180318272.513490
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.61sec (det. 1336.71 ticks)
+
+
+Optimal solution found
+Objective:    180318102.698196
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:42.546
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 27 Mb  12 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 27 Mb
+--- LOOPS i = i4
+---   56,903 rows  52,561 columns  144,503 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 2.894E+05] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:55.534
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.73 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 19.51 Mb (peak 19.91 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.65 Mb (peak 6.89 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 13102 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.06 sec. (46.40 ticks)
+Using devex.
+
+Iteration log . . .
+Iteration:     1    Objective     =     180294810.539272
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.14sec (det. 133.30 ticks)
+
+
+Optimal solution found
+Objective:    180323134.891957
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:56.104
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 27 Mb  12 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 27 Mb
+--- LOOPS i = i5
+---   56,903 rows  52,561 columns  144,503 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 2.894E+05] - Zero values observed as well
+--- Bound     [min, max] : [ 3.201E+05, 3.201E+05] - Zero values observed as well
+--- Matrix    [min, max] : [ 1.567E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:09.432
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.73 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 19.51 Mb (peak 19.91 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.65 Mb (peak 6.89 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 13102 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.08 sec. (46.40 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =             5.480137
+Iteration:   538   Scaled dual infeas =             5.415090
+Iteration:  1094   Scaled dual infeas =             5.085272
+Iteration:  1637   Scaled dual infeas =             4.950682
+Iteration:  2172   Scaled dual infeas =             4.768851
+Iteration:  2717   Scaled dual infeas =             4.413263
+Iteration:  3285   Scaled dual infeas =             3.985127
+Iteration:  3726   Scaled dual infeas =             3.391480
+Iteration:  4345   Scaled dual infeas =             3.210569
+Iteration:  4947   Scaled dual infeas =             2.920973
+Iteration:  5454   Scaled dual infeas =             2.140970
+Iteration:  6044   Scaled dual infeas =             1.266185
+Iteration:  6636   Scaled dual infeas =             0.970416
+Iteration:  7204   Scaled dual infeas =             0.601796
+Perturbation started.
+Iteration:  7676   Scaled dual infeas =             0.139718
+Iteration:  8034   Dual objective     =    1494979908.262796
+Iteration:  8712   Dual objective     =    1076849370.665234
+Iteration:  8803   Dual objective     =     133280109.672256
+Iteration:  8879   Dual objective     =     132930799.734870
+Iteration:  8941   Dual objective     =     132760231.890418
+Iteration:  9003   Dual objective     =     132675341.014962
+Iteration:  9065   Dual objective     =     132616015.223208
+Iteration:  9127   Dual objective     =     132566652.727396
+Iteration:  9189   Dual objective     =     132521294.126500
+Iteration:  9251   Dual objective     =     132472482.759393
+Iteration:  9313   Dual objective     =     132448767.108729
+Iteration:  9375   Dual objective     =     132424808.390943
+Iteration:  9437   Dual objective     =     132405705.489693
+Iteration:  9499   Dual objective     =     132388684.444468
+Iteration:  9561   Dual objective     =     132373818.986627
+Iteration:  9623   Dual objective     =     132360936.907282
+Iteration:  9691   Dual objective     =     180351564.284664
+Iteration:  9768   Dual objective     =     180334335.310911
+Iteration:  9832   Dual objective     =     180325443.733208
+Iteration:  9905   Dual objective     =     180319878.254754
+Iteration:  9995   Dual objective     =     180316429.467631
+Iteration: 10081   Dual objective     =     180314730.050518
+Iteration: 10231   Dual objective     =     180313239.879177
+Removing perturbation.
+
+--- LP status (1): optimal.
+--- Cplex Time: 0.61sec (det. 1380.78 ticks)
+
+
+Optimal solution found
+Objective:    180313054.473518
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:01:10.462
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(157) 27 Mb
+--- GDX File (execute_unload) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\results2.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(158) 27 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\results2.gdx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Total time = 1844 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(159) 27 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\results2.gdx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Total time = 2188 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(167) 29 Mb
+--- Putfile Output C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Output.txt
+*** Status: Normal completion
+--- Job LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms Stop 01/16/24 18:52:26 elapsed 0:01:14.673

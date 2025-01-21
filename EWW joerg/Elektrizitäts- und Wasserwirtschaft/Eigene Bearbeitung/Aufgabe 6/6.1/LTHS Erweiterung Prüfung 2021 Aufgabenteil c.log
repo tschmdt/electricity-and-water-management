@@ -1,0 +1,485 @@
+
+--- Job LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms Start 01/26/24 12:22:08 45.5.0 8d95ac18 WEX-WEI x86 64bit/MS Windows
+--- Applying:
+    C:\GAMS\45\gmsprmNT.txt
+--- GAMS Parameters defined
+    Input "C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms"
+    PageSize 0
+    ScrDir "C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\225c\"
+    SysDir C:\GAMS\45\
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: Course License                                 S231018|0002CN-GEN
+          Verbund Hydro Power GmbH, Erzeugung Betriebssteuerung     DCE2385
+          C:\GAMS\45\gamslice.txt
+          License Admin: Markus Pfleger, Markus.Pfleger@verbund.com        
+          Course license for use within the course and related course work
+          The evaluation period of the license will expire on Apr 15, 2024
+Processor information: 1 socket(s), 4 core(s), and 8 thread(s) available
+GAMS 45.5.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(30) 3 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=p_Preis rng=Input!A3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  p_Preis        1      Input                B3:B8762      A3:A8762      --:--         
+Total time = 1172 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(31) 3 Mb
+--- GDXin=C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(37) 4 Mb
+--- call GDXXRW.EXE  Input-Output_Langfristig.xlsx Par=Dar rng=Input!C3 Cdim=0 Rdim=1 Trace = 3
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Excel version 16.0
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+Type Symbol       Dim      Sheet                Data          RowHeader     ColHeader     
+Loading sheet Input
+Reading data from Excel; Rng = A1:D8762
+Reading Slice: A1:D8762
+Par  Dar            1      Input                D3:D8762      C3:C8762      --:--         
+Total time = 1218 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(38) 4 Mb
+--- GDXin=C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- GDX File ($gdxIn) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(167) 4 Mb
+--- Starting execution: elapsed 0:00:02.532
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 6 Mb  8 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 20 Mb
+--- LOOPS i = i1
+---   52,561 rows  52,561 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 1.692E+03] - Zero values observed as well
+--- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+--- Matrix    [min, max] : [ 3.034E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:11.304
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.58 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 18.53 Mb (peak 18.93 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.60 Mb (peak 6.64 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 0
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 8760 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.05 sec. (45.81 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =       1646432.819994
+Iteration:   690   Scaled dual infeas =       1545278.535857
+Iteration:  1384   Scaled dual infeas =       1451899.599403
+Iteration:  2082   Scaled dual infeas =       1357971.563017
+Iteration:  2784   Scaled dual infeas =       1254371.411764
+Iteration:  3490   Scaled dual infeas =       1159403.201627
+Iteration:  4200   Scaled dual infeas =       1059541.439821
+Iteration:  4914   Scaled dual infeas =        934609.391741
+Iteration:  5632   Scaled dual infeas =        769836.308653
+Iteration:  6354   Scaled dual infeas =        595271.345200
+Iteration:  7080   Scaled dual infeas =        432717.591631
+Iteration:  7810   Scaled dual infeas =        252068.938334
+Iteration:  8544   Scaled dual infeas =        101255.625678
+Iteration:  9282   Scaled dual infeas =         58784.802804
+Iteration: 10024   Scaled dual infeas =         56564.055834
+Iteration: 10701   Scaled dual infeas =         54226.988418
+Iteration: 11351   Scaled dual infeas =         51125.990138
+Iteration: 11976   Scaled dual infeas =         43883.202442
+Iteration: 12560   Scaled dual infeas =         40927.329563
+Iteration: 13100   Scaled dual infeas =         38501.991769
+Iteration: 13603   Scaled dual infeas =         35680.358610
+Iteration: 14171   Scaled dual infeas =         31152.052703
+Iteration: 14661   Scaled dual infeas =         25212.592639
+Iteration: 15122   Scaled dual infeas =         21305.052546
+Iteration: 15604   Scaled dual infeas =         17767.399923
+Iteration: 16072   Scaled dual infeas =         12609.096099
+Iteration: 16570   Scaled dual infeas =          6447.947088
+Iteration: 16987   Scaled dual infeas =          4578.960378
+Iteration: 17329   Scaled dual infeas =          3383.704667
+Iteration: 17617   Scaled dual infeas =          2333.674195
+Iteration: 17905   Scaled dual infeas =           850.925253
+Iteration: 18118   Scaled dual infeas =           290.097440
+Iteration: 18271   Scaled dual infeas =           190.476494
+Iteration: 18384   Scaled dual infeas =           172.658559
+Iteration: 18446   Scaled dual infeas =           167.411413
+Iteration: 18508   Scaled dual infeas =           162.368460
+Iteration: 18570   Scaled dual infeas =           156.638149
+Iteration: 18632   Scaled dual infeas =           150.580600
+Iteration: 18694   Scaled dual infeas =           140.768922
+Iteration: 18756   Scaled dual infeas =           134.643313
+Iteration: 18818   Scaled dual infeas =           132.859215
+Iteration: 18880   Scaled dual infeas =           128.402180
+Iteration: 18942   Scaled dual infeas =           117.820021
+Iteration: 19004   Scaled dual infeas =           113.694668
+Iteration: 19066   Scaled dual infeas =           110.084684
+Iteration: 19128   Scaled dual infeas =           106.913533
+Iteration: 19190   Scaled dual infeas =           102.671895
+Iteration: 19252   Scaled dual infeas =            99.202239
+Iteration: 19314   Scaled dual infeas =            95.060993
+Iteration: 19376   Scaled dual infeas =            89.600110
+Iteration: 19438   Scaled dual infeas =            84.728271
+Iteration: 19500   Scaled dual infeas =            78.374803
+Iteration: 19562   Scaled dual infeas =            71.351294
+
+--- LP status (2): unbounded.
+--- Cplex Time: 0.48sec (det. 1443.67 ticks)
+
+
+Model has an unbounded ray
+CPLEX Error  1265: Dual unbounded solution required.
+--- Could not determine which row or columns may have causedthe problem to be unbounded
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:12.132
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 20 Mb  21 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 26 Mb
+--- LOOPS i = i2
+---   52,561 rows  52,561 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 1.665E+03] - Zero values observed as well
+--- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+--- Matrix    [min, max] : [ 8.582E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:33.955
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.58 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 18.53 Mb (peak 18.93 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.60 Mb (peak 6.64 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 8760 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.03 sec. (45.01 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =       3293027.239634
+Iteration:   590   Scaled dual infeas =       3138961.095055
+Iteration:  1184   Scaled dual infeas =       2978617.022002
+Iteration:  1785   Scaled dual infeas =       2809628.198625
+Iteration:  2385   Scaled dual infeas =       2630882.420020
+Iteration:  2993   Scaled dual infeas =       2434876.115273
+Iteration:  3623   Scaled dual infeas =       2221192.986755
+Iteration:  4262   Scaled dual infeas =       2001723.585125
+Iteration:  4905   Scaled dual infeas =       1818354.232298
+Iteration:  5549   Scaled dual infeas =       1660872.868732
+Iteration:  6107   Scaled dual infeas =        394607.351884
+Iteration:  6861   Scaled dual infeas =        288058.187874
+Iteration:  7619   Scaled dual infeas =        188272.812556
+Iteration:  8381   Scaled dual infeas =         75962.724203
+Iteration:  8914   Scaled dual infeas =         16150.641028
+Iteration:  9624   Scaled dual infeas =         13172.154472
+Iteration: 10278   Scaled dual infeas =         10280.784133
+Iteration: 10895   Scaled dual infeas =          6728.461049
+Iteration: 11458   Scaled dual infeas =          2828.865735
+Iteration: 11851   Scaled dual infeas =          1345.452779
+Iteration: 12129   Scaled dual infeas =           747.003337
+Iteration: 12267   Scaled dual infeas =           599.160774
+Iteration: 12355   Scaled dual infeas =           564.779747
+Iteration: 12448   Scaled dual infeas =           538.320880
+Iteration: 12510   Scaled dual infeas =           524.450697
+Iteration: 12572   Scaled dual infeas =           517.345739
+Iteration: 12634   Scaled dual infeas =           510.186135
+Iteration: 12813   Scaled dual infeas =           504.477630
+Iteration: 12901   Scaled dual infeas =           502.225279
+Iteration: 13053   Scaled dual infeas =           499.822482
+Iteration: 13115   Scaled dual infeas =           499.224329
+Iteration: 13177   Scaled dual infeas =           498.724864
+Iteration: 13254   Scaled dual infeas =           498.343536
+
+--- LP status (2): unbounded.
+--- Cplex Time: 0.34sec (det. 859.54 ticks)
+
+
+Model has an unbounded ray
+CPLEX Error  1265: Dual unbounded solution required.
+--- Could not determine which row or columns may have causedthe problem to be unbounded
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:34.649
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 26 Mb  11 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 26 Mb
+--- LOOPS i = i3
+---   52,561 rows  52,561 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 1.665E+03] - Zero values observed as well
+--- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+--- Matrix    [min, max] : [ 8.582E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:00:46.921
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.58 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 18.53 Mb (peak 18.93 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.60 Mb (peak 6.64 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 8760 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.03 sec. (45.00 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =       3726948.975648
+Iteration:   601   Scaled dual infeas =       3527074.894653
+Iteration:  1203   Scaled dual infeas =       3322930.321515
+Iteration:  1806   Scaled dual infeas =       3114562.583599
+Iteration:  2413   Scaled dual infeas =       2899476.285588
+Iteration:  3021   Scaled dual infeas =       2677769.786967
+Iteration:  3650   Scaled dual infeas =       2460896.777314
+Iteration:  4281   Scaled dual infeas =       2277162.345689
+Iteration:  4929   Scaled dual infeas =       2117804.067838
+Iteration:  5574   Scaled dual infeas =       1923907.822204
+Iteration:  6225   Scaled dual infeas =       1712525.469767
+Iteration:  6430   Scaled dual infeas =        802020.035852
+Iteration:  7181   Scaled dual infeas =        238008.004477
+Iteration:  7945   Scaled dual infeas =        136048.718679
+Iteration:  8713   Scaled dual infeas =         25652.083835
+Iteration:  9431   Scaled dual infeas =          9045.722572
+Iteration: 10072   Scaled dual infeas =          6395.055921
+Iteration: 10683   Scaled dual infeas =          2375.960303
+Iteration: 11091   Scaled dual infeas =           950.030441
+Iteration: 11289   Scaled dual infeas =           561.135383
+Iteration: 11351   Scaled dual infeas =           537.697633
+Iteration: 11417   Scaled dual infeas =           528.938016
+Iteration: 11487   Scaled dual infeas =           522.385156
+Iteration: 11549   Scaled dual infeas =           514.175711
+Iteration: 11722   Scaled dual infeas =           506.250529
+Iteration: 11794   Scaled dual infeas =           505.000745
+Iteration: 11856   Scaled dual infeas =           504.080467
+Iteration: 11918   Scaled dual infeas =           502.824439
+Iteration: 11991   Scaled dual infeas =           501.382654
+Iteration: 12053   Scaled dual infeas =           500.374890
+Iteration: 12134   Scaled dual infeas =           499.638196
+Iteration: 12211   Scaled dual infeas =           499.384657
+
+--- LP status (2): unbounded.
+--- Cplex Time: 0.47sec (det. 1097.89 ticks)
+
+
+Model has an unbounded ray
+CPLEX Error  1265: Dual unbounded solution required.
+--- Could not determine which row or columns may have causedthe problem to be unbounded
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:00:47.727
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 26 Mb  11 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 26 Mb
+--- LOOPS i = i4
+---   52,561 rows  52,561 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 1.665E+03] - Zero values observed as well
+--- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+--- Matrix    [min, max] : [ 8.582E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:00.063
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.58 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 18.53 Mb (peak 18.93 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.60 Mb (peak 6.64 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 8760 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.05 sec. (44.99 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =       3733411.765838
+Iteration:   601   Scaled dual infeas =       3533680.982823
+Iteration:  1203   Scaled dual infeas =       3329672.392667
+Iteration:  1806   Scaled dual infeas =       3121429.277143
+Iteration:  2413   Scaled dual infeas =       2906448.162747
+Iteration:  3021   Scaled dual infeas =       2684832.628955
+Iteration:  3650   Scaled dual infeas =       2461715.529947
+Iteration:  4281   Scaled dual infeas =       2276342.844735
+Iteration:  4927   Scaled dual infeas =       2114755.860946
+Iteration:  5572   Scaled dual infeas =       1920495.295465
+Iteration:  6223   Scaled dual infeas =       1709196.737857
+Iteration:  6420   Scaled dual infeas =        753399.145727
+Iteration:  7173   Scaled dual infeas =        239199.449072
+Iteration:  7937   Scaled dual infeas =        136913.820980
+Iteration:  8705   Scaled dual infeas =         26548.787565
+Iteration:  9425   Scaled dual infeas =          9176.826700
+Iteration: 10064   Scaled dual infeas =          6481.202668
+Iteration: 10674   Scaled dual infeas =          2476.290543
+Iteration: 11089   Scaled dual infeas =           958.643557
+Iteration: 11293   Scaled dual infeas =           561.490909
+Iteration: 11355   Scaled dual infeas =           538.053163
+Iteration: 11421   Scaled dual infeas =           529.293546
+Iteration: 11491   Scaled dual infeas =           522.740684
+Iteration: 11553   Scaled dual infeas =           514.531241
+Iteration: 11726   Scaled dual infeas =           506.606058
+Iteration: 11798   Scaled dual infeas =           505.356275
+Iteration: 11861   Scaled dual infeas =           504.110201
+Iteration: 11923   Scaled dual infeas =           502.661957
+Iteration: 12071   Scaled dual infeas =           500.487741
+Iteration: 12231   Scaled dual infeas =           499.724273
+
+--- LP status (2): unbounded.
+--- Cplex Time: 0.47sec (det. 1060.22 ticks)
+
+
+Model has an unbounded ray
+CPLEX Error  1265: Dual unbounded solution required.
+--- Could not determine which row or columns may have causedthe problem to be unbounded
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:01:00.858
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(130) 26 Mb  11 secs
+--- Generating LP model Aufgabenstellung
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(152) 26 Mb
+--- LOOPS i = i5
+---   52,561 rows  52,561 columns  140,161 non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 2.000E-01, 1.665E+03] - Zero values observed as well
+--- Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+--- Matrix    [min, max] : [ 8.582E-04, 4.355E+02]
+--- Executing CPLEX (Solvelink=2): elapsed 0:01:13.031
+
+IBM ILOG CPLEX   45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+
+--- GAMS/CPLEX licensed for continuous and discrete problems.
+--- GMO setup time: 0.00s
+--- Space for names approximately 2.58 Mb
+--- Use option 'names no' to turn use of names off
+--- GMO memory 18.53 Mb (peak 18.93 Mb)
+--- Dictionary memory 0.00 Mb
+--- Cplex 22.1.1.0 link memory 1.60 Mb (peak 6.64 Mb)
+--- Starting Cplex
+
+Version identifier: 22.1.1.0 | 2022-11-27 | 9160aff4d
+CPXPARAM_Advance                                 2
+CPXPARAM_Threads                                 1
+CPXPARAM_MIP_Display                             4
+CPXPARAM_MIP_Pool_Capacity                       0
+CPXPARAM_MIP_Tolerances_AbsMIPGap                0
+Tried aggregator 1 time.
+LP Presolve eliminated 8760 rows and 8761 columns.
+Aggregator did 26280 substitutions.
+Reduced LP has 17520 rows, 17520 columns, and 43800 nonzeros.
+Presolve time = 0.05 sec. (44.99 ticks)
+
+Iteration log . . .
+Iteration:     1   Scaled dual infeas =       3737859.266132
+Iteration:   601   Scaled dual infeas =       3538128.483117
+Iteration:  1203   Scaled dual infeas =       3334119.892962
+Iteration:  1806   Scaled dual infeas =       3125876.777438
+Iteration:  2413   Scaled dual infeas =       2910895.663042
+Iteration:  3021   Scaled dual infeas =       2689280.129250
+Iteration:  3650   Scaled dual infeas =       2466163.030241
+Iteration:  4281   Scaled dual infeas =       2279044.863692
+Iteration:  4928   Scaled dual infeas =       2114485.718882
+Iteration:  5573   Scaled dual infeas =       1920175.295706
+Iteration:  6224   Scaled dual infeas =       1708869.006399
+Iteration:  6420   Scaled dual infeas =        753399.158968
+Iteration:  7173   Scaled dual infeas =        239279.450839
+Iteration:  7937   Scaled dual infeas =        137064.315218
+Iteration:  8705   Scaled dual infeas =         26719.591832
+Iteration:  9425   Scaled dual infeas =          9157.695296
+Iteration: 10064   Scaled dual infeas =          6467.805868
+Iteration: 10674   Scaled dual infeas =          2460.126447
+Iteration: 11090   Scaled dual infeas =           966.771035
+Iteration: 11296   Scaled dual infeas =           561.295428
+Iteration: 11358   Scaled dual infeas =           537.857682
+Iteration: 11424   Scaled dual infeas =           529.098065
+Iteration: 11494   Scaled dual infeas =           522.545203
+Iteration: 11556   Scaled dual infeas =           514.335759
+Iteration: 11729   Scaled dual infeas =           506.410577
+Iteration: 11801   Scaled dual infeas =           505.160794
+Iteration: 11864   Scaled dual infeas =           503.914719
+Iteration: 11926   Scaled dual infeas =           502.563315
+Iteration: 11989   Scaled dual infeas =           501.499596
+Iteration: 12051   Scaled dual infeas =           500.467022
+Iteration: 12113   Scaled dual infeas =           499.920129
+Iteration: 12200   Scaled dual infeas =           499.416168
+
+--- LP status (2): unbounded.
+--- Cplex Time: 0.45sec (det. 1098.66 ticks)
+
+
+Model has an unbounded ray
+CPLEX Error  1265: Dual unbounded solution required.
+--- Could not determine which row or columns may have causedthe problem to be unbounded
+
+--- Reading solution for model Aufgabenstellung
+--- Executing after solve: elapsed 0:01:13.821
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(157) 26 Mb
+--- GDX File (execute_unload) C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\results2.gdx
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(158) 26 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\results2.gdx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Total time = 1579 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(159) 26 Mb
+
+GDXXRW           45.5.0 8d95ac18 Dec 14, 2023          WEI x86 64bit/MS Window
+Input file : C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\results2.gdx
+Output file: C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Input-Output_Langfristig.xlsx
+Total time = 1594 Ms
+--- LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms(167) 28 Mb
+--- Putfile Output C:\Users\joerg\Desktop\Master\5. Semester\Elektrizit�ts- und Wasserwirtschaft\Eigene Bearbeitung\Aufgabe 6\6.1\Output.txt
+*** Status: Normal completion
+--- Job LTHS Erweiterung Pr�fung 2021 Aufgabenteil c.gms Stop 01/26/24 12:23:25 elapsed 0:01:17.141
